@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.Async.Log4Net</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension">
+            <summary>
+            Logger for <see cref="T:bbv.Common.Async.AsyncWorker"/> using log4net.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension.StartedExecution(bbv.Common.Async.AsyncWorker,System.ComponentModel.DoWorkEventHandler,System.Object)">
+            <summary>
+            Called when an operation is started.
+            </summary>
+            <param name="asyncWorker">The async worker.</param>
+            <param name="worker">The worker.</param>
+            <param name="argument">The argument.</param>
+        </member>
+        <member name="M:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension.CancellingExecution(bbv.Common.Async.AsyncWorker,System.ComponentModel.DoWorkEventHandler)">
+            <summary>
+            Called when an operation is cancelled.
+            </summary>
+            <param name="asyncWorker">The async worker.</param>
+            <param name="worker">The worker.</param>
+        </member>
+        <member name="M:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension.ReportProgress(bbv.Common.Async.AsyncWorker,System.ComponentModel.DoWorkEventHandler,System.ComponentModel.ProgressChangedEventHandler,System.Object)">
+            <summary>
+            Called when an operation reports progress.
+            </summary>
+            <param name="asyncWorker">The async worker.</param>
+            <param name="worker">The worker.</param>
+            <param name="progress">The progress.</param>
+            <param name="userState">State of the user.</param>
+        </member>
+        <member name="M:bbv.Common.Async.Log4Net.Log4NetAsyncWorkerExtension.CompletedExecution(bbv.Common.Async.AsyncWorker,System.ComponentModel.DoWorkEventHandler,System.ComponentModel.RunWorkerCompletedEventHandler,System.ComponentModel.RunWorkerCompletedEventArgs)">
+            <summary>
+            Called when an operation was completed.
+            </summary>
+            <param name="asyncWorker">The async worker.</param>
+            <param name="worker">The worker.</param>
+            <param name="completed">The completed handler.</param>
+            <param name="runWorkerCompletedEventArgs">The <see cref="T:System.ComponentModel.RunWorkerCompletedEventArgs"/> instance containing the event data.</param>
+        </member>
+    </members>
+</doc>

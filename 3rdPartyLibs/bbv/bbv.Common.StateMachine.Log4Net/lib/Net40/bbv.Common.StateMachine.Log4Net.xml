@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.StateMachine.Log4Net</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.StateMachine.Extensions.Log4NetExtension`2">
+            <summary>
+            Extension for logging with log4net.
+            </summary>
+            <typeparam name="TState">The type of the state.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.StateMachine.Extensions.Log4NetExtension`2"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.StateMachine.Extensions.Log4NetExtension`2"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.StateMachine.Extensions.Log4NetExtension`2"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.SwitchedState(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},bbv.Common.StateMachine.Internals.IState{`0,`1},bbv.Common.StateMachine.Internals.IState{`0,`1})">
+            <summary>
+            Called after the state machine switched states.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="oldState">The old state.</param>
+            <param name="newState">The new state.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.InitializingStateMachine(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},`0@)">
+            <summary>
+            Called when the state machine is initializing.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="initialState">The initial state. Can be replaced by the extension.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.InitializedStateMachine(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},`0)">
+            <summary>
+            Called when the state machine was initialized.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="initialState">The initial state.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.EnteringInitialState(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},`0)">
+            <summary>
+            Called when the state machine enters the initial state.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="state">The state.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.EnteredInitialState(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},`0,bbv.Common.StateMachine.Internals.IStateContext{`0,`1})">
+            <summary>
+            Called when the state machine entered the initial state.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="state">The state.</param>
+            <param name="stateContext">The state context.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.FiringEvent(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},`1@,System.Object[]@)">
+            <summary>
+            Called when an event is firing on the state machine.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="eventId">The event id. Can be replaced by the extension.</param>
+            <param name="eventArguments">The event arguments. Can be replaced by the extension.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.FiredEvent(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},bbv.Common.StateMachine.Internals.ITransitionContext{`0,`1})">
+            <summary>
+            Called when an event was fired on the state machine.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="context">The transition context.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.HandlingEntryActionException(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},bbv.Common.StateMachine.Internals.IState{`0,`1},bbv.Common.StateMachine.Internals.IStateContext{`0,`1},System.Exception@)">
+            <summary>
+            Called before an entry action exception is handled.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="state">The state.</param>
+            <param name="stateContext">The state context.</param>
+            <param name="exception">The exception. Can be replaced by the extension.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.HandlingExitActionException(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},bbv.Common.StateMachine.Internals.IState{`0,`1},bbv.Common.StateMachine.Internals.IStateContext{`0,`1},System.Exception@)">
+            <summary>
+            Called before an exit action exception is handled.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="state">The state.</param>
+            <param name="stateContext">The state context.</param>
+            <param name="exception">The exception. Can be replaced by the extension.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.HandlingGuardException(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},bbv.Common.StateMachine.Internals.ITransition{`0,`1},bbv.Common.StateMachine.Internals.ITransitionContext{`0,`1},System.Exception@)">
+            <summary>
+            Called before a guard exception is handled.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="transition">The transition.</param>
+            <param name="transitionContext">The transition context.</param>
+            <param name="exception">The exception. Can be replaced by the extension.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Extensions.Log4NetExtension`2.HandlingTransitionException(bbv.Common.StateMachine.IStateMachineInformation{`0,`1},bbv.Common.StateMachine.Internals.ITransition{`0,`1},bbv.Common.StateMachine.Internals.ITransitionContext{`0,`1},System.Exception@)">
+            <summary>
+            Called before a transition exception is handled.
+            </summary>
+            <param name="stateMachine">The state machine.</param>
+            <param name="transition">The transition.</param>
+            <param name="context">The context.</param>
+            <param name="exception">The exception. Can be replaced by the extension.</param>
+        </member>
+    </members>
+</doc>

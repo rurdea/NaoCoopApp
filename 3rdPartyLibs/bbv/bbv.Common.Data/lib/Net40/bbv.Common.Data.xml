@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.Data</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.Data.CsvParseException">
+            <summary>
+            Exception thrown when a parse exception occurs within the <see cref="T:bbv.Common.Data.CsvParser"/>. 
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvParseException.position">
+            <summary>
+            Where the exception occurred.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvParseException.line">
+            <summary>
+            The line that was parsed.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Data.CsvParseException.#ctor(System.String,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Data.CsvParseException"/> class.
+            </summary>
+            <param name="line">The line that was parsed.</param>
+            <param name="position">The position on which the exception occurred.</param>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="P:bbv.Common.Data.CsvParseException.Line">
+            <summary>
+            Gets the line that was parsed.
+            </summary>
+            <value>The line parsed.</value>
+        </member>
+        <member name="P:bbv.Common.Data.CsvParseException.Position">
+            <summary>
+            Gets the position where the exception occurred.
+            </summary>
+            <value>The position.</value>
+        </member>
+        <member name="T:bbv.Common.Data.CsvParser">
+            <summary>
+            Parser for CSV files.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Data.CsvParser.Parse(System.String)">
+            <summary>
+            Parses a csv string line.
+            </summary>
+            <param name="line">A csv line.</param>
+            <returns>A string array with the parsed values.</returns>
+        </member>
+        <member name="M:bbv.Common.Data.CsvParser.Parse(System.String,System.Char)">
+            <summary>
+            Parses a csv string line.
+            <code>
+                                                         ┌────────┐
+                              "┌─────────────────────────│ Start  │──────┐*
+                 ┌──┐          │                         └────────┘      │        ┌──┐ 
+                 │  │*         │                             │           │        │  │*
+                 ▼  │          ▼                             │           ▼        ▼  │ 
+                ┌───────────────────┐      "                 │      ┌──────────────────┐
+                │ ColumnStartString │◄───────────────────┐   │      │ ColumnStartValue │
+                └───────────────────┘                    │   │      └──────────────────┘
+                 │              ▲                        │   │                  ▲
+                 │EOL|EOF       │"                       │   │,|EOL|EOF         │
+                 ▼              ▼                        │   ▼                  │*
+            ┌────────┐   *    ┌─────────────┐,|EOL|EOF ┌───────────┐◄───────────┘
+            │ Error  │◄────── │ " in string │─────────►│ ColumnEnd │,|EOL|EOF
+            └────────┘        └─────────────┘          └───────────┘  
+                                                     Null│      │ ▲
+                                                         ▼      │ │,|EOL|EOF
+                                                     ┌────────┐ └─┘
+                                                     │ Finish │
+                                                     └────────┘
+            </code>
+            </summary>
+            <param name="line">A csv line.</param>
+            <param name="separator">The separator of this line. As example coma.</param>
+            <returns>A string array with the parsed values.</returns>
+        </member>
+        <member name="T:bbv.Common.Data.CsvParser.State">
+            <summary>
+            The state the parser is in.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvParser.State.Start">
+            <summary>Start state</summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvParser.State.ColumnStartString">
+            <summary>A string contained in " detected.</summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvParser.State.ColumnStartValue">
+            <summary>A simple value detected</summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvParser.State.Quote">
+            <summary>Parsed a quote.</summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvParser.State.ColumnEnd">
+            <summary>End of column reached.</summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvParser.State.Error">
+            <summary>Parse error.</summary>
+        </member>
+        <member name="T:bbv.Common.Data.CsvWriter">
+            <summary>
+            Writer for csv files.
+            Takes care of quoting values if needed.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Data.CsvWriter.specialChars">
+            <summary>
+            List of special characters that need the value to be quoted.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Data.CsvWriter.Write(System.String[])">
+            <summary>
+            Returns a line containing the specified values formatted as csv.
+            </summary>
+            <param name="values">The values.</param>
+            <returns>A line containing the specified values formatted as csv.</returns>
+        </member>
+        <member name="M:bbv.Common.Data.CsvWriter.Write(System.String[],System.String)">
+            <summary>
+            Returns a line containing the specified values formatted as csv.
+            </summary>
+            <param name="values">The values.</param>
+            <param name="delimiter">The delimiter used to separate the values.</param>
+            <returns>
+            A line containing the specified values formatted as csv.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Data.CsvWriter.WriteValue(System.Text.StringBuilder,System.String)">
+            <summary>
+            Writes a value to a line. Encloses the value into " " if necessary.
+            </summary>
+            <param name="line">The line to write the value to.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="T:bbv.Common.Data.DatasetHelper">
+            <summary>
+            Contains static methods helping to work with Datasets
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Data.DatasetHelper.CreateTableFromView(System.Data.DataView)">
+            <summary>
+            Creates a new DataTable from the rows currently active in the given view.
+            </summary>
+            <param name="dataView">DataView to create the table from.</param>
+            <returns>
+            Returns a new DataTable with the same schema as the table, 
+            which the view is based on.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Data.DatasetHelper.CloneView(System.Data.DataView)">
+            <summary>
+            Creates a DataView showing the same entries as the original View
+            </summary>
+            <param name="originalView">the original view from which the new View is created</param>
+            <returns>the created new View</returns>
+        </member>
+        <member name="M:bbv.Common.Data.DatasetHelper.GetChangedColumns(System.Data.DataRow)">
+            <summary>
+            Returns the columns that were changed in the row.
+            </summary>
+            <param name="row">the row to be examined</param>
+            <returns>the changed columns</returns>
+        </member>
+        <member name="M:bbv.Common.Data.DatasetHelper.HasColumnChanged(System.Data.DataColumn[],System.Data.DataRow)">
+            <summary>
+            Checks if certain Columns in a row have a changed value.
+            </summary>
+            <param name="columns">a list of the columns to be checked</param>
+            <param name="row">the row to be analyzed</param>
+            <returns>true if any of that columns in the row has changed</returns>
+        </member>
+        <member name="M:bbv.Common.Data.DatasetHelper.UpdateColumnsIfDifferent(System.Data.DataRow,System.Data.DataRow,System.String[])">
+            <summary>
+            Updates columns in <paramref name="columnsToUpdate"/> of <paramref name="destinationRow"/>
+            that are different from <paramref name="sourceRow"/>. 
+            </summary>
+            <param name="sourceRow">Row to compare with</param>
+            <param name="destinationRow">Ro to update</param>
+            <param name="columnsToUpdate">Columns to verify</param>
+        </member>
+        <member name="T:bbv.Common.Data.DateTimeHelper">
+            <summary>
+            Provides functionality for <see cref="T:System.DateTime"/>s.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Data.DateTimeHelper.InternationalDateTimeFormat">
+            <summary>
+            Returns the international Date Time Format for selecting 
+            DateTime values from DataTables.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Data.DateTimeHelper.InternationalDateTimeFormatwithFraction">
+            <summary>
+            Same as InternationalDateTimeFormat but with the fraction of 
+            a second.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Data.DateTimeHelper.CompareDay(System.Int32,System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            Compares two dates with the resolution of one day.
+            if both dates are in the same day the method returns 0, 
+            if date 1 is older than date 2 the method returns a value 
+            smaller 0 and vice versa
+            </summary>
+            <param name="day1">
+            day of date 1
+            </param>
+            <param name="month1">
+            month of date 1
+            </param>
+            <param name="year1">
+            year of date 1
+            </param>
+            <param name="date2">
+            date 2 to be compared
+            </param>
+            <returns>
+            returns 0 if both dates are in the same day, smaller 0 if date1 is at least 
+            one day older than date2 and vice versa  
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Data.DateTimeHelper.CompareDay(System.DateTime,System.DateTime)">
+            <summary>
+            Compares two dates with the resolution of one day.
+            if both dates are in the same day the method returns 0, 
+            if date 1 is older than date 2 the method returns a value 
+            smaller 0 and vice versa
+            </summary>
+            <param name="date1">
+            date 1 to be compared
+            </param>
+            <param name="date2">
+            date 2 to be compared
+            </param>
+            <returns>
+            returns 0 if both dates are in the same day, smaller 0 if date1 is at least 
+            one day older than date2 and vice versa  
+            </returns>
+        </member>
+    </members>
+</doc>

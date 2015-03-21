@@ -1,0 +1,1753 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.Bootstrapper</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.Bootstrapper.AbstractStrategy`1">
+            <summary>
+            Abstract strategy definition.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IStrategy`1">
+            <summary>
+            Interface for strategies.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IStrategy`1.CreateRunExecutor">
+            <summary>
+            Creates an executor which is responsible for executing the run syntax.
+            </summary>
+            <returns>The run executor.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IStrategy`1.CreateShutdownExecutor">
+            <summary>
+            Creates an executor which is responsible for executing the shutdown syntax.
+            </summary>
+            <returns>The shutdown executor.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IStrategy`1.CreateExtensionResolver">
+            <summary>
+            Creates an extension resolver which can resolve extension and add them onto the provided extension point
+            </summary>
+            <returns>The extension resolver.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IStrategy`1.CreateReportingContext">
+            <summary>
+            Creates a context which is used to track information about the bootstrapping process.
+            </summary>
+            <returns>The reporting context.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IStrategy`1.BuildRunSyntax">
+            <summary>
+            Builds the run syntax.
+            </summary>
+            <returns>The run syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IStrategy`1.BuildShutdownSyntax">
+            <summary>
+            Builds the shutdown syntax.
+            </summary>
+            <returns>The shutdown syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.AbstractStrategy`1"/> class.
+            </summary>
+            <remarks>Uses the default syntax builder.</remarks>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.#ctor(bbv.Common.Bootstrapper.Syntax.ISyntaxBuilder{`0},bbv.Common.Bootstrapper.Syntax.ISyntaxBuilder{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.AbstractStrategy`1"/> class.
+            </summary>
+            <param name="runSyntaxBuilder">The run syntax builder.</param>
+            <param name="shutdownSyntaxBuilder">The shutdown syntax builder.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:bbv.Common.Bootstrapper.AbstractStrategy`1"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.CreateRunExecutor">
+            <inheritdoc />
+            <remarks>By default creates a SynchronousExecutor{TExtension}</remarks>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.CreateShutdownExecutor">
+            <inheritdoc />
+            <remarks>By default creates a SynchronousReverseExecutor{TExtension}</remarks>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.CreateExtensionResolver">
+            <inheritdoc />
+            <remarks>By default creates a NullExtensionResolver{TExtension}</remarks>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.CreateReportingContext">
+            <inheritdoc />
+            <remarks>By default creates a ReportingContext</remarks>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.BuildRunSyntax">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.BuildShutdownSyntax">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.DefineRunSyntax(bbv.Common.Bootstrapper.Syntax.ISyntaxBuilder{`0})">
+            <summary>
+            Fluently defines the run syntax on the specified builder.
+            </summary>
+            <param name="builder">The syntax builder</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.AbstractStrategy`1.DefineShutdownSyntax(bbv.Common.Bootstrapper.Syntax.ISyntaxBuilder{`0})">
+            <summary>
+            Fluently defines the shutdown syntax on the specified builder.
+            </summary>
+            <param name="builder">The syntax builder</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.AbstractStrategy`1.IsDisposed">
+            <summary>
+            Gets a value indicating whether this instance is disposed.
+            </summary>
+            <value>
+            <c>true</c> if this instance is disposed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Behavior.DisposeExtensionBehavior">
+            <summary>
+            Behavior which disposes all extensions which implement IDisposable
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IBehavior`1">
+            <summary>
+            Behaviors are elements that can be attached to executables.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IDescribable">
+            <summary>
+            Marks an implementor as describable.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IDescribable.Describe">
+            <summary>
+            Determines the description of the describable.
+            </summary>
+            <returns>The description.</returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.IDescribable.Name">
+            <summary>
+            Gets the name of the describable.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IBehavior`1.Behave(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Applies certain behavior upon the extensions.
+            </summary>
+            <param name="extensions">The extensions.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Behavior.DisposeExtensionBehavior.Behave(System.Collections.Generic.IEnumerable{bbv.Common.Bootstrapper.IExtension})">
+            <summary>
+            Diposes all extensions which implement IDisposable.
+            </summary>
+            <param name="extensions">The extensions.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Behavior.DisposeExtensionBehavior.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Behavior.DisposeExtensionBehavior.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Behavior.LazyBehavior`1">
+            <summary>
+            The lazy behavior is responsible for creating a behavior at the time of the behave call.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Behavior.LazyBehavior`1.#ctor(System.Linq.Expressions.Expression{System.Func{bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Behavior.LazyBehavior`1"/> class.
+            </summary>
+            <param name="behaviorProvider">The behavior provider.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Behavior.LazyBehavior`1.Behave(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc />
+            <remarks>Creates the behavior with the specified behavior provider and executes behave on the lazy initialized behavior.</remarks>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Behavior.LazyBehavior`1.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Behavior.LazyBehavior`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior">
+            <summary>
+            Adds behavior to the IBootstrapper to load configuration sections.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior.#ctor(bbv.Common.Bootstrapper.Configuration.IConfigurationSectionBehaviorFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior"/> class.
+            </summary>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior.Behave(System.Collections.Generic.IEnumerable{bbv.Common.Bootstrapper.IExtension})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.DefaultConfigurationSectionBehaviorFactory">
+            <summary>
+            Default factory for the <see cref="T:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior"/>.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IConfigurationSectionBehaviorFactory">
+            <summary>
+            Factory which creates the necessary dependencies for the <see cref="T:bbv.Common.Bootstrapper.Configuration.ConfigurationSectionBehavior"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IConfigurationSectionBehaviorFactory.CreateHaveConfigurationSectionName(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Creates the instance which knows the section name.
+            </summary>
+            <param name="extension">The extension.</param>
+            <returns>The istance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IConfigurationSectionBehaviorFactory.CreateLoadConfigurationSection(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Creates the instance which loads configuration sections.
+            </summary>
+            <param name="extension">The extension.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IConfigurationSectionBehaviorFactory.CreateConsumeConfigurationSection(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Creates the instance which consumes a configuration section.
+            </summary>
+            <param name="extension">The extension.</param>
+            <returns>
+            The instance.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultConfigurationSectionBehaviorFactory.CreateHaveConfigurationSectionName(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultConfigurationSectionBehaviorFactory.CreateLoadConfigurationSection(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultConfigurationSectionBehaviorFactory.CreateConsumeConfigurationSection(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.DefaultExtensionConfigurationSectionBehaviorFactory">
+            <summary>
+            Default factory for the <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior"/>.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory">
+            <summary>
+            Factory which creates the necessary dependencies for the <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory.CreateReflectExtensionProperties">
+            <summary>
+            Creates the extension property reflector.
+            </summary>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory.CreateAssignExtensionProperties">
+            <summary>
+            Creates the extension property assigner.
+            </summary>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory.CreateConsumeConfiguration(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Creates the consume configuration instance.
+            </summary>
+            <param name="extension">The extension.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory.CreateHaveConfigurationSectionName(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Creates the instance which knows the section name.
+            </summary>
+            <param name="extension">The extension.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory.CreateLoadConfigurationSection(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Creates the instance which loads configuration sections.
+            </summary>
+            <param name="extension">The extensions.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory.CreateHaveConversionCallbacks(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Creates the instance which has conversion callbacks.
+            </summary>
+            <param name="extension">The extensions.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory.CreateHaveDefaultConversionCallback(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Creates the instance which has the default conversion callback.
+            </summary>
+            <param name="extension">The extensions.</param>
+            <returns>The instance.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultExtensionConfigurationSectionBehaviorFactory.CreateReflectExtensionProperties">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultExtensionConfigurationSectionBehaviorFactory.CreateAssignExtensionProperties">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultExtensionConfigurationSectionBehaviorFactory.CreateConsumeConfiguration(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultExtensionConfigurationSectionBehaviorFactory.CreateHaveConfigurationSectionName(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultExtensionConfigurationSectionBehaviorFactory.CreateLoadConfigurationSection(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultExtensionConfigurationSectionBehaviorFactory.CreateHaveConversionCallbacks(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.DefaultExtensionConfigurationSectionBehaviorFactory.CreateHaveDefaultConversionCallback(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior">
+            <summary>
+            Behavior which automatically loads extension configuration sections.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior"/> class.
+            </summary>
+            <remarks>Uses the default <see cref="T:bbv.Common.Bootstrapper.Configuration.Internals.ReflectExtensionPublicProperties"/>.</remarks>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior.#ctor(bbv.Common.Bootstrapper.Configuration.IExtensionConfigurationSectionBehaviorFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior"/> class.
+            </summary>
+            <param name="factory">The factory which creates the necessary dependencies.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior.Behave(System.Collections.Generic.IEnumerable{bbv.Common.Bootstrapper.IExtension})">
+            <summary>
+            Applies the extension configuration section loading behavior to the extensions.
+            </summary>
+            <param name="extensions">The extensions.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionBehavior.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionHelper">
+            <summary>
+            Helper class which builds configuration sections.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionHelper.CreateSection(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Creates a <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSection"/> according to the provided settings dictionary.
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>A newly created <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSection"/>.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSectionHelper.CreateSection(System.Collections.Generic.KeyValuePair{System.String,System.String}[])">
+            <summary>
+            Creates a <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSection"/> according to the provided settings dictionary.
+            </summary>
+            <param name="settings">The settings.</param>
+            <returns>A newly created <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSection"/>.</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IAssignExtensionProperties">
+            <summary>
+            Identifies the implemenator as a property assigner for extensions.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IAssignExtensionProperties.Assign(bbv.Common.Bootstrapper.Configuration.IReflectExtensionProperties,bbv.Common.Bootstrapper.IExtension,bbv.Common.Bootstrapper.Configuration.IConsumeConfiguration,bbv.Common.Bootstrapper.Configuration.IHaveConversionCallbacks,bbv.Common.Bootstrapper.Configuration.IHaveDefaultConversionCallback)">
+            <summary>
+            Automatically assigns the reflector property values on the provided extension properties if a match occurs..
+            </summary>
+            <param name="reflector">The reflector.</param>
+            <param name="extension">The extension.</param>
+            <param name="consumer">The configuration consumer.</param>
+            <param name="conversionCallbacksProvider">The conversion callbacks provider.</param>
+            <param name="defaultConversionCallbackProvider">The default conversion callback provider.</param>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IConsumeConfiguration">
+            <summary>
+            Identifies the implemenator as configuration consumer.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.IConsumeConfiguration.Configuration">
+            <summary>
+            Gets the configuration dictionary which is filled by the producer.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IConsumeConfigurationSection">
+            <summary>
+            Identifies the implemenator as configuration section consumer.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IConsumeConfigurationSection.Apply(System.Configuration.ConfigurationSection)">
+            <summary>
+            The configuration section which is consumed.
+            </summary>
+            <param name="section">The configuration section.</param>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IConversionCallback">
+            <summary>
+            A conversion callback is responsible for converting a string value to the target property type.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IConversionCallback.Convert(System.String,System.Reflection.PropertyInfo)">
+            <summary>
+            Converts the specified value to the target property type.
+            </summary>
+            <param name="value">The value to be converted.</param>
+            <param name="targetProperty">The target property.</param>
+            <returns>The converted value</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IHaveDefaultConversionCallback">
+            <summary>
+            Identifies the implemenator as default conversion callback provider
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.IHaveDefaultConversionCallback.DefaultConversionCallback">
+            <summary>
+            Gets the conversion callback which is used as fallback when no suitable conversion 
+            callback can be found in <see cref="P:bbv.Common.Bootstrapper.Configuration.IHaveConversionCallbacks.ConversionCallbacks"/>
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.DefaultConversionCallback">
+            <summary>
+            Default conversion callback which uses System.Convert and invariant culture to convert to the target property type.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.DefaultConversionCallback.Convert(System.String,System.Reflection.PropertyInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.FuncConversionCallback">
+            <summary>
+            Conversion callback which uses a function delegate for conversion.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.FuncConversionCallback.#ctor(System.Func{System.String,System.Reflection.PropertyInfo,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.Internals.FuncConversionCallback"/> class.
+            </summary>
+            <param name="conversionCallback">The conversion callback which will be called for conversion.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.FuncConversionCallback.Convert(System.String,System.Reflection.PropertyInfo)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.HaveDefaultConversionCallback">
+            <summary>
+            Default IHaveDefaultConversionCallback
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.HaveDefaultConversionCallback.#ctor(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.Internals.HaveDefaultConversionCallback"/> class.
+            </summary>
+            <param name="extension">The extension.</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.Internals.HaveDefaultConversionCallback.DefaultConversionCallback">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IReflectExtensionProperties">
+            <summary>
+            An extension property reflector is responsible for reflecting over properties of the inspected extension.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.IReflectExtensionProperties.Reflect(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Reflects properties of the specified extension.
+            </summary>
+            <param name="extension">The extension to be inspected.</param>
+            <returns>The properties of the extension.</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IHaveConversionCallbacks">
+            <summary>
+            Identifies the implemenator as conversion callback provider
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.IHaveConversionCallbacks.ConversionCallbacks">
+            <summary>
+            Gets the conversion callbacks
+            </summary>
+            <remarks>The key of the dictionary represent the property name</remarks>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.IHaveConfigurationSectionName">
+            <summary>
+            Identifies the implemenator as section name provider.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.IHaveConfigurationSectionName.SectionName">
+            <summary>
+            Gets the section name.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.ILoadConfigurationSection">
+            <summary>
+            Identifies the implementor as configuration section loader.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ILoadConfigurationSection.GetSection(System.String)">
+            <summary>
+            Gets a configuration section according to the specified name.
+            </summary>
+            <param name="sectionName">The section name.</param>
+            <returns>The section.</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.AssignExtensionProperties">
+            <summary>
+            Default IAssignExtensionProperties
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.AssignExtensionProperties.Assign(bbv.Common.Bootstrapper.Configuration.IReflectExtensionProperties,bbv.Common.Bootstrapper.IExtension,bbv.Common.Bootstrapper.Configuration.IConsumeConfiguration,bbv.Common.Bootstrapper.Configuration.IHaveConversionCallbacks,bbv.Common.Bootstrapper.Configuration.IHaveDefaultConversionCallback)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfigurationSection">
+            <summary>
+            Default IConsumeConfigurationSection
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfigurationSection.#ctor(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfigurationSection"/> class.
+            </summary>
+            <param name="extension">The extension.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfigurationSection.Apply(System.Configuration.ConfigurationSection)">
+            <summary>
+            The configuration section which is consumed.
+            </summary>
+            <param name="section">The configuration section.</param>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfigurationSection.NullConsumer">
+            <summary>
+            Consumer which does nothing with the applied configuration section.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfigurationSection.NullConsumer.Apply(System.Configuration.ConfigurationSection)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.ReflectExtensionPublicProperties">
+            <summary>
+            IReflectExtensionProperties implementations which gives back PropertyInfo about all public instance 
+            properties which are writtable of the reflected extension
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.ReflectExtensionPublicProperties.Reflect(bbv.Common.Bootstrapper.IExtension)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.HaveConversionCallbacks">
+            <summary>
+            Default IHaveConversionCallbacks
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.HaveConversionCallbacks.#ctor(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.Internals.HaveConversionCallbacks"/> class.
+            </summary>
+            <param name="extension">The extension.</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.Internals.HaveConversionCallbacks.ConversionCallbacks">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.LoadConfigurationSection">
+            <summary>
+            Default ILoadConfigurationSection
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.LoadConfigurationSection.#ctor(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.Internals.LoadConfigurationSection"/> class.
+            </summary>
+            <param name="extension">The extension.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.LoadConfigurationSection.GetSection(System.String)">
+            <summary>
+            Gets a configuration section according to the specified name.
+            </summary>
+            <param name="sectionName">The section name.</param>
+            <returns>
+            The section.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfiguration">
+            <summary>
+            Default IConsumeConfiguration
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfiguration.#ctor(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfiguration"/> class.
+            </summary>
+            <param name="extension">The extension.</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.Internals.ConsumeConfiguration.Configuration">
+            <summary>
+            Gets the configuration dictionary which is filled by the producer.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.Internals.HaveConfigurationSectionName">
+            <summary>
+            Default IHaveConfigurationSectionName
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.Internals.HaveConfigurationSectionName.#ctor(bbv.Common.Bootstrapper.IExtension)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Configuration.Internals.HaveConfigurationSectionName"/> class.
+            </summary>
+            <param name="extension">The extension.</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.Internals.HaveConfigurationSectionName.SectionName">
+            <summary>
+            Gets the section name.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Extension.NullExtensionResolver`1">
+            <summary>
+            Extension resolver which does nothing.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IExtensionResolver`1">
+            <summary>
+            The extension resolver can resolve extensions and add it to the provided extension point.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IExtensionResolver`1.Resolve(bbv.Common.Bootstrapper.IExtensionPoint{`0})">
+            <summary>
+            Resolves extensions.
+            </summary>
+            <remarks>All extensions resolved through the extension resolver are added 
+            to the bootstrapper after manual adding of extensions occurs.</remarks>
+            <param name="extensionPoint">The extension point which allows to add the resolved extensions.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Extension.NullExtensionResolver`1.Resolve(bbv.Common.Bootstrapper.IExtensionPoint{`0})">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IReporter">
+            <summary>
+            Marks the implementor as reporter of the bootstrapping process.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IReporter.Report(bbv.Common.Bootstrapper.Reporting.IReportingContext)">
+            <summary>
+            Reports the whole boostrapping process.
+            </summary>
+            <remarks>The reporter is called right before IBootstrapper disposal.</remarks>
+            <param name="context">The reporting context containing detailed information about the reporting process.</param>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.BehaviorContext">
+            <summary>
+            Behavior context implementation which release the IDescribable right after creation.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IBehaviorContext">
+            <summary>
+            The behavior context describes an IBehavior.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IBehaviorContext.Name">
+            <summary>
+            Gets the name of the behavior.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IBehaviorContext.Description">
+            <summary>
+            Gets the description of the behavior.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.BehaviorContext.#ctor(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Reporting.BehaviorContext"/> class.
+            </summary>
+            <param name="describable">The describable.</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.BehaviorContext.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.BehaviorContext.Description">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.NullReporter">
+            <summary>
+            An implementation of IReporter which does nothing.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.NullReporter.Report(bbv.Common.Bootstrapper.Reporting.IReportingContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.ReportingContext">
+            <summary>
+            The reporting context contains all necessary information about the bootstrapping process.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IReportingContext">
+            <summary>
+            Marks the implementor as reporting context.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IRunExecutionContextFactory">
+            <summary>
+            The run execution context factory is responsible to create an <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutionContext"/>
+            and track the created run execution context on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IReportingContext"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.IRunExecutionContextFactory.CreateRunExecutionContext(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates a new <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutionContext"/> and tracks it on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IReportingContext"/>.
+            </summary>
+            <param name="describable">The describable.</param>
+            <returns>A newly created run execution context.</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IShutdownExecutionContextFactory">
+            <summary>
+            The shutdown execution context factory is responsible to create an <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutionContext"/>
+            and track the created shutdown execution context on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IReportingContext"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.IShutdownExecutionContextFactory.CreateShutdownExecutionContext(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates a new <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutionContext"/> and tracks it on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IReportingContext"/>.
+            </summary>
+            <param name="describable">The describable.</param>
+            <returns>A newly created shutdown execution context.</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IExtensionContextFactory">
+            <summary>
+            The extension context factory is responsible to create an <see cref="T:bbv.Common.Bootstrapper.Reporting.IExtensionContext"/>
+            and track the created extension context on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IReportingContext"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.IExtensionContextFactory.CreateExtensionContext(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates a new <see cref="T:bbv.Common.Bootstrapper.Reporting.IExtensionContext"/> and tracks it on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IReportingContext"/>.
+            </summary>
+            <param name="describable">The describable.</param>
+            <returns>A newly created extension context.</returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IReportingContext.Run">
+            <summary>
+            Gets information about the run phase of the bootstrapping process.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IReportingContext.Shutdown">
+            <summary>
+            Gets information about the shutdown phase of the bootstrapping process.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IReportingContext.Extensions">
+            <summary>
+            Gets information about all extensions which participate in the bootstrapping process.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ReportingContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Reporting.ReportingContext"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ReportingContext.CreateRunExecutionContext(bbv.Common.Bootstrapper.IDescribable)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ReportingContext.CreateShutdownExecutionContext(bbv.Common.Bootstrapper.IDescribable)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ReportingContext.CreateExtensionContext(bbv.Common.Bootstrapper.IDescribable)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ReportingContext.CreateExtensionContextCore(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates the extension context implementation.
+            </summary>
+            <param name="describable">The describable which is passed to the extension context.</param>
+            <returns>A new instance of the extension context implementation.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ReportingContext.CreateExecutionContextCore(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates the execution context implementation.
+            </summary>
+            <param name="describable">The describable which is passed to the execution context.</param>
+            <returns>A new instance of the execution context implementation.</returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ReportingContext.Run">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ReportingContext.Shutdown">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ReportingContext.Extensions">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.ExecutableContext">
+            <summary>
+            Executable context implementation which is also responsible for creating behavior contexts.
+            The IDescribable is released right after creation.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IExecutableContext">
+            <summary>
+            The executable context describes an <see cref="T:bbv.Common.Bootstrapper.Syntax.IExecutable`1"/>
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IBehaviorContextFactory">
+            <summary>
+            The behavior context factory is responsible to create an <see cref="T:bbv.Common.Bootstrapper.Reporting.IBehaviorContext"/>
+            and track the created behavior context on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutableContext"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.IBehaviorContextFactory.CreateBehaviorContext(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates a new <see cref="T:bbv.Common.Bootstrapper.Reporting.IBehaviorContext"/> and tracks it on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutableContext"/>.
+            </summary>
+            <param name="describable">The describable.</param>
+            <returns>A newly created behavior context.</returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IExecutableContext.Name">
+            <summary>
+            Gets the name of the executable.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IExecutableContext.Description">
+            <summary>
+            Gets the description of the executable.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IExecutableContext.Behaviors">
+            <summary>
+            Gets information about all behaviors which belong the executable.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ExecutableContext.#ctor(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Reporting.ExecutableContext"/> class.
+            </summary>
+            <param name="describable">The describable.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ExecutableContext.CreateBehaviorContext(bbv.Common.Bootstrapper.IDescribable)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ExecutableContext.CreateBehaviorContextCore(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates the behavior context implementation.
+            </summary>
+            <param name="describable">The describable which is passed to the behavior context.</param>
+            <returns>A new instance of the behavior context implementation.</returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ExecutableContext.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ExecutableContext.Description">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ExecutableContext.Behaviors">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.ExecutionContext">
+            <summary>
+            Execution context implementation which is also responsible for creating executable contexts.
+            The IDescribable is released right after creation.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IExecutionContext">
+            <summary>
+            The execution context describes an <see cref="T:bbv.Common.Bootstrapper.IExecutor`1"/>
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IExecutableContextFactory">
+            <summary>
+            The executable context factory is responsible to create an <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutableContext"/>
+            and track the created executable context on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutionContext"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.IExecutableContextFactory.CreateExecutableContext(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates a new <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutableContext"/> and tracks it on the current <see cref="T:bbv.Common.Bootstrapper.Reporting.IExecutionContext"/>.
+            </summary>
+            <param name="describable">The describable.</param>
+            <returns>A newly created executable context.</returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IExecutionContext.Name">
+            <summary>
+            Gets the name of the executor.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IExecutionContext.Description">
+            <summary>
+            Gets the description of the executor.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IExecutionContext.Executables">
+            <summary>
+            Gets information about all executables which belong the executor.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ExecutionContext.#ctor(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Reporting.ExecutionContext"/> class.
+            </summary>
+            <param name="describable">The describable.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ExecutionContext.CreateExecutableContext(bbv.Common.Bootstrapper.IDescribable)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ExecutionContext.CreateExecutableContextCore(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Creates the executable context implementation.
+            </summary>
+            <param name="describable">The describable which is passed to the executable context.</param>
+            <returns>A new instance of the executable context implementation.</returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ExecutionContext.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ExecutionContext.Description">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ExecutionContext.Executables">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.ExtensionContext">
+            <summary>
+            Extension context implementation which release the IDescribable right after creation.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Reporting.IExtensionContext">
+            <summary>
+            The extension context describes an <see cref="T:bbv.Common.Bootstrapper.IExtension"/>
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IExtensionContext.Name">
+            <summary>
+            Gets the name of the extension.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.IExtensionContext.Description">
+            <summary>
+            Gets the description of the extension.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Reporting.ExtensionContext.#ctor(bbv.Common.Bootstrapper.IDescribable)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Reporting.ExtensionContext"/> class.
+            </summary>
+            <param name="describable">The describable.</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ExtensionContext.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Reporting.ExtensionContext.Description">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.DefaultBootstrapper`1">
+            <summary>
+            The bootstrapper.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IBootstrapper`1">
+            <summary>
+            Interface for bootstrapper sequence implementations.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IExtensionPoint`1">
+            <summary>
+            Extension point for bootstrapper.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IExtensionPoint`1.AddExtension(`0)">
+            <summary>
+            Adds the extension to the bootstrapping mechanism. The extensions are executed in the order which they were
+            added.
+            </summary>
+            <param name="extension">The extension to be added.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IBootstrapper`1.Initialize(bbv.Common.Bootstrapper.IStrategy{`0})">
+            <summary>
+            Initializes the bootstrapper with the strategy.
+            </summary>
+            <param name="strategy">The strategy.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IBootstrapper`1.Run">
+            <summary>
+            Runs the bootstrapper.
+            </summary>
+            <exception cref="T:bbv.Common.Bootstrapper.BootstrapperException">When an exception occurred during bootstrapping.</exception>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IBootstrapper`1.Shutdown">
+            <summary>
+            Shutdowns the bootstrapper.
+            </summary>
+            <exception cref="T:bbv.Common.Bootstrapper.BootstrapperException">When an exception occurred during bootstrapping.</exception>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.DefaultBootstrapper`1"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.#ctor(bbv.Common.Bootstrapper.IReporter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.DefaultBootstrapper`1"/> class.
+            </summary>
+            <param name="reporter">The boostrapping process reporter.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.#ctor(bbv.Common.Bootstrapper.IExtensionHost{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.DefaultBootstrapper`1"/> class.
+            </summary>
+            <param name="extensionHost">The extension host.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.#ctor(bbv.Common.Bootstrapper.IExtensionHost{`0},bbv.Common.Bootstrapper.IReporter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.DefaultBootstrapper`1"/> class.
+            </summary>
+            <param name="extensionHost">The extension host.</param>
+            <param name="reporter">The boostrapping process reporter.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:bbv.Common.Bootstrapper.DefaultBootstrapper`1"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.AddExtension(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.Initialize(bbv.Common.Bootstrapper.IStrategy{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.Run">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.Shutdown">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.DefaultBootstrapper`1.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.DefaultBootstrapper`1.IsDisposed">
+            <summary>
+            Gets a value indicating whether this instance is disposed.
+            </summary>
+            <value>
+            <c>true</c> if this instance is disposed; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.BootstrapperException">
+            <summary>
+            Bootstrapper exception.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.BootstrapperException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.BootstrapperException"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.BootstrapperException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.BootstrapperException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.BootstrapperException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.BootstrapperException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.BootstrapperException.#ctor(System.Collections.Generic.IEnumerable{System.Exception})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.BootstrapperException"/> class.
+            </summary>
+            <param name="innerExceptions">The inner exceptions.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.BootstrapperException.#ctor(System.Exception[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.BootstrapperException"/> class.
+            </summary>
+            <param name="innerExceptions">The inner exceptions.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.BootstrapperException.#ctor(System.String,System.Collections.Generic.IEnumerable{System.Exception})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.BootstrapperException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerExceptions">The inner exceptions.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.BootstrapperException.#ctor(System.String,System.Exception[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.BootstrapperException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerExceptions">The inner exceptions.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.BootstrapperException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.BootstrapperException"/> class.
+            </summary>
+            <param name="info">The object that holds the serialized object data.</param>
+            <param name="context">The contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> argument is null.</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">The exception could not be deserialized correctly.</exception>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSection">
+            <summary>
+            Configuration section for bootstrapper extensions.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.ExtensionConfigurationSection.Configuration">
+            <summary>
+            Gets or sets the configuration.
+            </summary>
+            <value>The configuration.</value>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement">
+            <summary>
+            Defines a service settings configuration element
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement.KeyName">
+            <summary>
+            The key name.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement.ValueName">
+            <summary>
+            The service settings value name.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement.Key">
+            <summary>
+            Gets or sets the key of the service settings configuration element.
+            </summary>
+            <value>The key of the settings element.</value>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement.Value">
+            <summary>
+            Gets or sets the value of the service settings configuration element.
+            </summary>
+            <value>The value of the settings element.</value>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElementCollection">
+            <summary>
+            Represents the bootstrapper extension settings configuration element collection.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElementCollection.CreateNewElement">
+            <summary>
+            When overridden in a derived class, creates a new 
+            <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </summary>
+            <returns>
+            A new <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElementCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Gets the element key for a specified configuration element when overridden in a
+            derived class.
+            </summary>
+            <param name="element">The 
+            <see cref="T:System.Configuration.ConfigurationElement"/> to return the key
+            for.</param>
+            <returns>
+            An <see cref="T:System.Object"/> that acts as the key for the specified 
+            <see cref="T:System.Configuration.ConfigurationElement"/>.
+            </returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElementCollection.Item(System.Int32)">
+            <summary>
+            Gets or sets the
+            <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement"/> at the
+            specified index.
+            </summary>
+            <param name="index">The index which is used for item retrieval.</param>
+            <value>The <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement"/> at the specified index.</value>
+            <returns>The extension settings element</returns>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElementCollection.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement"/>
+            with the specified alias.
+            </summary>
+            <param name="key">The alias which is used for item retrieval.</param>
+            <value>The <see cref="T:bbv.Common.Bootstrapper.Configuration.ExtensionSettingsElement"/> with the specified key.</value>
+            <returns>The extension settings element</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Execution.SynchronousExecutor`1">
+            <summary>
+            Synchronously executes the specified syntax on the provided extensions.
+            </summary>
+            <typeparam name="TExtension">The type of the extension</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IExecutor`1">
+            <summary>
+            The executor is responsible for executing a given syntax on the extensions.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.IExecutor`1.Execute(bbv.Common.Bootstrapper.Syntax.ISyntax{`0},System.Collections.Generic.IEnumerable{`0},bbv.Common.Bootstrapper.Reporting.IExecutionContext)">
+            <summary>
+            Executes the specified syntax on the extensions.
+            </summary>
+            <param name="syntax">The syntax.</param>
+            <param name="extensions">The extensions.</param>
+            <param name="executionContext">The execution context which is used for reporting</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Execution.SynchronousExecutor`1.Execute(bbv.Common.Bootstrapper.Syntax.ISyntax{`0},System.Collections.Generic.IEnumerable{`0},bbv.Common.Bootstrapper.Reporting.IExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Execution.SynchronousExecutor`1.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Execution.SynchronousExecutor`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Execution.SynchronousReverseExecutor`1">
+            <summary>
+            Synchronously executes the provided syntax on the extensions by reversing the order the the extensions.
+            </summary>
+            <typeparam name="TExtension">The type of the extensions</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Execution.SynchronousReverseExecutor`1.Execute(bbv.Common.Bootstrapper.Syntax.ISyntax{`0},System.Collections.Generic.IEnumerable{`0},bbv.Common.Bootstrapper.Reporting.IExecutionContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Execution.SynchronousReverseExecutor`1.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Execution.SynchronousReverseExecutor`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Extension.ExtensionHost`1">
+            <summary>
+            Generic extension host.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IExtensionHost`1">
+            <summary>
+            Extension host definition. The extension host is responsible for
+            managing extensions.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.IExtensionHost`1.Extensions">
+            <summary>
+            Gets the extensions.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Extension.ExtensionHost`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Extension.ExtensionHost`1"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Extension.ExtensionHost`1.AddExtension(`0)">
+            <summary>
+            Adds the extension to the bootstrapping mechanism. The extensions are executed in the order which they were
+            added.
+            </summary>
+            <param name="extension">The extension to be added.</param>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Extension.ExtensionHost`1.Extensions">
+            <summary>
+            Gets the extensions.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.ExecutableFactory`1">
+            <summary>
+            Factory which creates the set of executables.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IExecutableFactory`1">
+            <summary>
+            Factory which is responsible for creating executables.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IExecutableFactory`1.CreateExecutable(System.Linq.Expressions.Expression{System.Action})">
+            <summary>
+            Creates an executable which executes an action.
+            </summary>
+            <param name="action">The action to be executed.</param>
+            <returns>An executable.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IExecutableFactory`1.CreateExecutable``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Linq.Expressions.Expression{System.Action{`0,``0}},System.Action{bbv.Common.Bootstrapper.Syntax.IBehaviorAware{`0},``0})">
+            <summary>
+            Creates an executable which executes an initializer and passes the initialized context to the action on the specified extension.
+            </summary>
+            <typeparam name="TContext">The type of the context.</typeparam>
+            <param name="initializer">The initializer which creates the context.</param>
+            <param name="action">The action to be executed which gains access to the created context.</param>
+            <param name="contextInterceptor">The context interceptor.</param>
+            <returns>
+            An executable.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IExecutableFactory`1.CreateExecutable(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <summary>
+            Creates an executable which executes an action on the specified extension.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>An executable.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.ExecutableFactory`1.CreateExecutable(System.Linq.Expressions.Expression{System.Action})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.ExecutableFactory`1.CreateExecutable``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Linq.Expressions.Expression{System.Action{`0,``0}},System.Action{bbv.Common.Bootstrapper.Syntax.IBehaviorAware{`0},``0})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.ExecutableFactory`1.CreateExecutable(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.Executables.ActionExecutable`1">
+            <summary>
+            The executable which executes an action.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IExecutable`1">
+            <summary>
+            Executable definition. The executable is part of a syntax.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IBehaviorAware`1">
+            <summary>
+            A behavior aware component is responsible for managing behaviors.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IBehaviorAware`1.Add(bbv.Common.Bootstrapper.IBehavior{`0})">
+            <summary>
+            Adds the specified behavior.
+            </summary>
+            <param name="behavior">The behavior.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IExecutable`1.Execute(System.Collections.Generic.IEnumerable{`0},bbv.Common.Bootstrapper.Reporting.IExecutableContext)">
+            <summary>
+            Executes an operation on the specified extensions.
+            </summary>
+            <param name="extensions">The extensions.</param>
+            <param name="executableContext">The executable context which is used for reporting</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionExecutable`1.#ctor(System.Linq.Expressions.Expression{System.Action})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Syntax.Executables.ActionExecutable`1"/> class.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionExecutable`1.Execute(System.Collections.Generic.IEnumerable{`0},bbv.Common.Bootstrapper.Reporting.IExecutableContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionExecutable`1.Add(bbv.Common.Bootstrapper.IBehavior{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionExecutable`1.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.Executables.ActionExecutable`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionExecutable`1">
+            <summary>
+            The executable which executes an action on an extension.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionExecutable`1.#ctor(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionExecutable`1"/> class.
+            </summary>
+            <param name="action">The action.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionExecutable`1.Execute(System.Collections.Generic.IEnumerable{`0},bbv.Common.Bootstrapper.Reporting.IExecutableContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionExecutable`1.Add(bbv.Common.Bootstrapper.IBehavior{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionExecutable`1.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionExecutable`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionWithInitializerExecutable`2">
+            <summary>
+            Executable which executes an initializer and passes the initialized
+            context to the action which operates on the extension.
+            </summary>
+            <typeparam name="TContext">The type of the context.</typeparam>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionWithInitializerExecutable`2.#ctor(System.Linq.Expressions.Expression{System.Func{`0}},System.Linq.Expressions.Expression{System.Action{`1,`0}},System.Action{bbv.Common.Bootstrapper.Syntax.IBehaviorAware{`1},`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionWithInitializerExecutable`2"/> class.
+            </summary>
+            <param name="initializer">The initializer.</param>
+            <param name="action">The action.</param>
+            <param name="contextInterceptor">The behavior aware.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionWithInitializerExecutable`2.Execute(System.Collections.Generic.IEnumerable{`1},bbv.Common.Bootstrapper.Reporting.IExecutableContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionWithInitializerExecutable`2.Add(bbv.Common.Bootstrapper.IBehavior{`1})">
+            <summary>
+            Adds the specified behavior.
+            </summary>
+            <param name="behavior">The behavior.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionWithInitializerExecutable`2.Describe">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.Executables.ActionOnExtensionWithInitializerExecutable`2.Name">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.IExtension">
+            <summary>
+            Interface for extensions.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.ISyntax`1">
+            <summary>
+            Generic syntax which operates on extensions.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IBeginSyntax`1">
+            <summary>
+            Begin syntax which allows to define behavior which is executed at the beginning.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IExecuteAction`1">
+            <summary>
+            Execute action syntax.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IExecuteAction`1.Execute(System.Linq.Expressions.Expression{System.Action})">
+            <summary>
+            Adds an execution action to the currently built syntax.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>The current syntax builder.</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IExecuteActionOnExtension`1">
+            <summary>
+            Execute an action on an extension syntax.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IExecuteActionOnExtension`1.Execute(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <summary>
+            Adds an execution action which operates on the extension to the
+            currently built syntax.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>The current syntax builder.</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IExecuteActionOnExtensionWithContext`1">
+            <summary>
+            Execute an action on an extension with a context syntax.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IExecuteActionOnExtensionWithContext`1.Execute``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Linq.Expressions.Expression{System.Action{`0,``0}})">
+            <summary>
+            Adds an context initializer and an execution action which gets
+            access to the context to the currently built syntax.
+            </summary>
+            <typeparam name="TContext">The type of the context.</typeparam>
+            <param name="initializer">The context initializer.</param>
+            <param name="action">The action with access to the context.</param>
+            <returns>
+            The current syntax builder.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IEndSyntax`1">
+            <summary>
+            End syntax which allows to define behavior which is executed at the end.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.IEndSyntax`1.End">
+            <summary>
+            Gets the end of the syntax chain and attaches behavior to the end
+            </summary>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.IBeginSyntax`1.Begin">
+            <summary>
+            Gets the begin of the syntax chain and attaches behavior to the begin
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IWithBehavior`1">
+            <summary>
+            Fluent definition syntax interface for behaviors.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IWithBehavior`1.With(bbv.Common.Bootstrapper.IBehavior{`0})">
+            <summary>
+            Attaches a behavior to the currently built executable.
+            </summary>
+            <param name="behavior">The behavior.</param>
+            <returns>
+            The syntax.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IWithBehavior`1.With(System.Linq.Expressions.Expression{System.Func{bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <summary>
+            Attaches a lazy behavior to the currently built executable.
+            </summary>
+            <param name="behavior">The behavior.</param>
+            <returns>
+            The syntax.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IWithBehaviorOnContext`2">
+            <summary>
+            Fluent definition syntax interface for behaviors which operate on contexts.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+            <typeparam name="TContext">The type of the context.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IWithBehaviorOnContext`2.With(System.Linq.Expressions.Expression{System.Func{`1,bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <summary>
+            Attaches a behavior which has access to the context to the currently built executable.
+            </summary>
+            <param name="provider">The behavior provider.</param>
+            <returns>The syntax.</returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.IEndWithBehavior`1">
+            <summary>
+            Terminal fluent definition syntax interface for behaviors.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IEndWithBehavior`1.With(bbv.Common.Bootstrapper.IBehavior{`0})">
+            <summary>
+            Attaches a behavior to the currently built executable.
+            </summary>
+            <param name="behavior">The behavior.</param>
+            <returns>
+            The syntax.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.IEndWithBehavior`1.With(System.Linq.Expressions.Expression{System.Func{bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <summary>
+            Attaches a lazy behavior to the currently built executable.
+            </summary>
+            <param name="behavior">The behavior.</param>
+            <returns>
+            The syntax.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.ISyntaxBuilder`1">
+            <summary>
+            Defines the interface for a syntax builder..
+            </summary>
+            <typeparam name="TExtension">The extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.ISyntaxBuilderWithoutContext`1">
+            <summary>
+            Defines the interface for a syntax builder without context
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.ISyntaxBuilderWithContext`2">
+            <summary>
+            Defines the interface for a syntax builder with context.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+            <typeparam name="TContext">The type of the context.</typeparam>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1">
+            <summary>
+            The syntax builder.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1"/> class.
+            </summary>
+            <remarks>Uses the ExecutableFactory{TExtension}</remarks>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.#ctor(bbv.Common.Bootstrapper.Syntax.IExecutableFactory{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1"/> class.
+            </summary>
+            <param name="executableFactory">The executable factory.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.Execute(System.Linq.Expressions.Expression{System.Action})">
+            <summary>
+            Adds an execution action to the currently built syntax.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>The current syntax builder.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.Execute``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Linq.Expressions.Expression{System.Action{`0,``0}})">
+            <summary>
+            Adds an context initializer and an execution action which gets
+            access to the context to the currently built syntax.
+            </summary>
+            <typeparam name="TContext">The type of the context.</typeparam>
+            <param name="initializer">The context initializer.</param>
+            <param name="action">The action with access to the context.</param>
+            <returns>
+            The current syntax builder.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.Execute(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <summary>
+            Adds an execution action which operates on the extension to the
+            currently built syntax.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>The current syntax builder.</returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.With(bbv.Common.Bootstrapper.IBehavior{`0})">
+            <summary>
+            Attaches a behavior to the currently built executable.
+            </summary>
+            <param name="behavior">The behavior.</param>
+            <returns>
+            The syntax.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.With(System.Linq.Expressions.Expression{System.Func{bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <summary>
+            Attaches a lazy behavior to the currently built executable.
+            </summary>
+            <param name="behavior">The behavior.</param>
+            <returns>
+            The syntax.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.bbv#Common#Bootstrapper#Syntax#IEndWithBehavior{TExtension}#With(System.Linq.Expressions.Expression{System.Func{bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <summary>
+            Attaches a lazy behavior to the currently built executable.
+            </summary>
+            <param name="behavior">The behavior.</param>
+            <returns>
+            The syntax.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.bbv#Common#Bootstrapper#Syntax#IEndWithBehavior{TExtension}#With(bbv.Common.Bootstrapper.IBehavior{`0})">
+            <summary>
+            Attaches a behavior to the currently built executable.
+            </summary>
+            <param name="behavior">The behavior.</param>
+            <returns>
+            The syntax.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>1</filterpriority>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.Begin">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.End">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.SyntaxBuilder`1.BuiltExecutable">
+            <summary>
+            Gets the currently built executable
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2">
+            <summary>
+            Special syntax builder which is used for chaining when a context initializer is used.
+            </summary>
+            <typeparam name="TExtension">The type of the extension.</typeparam>
+            <typeparam name="TContext">The type of the context.</typeparam>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.#ctor(bbv.Common.Bootstrapper.Syntax.ISyntaxBuilderWithoutContext{`0},System.Collections.Generic.Queue{System.Func{`1,bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2"/> class.
+            </summary>
+            <param name="syntaxBuilder">The syntax builder.</param>
+            <param name="behaviorProviders">The behavior providers.</param>
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.Execute(System.Linq.Expressions.Expression{System.Action})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.Execute(System.Linq.Expressions.Expression{System.Action{`0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.Execute``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Linq.Expressions.Expression{System.Action{`0,``0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.With(bbv.Common.Bootstrapper.IBehavior{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.With(System.Linq.Expressions.Expression{System.Func{bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.With(System.Linq.Expressions.Expression{System.Func{`1,bbv.Common.Bootstrapper.IBehavior{`0}}})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="P:bbv.Common.Bootstrapper.Syntax.SyntaxBuilderWithContext`2.End">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

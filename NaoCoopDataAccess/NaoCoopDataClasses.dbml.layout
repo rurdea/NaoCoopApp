@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.25" name="NaoCoopDataClasses">
+  <DataContextMoniker Name="/NaoCoopDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="9e95145d-5bed-47b5-b677-b4e8cf998006" absoluteBounds="8.125, 3.25, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/ExecutionRobot" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b9d3c35f-c205-42fc-983d-f0eeb45984b0" absoluteBounds="8.14, 3.7100000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="03c1a97f-2dba-4c11-a5fb-a16b265dd206" absoluteBounds="8.125, 0.75, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c17546f9-a2fd-42f7-af42-6f29c31a063a" absoluteBounds="8.14, 1.2100000000000009, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="35f315cd-ab46-4e2a-864b-fcb896ab9bda" absoluteBounds="5.625, 0.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/Execution" />
+      <nestedChildShapes>
+        <elementListCompartment Id="602f8147-c410-4159-8f89-155b1860dcb3" absoluteBounds="5.6400000000000006, 1.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bf4eba4b-8ad5-4d4e-99e3-e16aeb707931" absoluteBounds="0.625, 0.5, 2, 1.7708968098958329">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/OperationRequirement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eaf0a8e3-613a-4f87-959a-1004aee92f9c" absoluteBounds="0.64000000000000012, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9ef997f3-e4fc-403c-b98e-d54d613e2232" absoluteBounds="3.125, 2.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/OperationRobot" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d86ed9f7-7370-475a-9d6e-4cbcbd09622f" absoluteBounds="3.1400000000000006, 3.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4e14e765-5bee-4749-8766-78b10cfc8575" absoluteBounds="3.125, 5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/OperationRobotState" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1583e48-d11c-4fa9-b929-38013127422e" absoluteBounds="3.1400000000000006, 5.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1f58ef58-4978-40f4-9bae-9a11d0fe4166" absoluteBounds="3.125, 0.625, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/Operation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cf83995c-3f2b-42e5-a86c-a2fc2367eb39" absoluteBounds="3.1399999999999997, 1.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c6d9214e-67bc-4853-8942-d6d55d555102" absoluteBounds="0.625, 2.625, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/Requirement" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6290d709-d40c-4972-bf8f-29ce89b0ca41" absoluteBounds="0.63999999999999968, 3.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="894ec823-66e6-4472-b416-a9b07adc30f3" absoluteBounds="8.125, 5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/Robot" />
+      <nestedChildShapes>
+        <elementListCompartment Id="befe66b3-8ab2-4b80-ac7a-a3d7a5197153" absoluteBounds="8.14, 5.4600000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="546bbc0f-74fc-43fb-b1ba-173fb376306a" absoluteBounds="5.625, 3.375, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/RobotVersion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c18fe6c2-d38a-4ecb-bf22-530ba3be72a7" absoluteBounds="5.64, 3.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bcb1ab2e-93b4-4f4d-bca4-ccd6afb3c914" absoluteBounds="3.125, 7.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/State" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27a94ecd-11a1-412e-b98f-e7e8aea034ae" absoluteBounds="3.14, 7.8350000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e4aa1965-8958-43fd-b832-d129d1438cbe" absoluteBounds="5.625, 7.375, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/StateTask" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d887421f-63d5-403f-8b93-519dd8e86ed9" absoluteBounds="5.6400000000000006, 7.8350000000000009, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="961cb6fb-f6bc-42bb-8630-9154ddbd3e7a" absoluteBounds="8.125, 7.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/Task" />
+      <nestedChildShapes>
+        <elementListCompartment Id="179f17eb-6431-4475-bc90-9f1d78082425" absoluteBounds="8.14, 7.8350000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="20ca65f0-ebae-41c5-b3f6-8cce79058641" absoluteBounds="5.625, 5, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/NaoCoopDataClassesDataContext/Setting" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fd8236c7-4b30-4a70-aa1b-e0899c9484ea" absoluteBounds="5.6400000000000006, 5.4600000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.625 : 2.78049967447917); (8.125 : 3.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/Execution/Execution_ExecutionRobot" />
+      <nodes>
+        <classShapeMoniker Id="35f315cd-ab46-4e2a-864b-fcb896ab9bda" />
+        <classShapeMoniker Id="9e95145d-5bed-47b5-b677-b4e8cf998006" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.125 : 1.63544840494792); (7.625 : 1.63544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/User/User_Execution" />
+      <nodes>
+        <classShapeMoniker Id="03c1a97f-2dba-4c11-a5fb-a16b265dd206" />
+        <classShapeMoniker Id="35f315cd-ab46-4e2a-864b-fcb896ab9bda" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.125 : 4.20359537760417); (4.125 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/OperationRobot/OperationRobot_OperationRobotState" />
+      <nodes>
+        <classShapeMoniker Id="9ef997f3-e4fc-403c-b98e-d54d613e2232" />
+        <classShapeMoniker Id="4e14e765-5bee-4749-8766-78b10cfc8575" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.125 : 1.22199625651042); (5.625 : 1.22199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/Operation/Operation_Execution" />
+      <nodes>
+        <classShapeMoniker Id="1f58ef58-4978-40f4-9bae-9a11d0fe4166" />
+        <classShapeMoniker Id="35f315cd-ab46-4e2a-864b-fcb896ab9bda" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.125 : 1.22199625651042); (2.625 : 1.22199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/Operation/Operation_OperationRequirement" />
+      <nodes>
+        <classShapeMoniker Id="1f58ef58-4978-40f4-9bae-9a11d0fe4166" />
+        <classShapeMoniker Id="bf4eba4b-8ad5-4d4e-99e3-e16aeb707931" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.125 : 1.81899251302083); (4.125 : 2.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/Operation/Operation_OperationRobot" />
+      <nodes>
+        <classShapeMoniker Id="1f58ef58-4978-40f4-9bae-9a11d0fe4166" />
+        <classShapeMoniker Id="9ef997f3-e4fc-403c-b98e-d54d613e2232" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.625 : 2.625); (1.625 : 2.27089680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/Requirement/Requirement_OperationRequirement" />
+      <nodes>
+        <classShapeMoniker Id="c6d9214e-67bc-4853-8942-d6d55d555102" />
+        <classShapeMoniker Id="bf4eba4b-8ad5-4d4e-99e3-e16aeb707931" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.125 : 5); (9.125 : 4.6362939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/Robot/Robot_ExecutionRobot" />
+      <nodes>
+        <classShapeMoniker Id="894ec823-66e6-4472-b416-a9b07adc30f3" />
+        <classShapeMoniker Id="9e95145d-5bed-47b5-b677-b4e8cf998006" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.625 : 3.78929768880208); (5.125 : 3.78929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/RobotVersion/RobotVersion_OperationRobot" />
+      <nodes>
+        <classShapeMoniker Id="546bbc0f-74fc-43fb-b1ba-173fb376306a" />
+        <classShapeMoniker Id="9ef997f3-e4fc-403c-b98e-d54d613e2232" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.625 : 4.56899251302083); (8.125 : 5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/RobotVersion/RobotVersion_Robot" />
+      <nodes>
+        <classShapeMoniker Id="546bbc0f-74fc-43fb-b1ba-173fb376306a" />
+        <classShapeMoniker Id="894ec823-66e6-4472-b416-a9b07adc30f3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.125 : 7.375); (4.125 : 6.57859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/State/State_OperationRobotState" />
+      <nodes>
+        <classShapeMoniker Id="bcb1ab2e-93b4-4f4d-bca4-ccd6afb3c914" />
+        <classShapeMoniker Id="4e14e765-5bee-4749-8766-78b10cfc8575" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.125 : 8.06814697265625); (5.625 : 8.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/State/State_StateTask" />
+      <nodes>
+        <classShapeMoniker Id="bcb1ab2e-93b4-4f4d-bca4-ccd6afb3c914" />
+        <classShapeMoniker Id="e4aa1965-8958-43fd-b832-d129d1438cbe" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.125 : 8.06814697265625); (7.625 : 8.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/Task/Task_StateTask" />
+      <nodes>
+        <classShapeMoniker Id="961cb6fb-f6bc-42bb-8630-9154ddbd3e7a" />
+        <classShapeMoniker Id="e4aa1965-8958-43fd-b832-d129d1438cbe" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.125 : 5.78929768880208); (5.625 : 5.78929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/OperationRobotState/OperationRobotState_Setting" />
+      <nodes>
+        <classShapeMoniker Id="4e14e765-5bee-4749-8766-78b10cfc8575" />
+        <classShapeMoniker Id="20ca65f0-ebae-41c5-b3f6-8cce79058641" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.625 : 7.375); (6.625 : 6.9631982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/StateTask/StateTask_Setting" />
+      <nodes>
+        <classShapeMoniker Id="e4aa1965-8958-43fd-b832-d129d1438cbe" />
+        <classShapeMoniker Id="20ca65f0-ebae-41c5-b3f6-8cce79058641" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.125 : 7.375); (7.625 : 6.9631982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/NaoCoopDataClassesDataContext/Task/Task_Setting" />
+      <nodes>
+        <classShapeMoniker Id="961cb6fb-f6bc-42bb-8630-9154ddbd3e7a" />
+        <classShapeMoniker Id="20ca65f0-ebae-41c5-b3f6-8cce79058641" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

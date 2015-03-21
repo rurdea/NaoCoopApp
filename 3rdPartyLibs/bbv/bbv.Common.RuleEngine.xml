@@ -1,0 +1,653 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.RuleEngine</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.RuleEngine.IAggregator`2">
+            <summary>
+            An aggregator is used to combine the results of all rules taking part in the evaluation into a single result.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+            <typeparam name="TAggregationResult">The type of the aggregation result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IAggregator`2.Aggregate(bbv.Common.RuleEngine.IRuleSet{`0},System.String@)">
+            <summary>
+            Aggregates the specified rule set.
+            </summary>
+            <param name="ruleSet">The rule set.</param>
+            <param name="logInfo">The log info. The aggregator should provide information about the results of the different rules and how they
+            influenced the overall result. This info is written to the log by the rule engine.</param>
+            <returns>The aggregated result of all rules takingpart in the evaluation.</returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IFactory`1">
+            <summary>
+            Factory used to create instances of classes used in rule engine.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IFactory`1.CreateRuleSet">
+            <summary>
+            Creates a rule set.
+            </summary>
+            <returns>A newly created rule set.</returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IValidationRuleSetDescriptor">
+            <summary>
+            A rule set descriptor for validation rules.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IRuleSetDescriptor`2">
+            <summary>
+            All rule set descriptors have to implement this interface.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+            <typeparam name="TAggregationResult">The type of the aggregation result.</typeparam>
+            <remarks>
+            A rule set descriptor is used to define a set of rules.
+            On one side it is used to define what should be validated (caller of rule engine), on the other
+            side it defines what rules are part of the evaluation (rules provider).
+            </remarks>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IRuleSetDescriptor`2.Factory">
+            <summary>
+            Gets the factory used to create needed instances of rule engine related classes.
+            </summary>
+            <value>The factory.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IRuleSetDescriptor`2.Aggregator">
+            <summary>
+            Gets the aggregator that is used to combine all rules taking part in the evaluation.
+            </summary>
+            <value>The aggregator.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IValidationRuleSetDescriptor.Factory">
+            <summary>
+            Gets the validation factory.
+            </summary>
+            <value>The factory.</value>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.RuleEngineException">
+            <summary>
+            Thrown if there is a problem in the rule engine.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RuleEngineException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.RuleEngineException"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RuleEngineException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.RuleEngineException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RuleEngineException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.RuleEngineException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.RuleProviderAttribute">
+            <summary>
+            The <see cref="T:bbv.Common.RuleEngine.RuleProviderAttribute"/> is used to mark methods as methods that provide
+            rules for a specific <see cref="T:bbv.Common.RuleEngine.IRuleSetDescriptor`2"/>.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.ValidationAggregator">
+            <summary>
+            The <see cref="T:bbv.Common.RuleEngine.ValidationAggregator"/> is an aggregator that combines the result of <see cref="T:bbv.Common.RuleEngine.IValidationRule"/>s
+            into a single <see cref="T:bbv.Common.RuleEngine.IValidationResult"/>.
+            The result is valid if all evaluated rules are valid and the list of violations of the result is the sum of all violations of all 
+            evaluated rules.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.ValidationAggregator.log">
+            <summary>The logger for the validation aggregator.</summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.ValidationAggregator.validationFactory">
+            <summary>The validation factory used to create needed instances.</summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.ValidationAggregator.breakOnFirstViolation">
+            <summary>Indicates whether the evaluation of rules should be stopped on the first violation.</summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationAggregator.#ctor(bbv.Common.RuleEngine.IValidationFactory,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationAggregator"/> class.
+            </summary>
+            <param name="validationFactory">The validation factory.</param>
+            <param name="breakOnFirstViolation">if set to <c>true</c> [break on first violation].</param>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationAggregator.Aggregate(bbv.Common.RuleEngine.IRuleSet{bbv.Common.RuleEngine.IValidationRule},System.String@)">
+            <summary>
+            Aggregates the specified rule set.
+            The result is valid if all rules are valid and it contains all violations of all rules.
+            </summary>
+            <param name="ruleSet">The rule set.</param>
+            <param name="logInfo">The log info. The aggregator should provide information about the results of the different rules and how they
+            influenced the overall result. This info is written to the log by the rule engine.</param>
+            <returns>
+            The aggregated result of all rules taking part in the evaluation.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.ValidationFactory">
+            <summary>
+            ValidationFactory creating rule engine related instances.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IValidationFactory">
+            <summary>
+            Factory for all rule engine related instances used for validation rules.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IValidationFactory.CreateValidationResult(System.Boolean)">
+            <summary>
+            Creates a validation result.
+            </summary>
+            <param name="valid">Initial value for <see cref="P:bbv.Common.RuleEngine.ValidationResult.Valid"/></param>
+            <returns>A newly created validation result.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IValidationFactory.CreateValidationViolation(System.String,System.Object[])">
+            <summary>
+            <para>Creates a validation violation.</para>
+            <para>Use this overload if you do not have an associated message.</para>
+            </summary>
+            <param name="reason">The reason.</param>
+            <param name="reasonArguments">The arguments used in the <paramref name="reason"/> format string.</param>
+            <returns>A newly created validation violation.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IValidationFactory.CreateValidationViolation(System.String,System.Guid,System.Object[])">
+            <summary>
+            <para>Creates a validation violation.</para>
+            <para>Use this overload if you have an associated message.</para>
+            </summary>
+            <param name="reason">The reason for this validation.</param>
+            <param name="messageId">The GUID of the message describing the reason for this violation.</param>
+            <param name="messageArguments">The arguments used in the message referenced by <paramref name="messageId"/>.</param>
+            <returns>A newly created validation violation.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IValidationFactory.CreateValidationViolation(System.Object,System.String,System.Guid,System.Object[])">
+            <summary>
+            Creates a validation violation.
+            </summary>
+            <param name="data">Object containing detailed information about the violation.</param>
+            <param name="reason">The reason.</param>
+            <param name="messageId">The GUID identifying the message describing the reason.</param>
+            <param name="messageArguments">The message arguments.</param>
+            <returns>A newly created validation violation.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationFactory.CreateValidationResult(System.Boolean)">
+            <summary>
+            Creates a validation result.
+            </summary>
+            <param name="valid">Initial value for <see cref="P:bbv.Common.RuleEngine.ValidationResult.Valid"/></param>
+            <returns>A newly created validation result.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationFactory.CreateRuleSet">
+            <summary>
+            Creates a rule set.
+            </summary>
+            <returns>A newly created rule set.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationFactory.CreateValidationViolation(System.String,System.Object[])">
+            <summary>
+            <para>Creates a validation violation.</para>
+            <para>Use this overload if you do not have an associated message.</para>
+            </summary>
+            <param name="reason">The reason.</param>
+            <param name="reasonArguments">The arguments used in the <paramref name="reason"/> format string.</param>
+            <returns>A newly created validation violation.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationFactory.CreateValidationViolation(System.String,System.Guid,System.Object[])">
+            <summary>
+            <para>Creates a validation violation.</para>
+            <para>Use this overload if you have an associated message.</para>
+            </summary>
+            <param name="reason">The reason for this validation.</param>
+            <param name="messageId">The GUID of the message describing the reason for this violation.</param>
+            <param name="messageArguments">The arguments used in the message referenced by <paramref name="messageId"/>.</param>
+            <returns>A newly created validation violation.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationFactory.CreateValidationViolation(System.Object,System.String,System.Guid,System.Object[])">
+            <summary>
+            Creates a validation violation.
+            </summary>
+            <param name="data">Object containing detailed information about the violation.</param>
+            <param name="reason">The reason.</param>
+            <param name="messageId">The GUID identifying the message describing the reason.</param>
+            <param name="messageArguments">The message args.</param>
+            <returns>A newly created validation violation.</returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IRule`1">
+            <summary>
+            Represents a rule that can be executed.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IRule`1.Evaluate">
+            <summary>
+            Evaluates this instance.
+            </summary>
+            <returns>The result of the evaluation.</returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IRuleEngine">
+            <summary>
+            The rule engine is the central component for checking of logical rules.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IRuleEngine.Evaluate``2(bbv.Common.RuleEngine.IRuleSetDescriptor{``0,``1})">
+            <summary>
+            Evaluates the rules specified by the rule set descriptor.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+            <typeparam name="TAggregationResult">The type of the aggregation result.</typeparam>
+            <param name="ruleSetDescriptor">The rule set descriptor.</param>
+            <returns>The result of the validation.</returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IRuleSet`1">
+            <summary>
+            A <see cref="T:bbv.Common.RuleEngine.IRuleSet`1"/> defines a set of rules.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IRuleSet`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds several rules at once.
+            </summary>
+            <param name="rules">The rules.</param>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IRulesProvider">
+            <summary>
+            A rule provider provides set of rules that have to be checked.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IRulesProvider.GetRules``2(bbv.Common.RuleEngine.IRuleSetDescriptor{``0,``1})">
+            <summary>
+            Returns the rules described by the specified rule set descriptor.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+            <typeparam name="TAggregationResult">The type of the aggregation result.</typeparam>
+            <param name="ruleSetDescriptor">The rule set descriptor.</param>
+            <returns>A set of rules to be validated.</returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IRulesProviderFinder">
+            <summary>
+            The <see cref="T:bbv.Common.RuleEngine.RuleEngine"/> uses a <see cref="T:bbv.Common.RuleEngine.IRulesProviderFinder"/> to get
+            all <see cref="T:bbv.Common.RuleEngine.IRulesProvider"/> relevant for a <see cref="T:bbv.Common.RuleEngine.IRuleSetDescriptor`2"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.IRulesProviderFinder.FindRulesProviders``2(bbv.Common.RuleEngine.IRuleSetDescriptor{``0,``1})">
+            <summary>
+            Finds the rule providers.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+            <typeparam name="TAggregationResult">The type of the aggregation result.</typeparam>
+            <param name="ruleSetDescriptor">The rule set descriptor.</param>
+            <returns>
+            List of rules providers to be asked for rules for the rule descriptor.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IValidationResult">
+            <summary>
+            Represents the result of a validation.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IValidationResult.Valid">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:bbv.Common.RuleEngine.IValidationResult"/> is valid.
+            </summary>
+            <value><c>true</c> if valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IValidationResult.Violations">
+            <summary>
+            Gets the violations.
+            Is an empty list if <see cref="P:bbv.Common.RuleEngine.IValidationResult.Valid"/> is <c>true</c>.
+            </summary>
+            <value>The violations.</value>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IValidationRule">
+            <summary>
+            Defines a rule for validation.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.IValidationViolation">
+            <summary>
+            Describes the reason why an <see cref="T:bbv.Common.RuleEngine.IValidationResult"/> is failed.
+            <para>
+            You can use either the <see cref="P:bbv.Common.RuleEngine.IValidationViolation.Reason"/> to describe why the validation failed
+            or the <see cref="P:bbv.Common.RuleEngine.IValidationViolation.MessageId"/> to identify a message or a combination of both.
+            </para>
+            </summary>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IValidationViolation.Reason">
+            <summary>
+            Gets or sets the reason for the violation.
+            </summary>
+            <value>The reason.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IValidationViolation.MessageId">
+            <summary>
+            Gets or sets the GUID to identify messages used to describe the reason.
+            </summary>
+            <value>The message GUID.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IValidationViolation.MessageArguments">
+            <summary>
+            Gets or sets the arguments used in the message identified by <see cref="P:bbv.Common.RuleEngine.IValidationViolation.MessageId"/>.
+            </summary>
+            <value>The message arguments.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.IValidationViolation.Data">
+            <summary>
+            Gets or sets an object describing the violation in detail.
+            You can use this property to communicate the details about the violation to the caller
+            of the validation.
+            </summary>
+            <value>Object describing the violation in detail.</value>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.RuleEngine">
+            <summary>
+            The rule engine is the central component for checking logical rules.
+            </summary>
+            <remarks>
+            The rule engine takes a <see cref="T:bbv.Common.RuleEngine.IRuleSetDescriptor`2"/> as a parameter to 
+            the <see cref="M:bbv.Common.RuleEngine.RuleEngine.Evaluate``2(bbv.Common.RuleEngine.IRuleSetDescriptor{``0,``1})"/>
+            method. Then it uses the <see cref="T:bbv.Common.RuleEngine.IRulesProviderFinder"/> to get the rules providers relevant
+            for this descriptor (this allows different rules providers in your system (for example for plug-ins)).
+            To get all rules that need to be checked, the rule engine calls on all found rules provider the
+            <see cref="M:bbv.Common.RuleEngine.IRulesProvider.GetRules``2(bbv.Common.RuleEngine.IRuleSetDescriptor{``0,``1})"/> method, which returns all rules relevant for the specified
+            <see cref="T:bbv.Common.RuleEngine.IRuleSetDescriptor`2"/>. Finally the rule engine aggregates the results of all checked rules together
+            into one <see cref="T:bbv.Common.RuleEngine.IValidationResult"/> eventually containing a set of <see cref="T:bbv.Common.RuleEngine.IValidationViolation"/>s.
+            </remarks>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.RuleEngine.log">
+            <summary>
+            The logger for the rule engine.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.RuleEngine.rulesProviderFinder">
+            <summary>
+            The rules provider finder that is asked for rule providers for a rule descriptor.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RuleEngine.#ctor(bbv.Common.RuleEngine.IRulesProviderFinder)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.RuleEngine"/> class.
+            </summary>
+            <param name="rulesProviderFinder">The rules provider finder.</param>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RuleEngine.Evaluate``2(bbv.Common.RuleEngine.IRuleSetDescriptor{``0,``1})">
+            <summary>
+            Evaluates the rules specified by the rule set descriptor.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+            <typeparam name="TAggregationResult">The type of the aggregation result.</typeparam>
+            <param name="ruleSetDescriptor">The rule set descriptor describing which rules have to be evaluated.</param>
+            <returns>The result of the validation.</returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.RuleSet`1">
+            <summary>
+            Defines a set of rules.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.RulesProviderBase">
+            <summary>
+            Abstract base class for classes implementing <see cref="T:bbv.Common.RuleEngine.IRulesProvider"/>.
+            <para>
+            Provides automatic calling of GetRules method based on the <see cref="T:bbv.Common.RuleEngine.IRuleSetDescriptor`2"/>.
+            </para>
+            </summary>
+            <remarks>
+            <para>
+            <see cref="T:bbv.Common.RuleEngine.RuleEngine"/> will create <see cref="T:bbv.Common.RuleEngine.IRulesProvider"/>s with a
+            <see cref="T:bbv.Common.RuleEngine.IValidationFactory"/> parameter.
+            Therefore a rules provider has to provide a matching constructor.
+            </para>
+            <para>
+            To simplify the matching of <see cref="T:bbv.Common.RuleEngine.IRuleSetDescriptor`2"/>s to <see cref="T:bbv.Common.RuleEngine.IRuleSet`1"/> this class
+            implements the <see cref="M:bbv.Common.RuleEngine.RulesProviderBase.GetRules``2(bbv.Common.RuleEngine.IRuleSetDescriptor{``0,``1})"/> method by calling the method of the derived rules provider that
+            has the signature <code>private IRuleSet GetRules(T ruleSetDescriptor)</code> with the matching rule set
+            descriptor type (<code>T</code>) via reflection.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.RulesProviderBase.Log">
+            <summary>
+            Logger of this class.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.RulesProviderBase.mapping">
+            <summary>
+            Mapping from rule descriptor types to delegates (the method that has to be called for the rule descriptor).
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RulesProviderBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.RulesProviderBase"/> class and reflects the base class for rule provider methods.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RulesProviderBase.GetRules``2(bbv.Common.RuleEngine.IRuleSetDescriptor{``0,``1})">
+            <summary>
+            Returns the rules described by the specified rule set descriptor
+            by calling the corresponding provider method of the derived class.
+            See remarks of class description for more details.
+            </summary>
+            <typeparam name="TRule">The type of the rule.</typeparam>
+            <typeparam name="TAggregationResult">The type of the aggregation result.</typeparam>
+            <param name="ruleSetDescriptor">The rule set descriptor.</param>
+            <returns>A set of rules to be validated.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RulesProviderBase.InitRuleSetDescriptorMapping">
+            <summary>
+            Initializes the rule set descriptor mapping used to map from rule set descriptor type to rules providing method.
+            </summary>
+            <returns>Mapping from rule descriptor types to handler methods.</returns>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RulesProviderBase.CheckNoPrivateRuleProviderMethods">
+            <summary>
+            Checks that no private methods are marked as rule provider.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RulesProviderBase.CheckNoStaticRuleProviderMethods">
+            <summary>
+            Checks that no static methods are marked as rule provider.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.RulesProviderBase.InterfaceFilter(System.Type,System.Object)">
+            <summary>
+            Filter method to filter for interfaces. Used in <see cref="M:bbv.Common.RuleEngine.RulesProviderBase.InitRuleSetDescriptorMapping"/>.
+            </summary>
+            <param name="type">The type to match against the criteria.</param>
+            <param name="criteria">The criteria.</param>
+            <returns>A value indicating if <paramref name="type"/> matches the <paramref name="criteria"/>.</returns>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.RulesProviderBase.RuleProviderMethod`2">
+            <summary>
+            Delegate for calling specific rules providing method.
+            </summary>
+            <param name="ruleSetDescriptor">The rule set descriptor for which rules are requested.</param>
+            <returns>The rule set containing all rules relevant for the rule set descriptor.</returns>
+            <typeparam name="TRuleSet">The type of the rule set.</typeparam>
+            <typeparam name="T">Type of the rule set descriptor.</typeparam>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.ValidationResult">
+            <summary>
+            Represents the result of a validation.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.ValidationResult.violations">
+            <summary>
+            A list of violations associated with this validation result.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationResult.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationResult"/> class.
+            </summary>
+            <param name="valid">if set to <c>true</c> [valid].</param>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationResult.Valid">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:bbv.Common.RuleEngine.IValidationResult"/> is valid.
+            </summary>
+            <value><c>true</c> if valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationResult.Violations">
+            <summary>
+            Gets the violations.
+            Is an empty list if <see cref="P:bbv.Common.RuleEngine.IValidationResult.Valid"/> is <c>true</c>.
+            </summary>
+            <value>The violations.</value>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.ValidationRuleBase">
+            <summary>
+            Base class for validation rules.
+            <para>
+            Provides a <see cref="T:bbv.Common.RuleEngine.IValidationFactory"/>.
+            </para>
+            </summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.ValidationRuleBase.validationFactory">
+            <summary>
+            The validationFactory that is provided to derived classes. It is passed in the constructor.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationRuleBase.#ctor(bbv.Common.RuleEngine.IValidationFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationRuleBase"/> class.
+            </summary>
+            <param name="validationFactory">The factory for creating rule engine related instances.</param>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationRuleBase.Evaluate">
+            <summary>
+            Validates this rule.
+            </summary>
+            <returns>The result of the validation.</returns>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationRuleBase.ValidationFactory">
+            <summary>
+            Gets the validation factory for creating rule engine related instances.
+            </summary>
+            <value>The validation factory.</value>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.ValidationRuleSet">
+            <summary>
+            A <see cref="T:bbv.Common.RuleEngine.ValidationRuleSet"/> is a <see cref="T:bbv.Common.RuleEngine.RuleSet`1"/> specifically for
+            <see cref="T:bbv.Common.RuleEngine.IValidationRule"/>s.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.ValidationRuleSetDescriptor">
+            <summary>
+            A rule set descriptor for validation rules.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.ValidationRuleSetDescriptor.factory">
+            <summary>The validation factory.</summary>
+        </member>
+        <member name="F:bbv.Common.RuleEngine.ValidationRuleSetDescriptor.aggregator">
+            <summary>The validation aggregator.</summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationRuleSetDescriptor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationRuleSetDescriptor"/> class
+            that does not stop on the first violation, all rules are evaluated.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationRuleSetDescriptor.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationRuleSetDescriptor"/> class.
+            </summary>
+            <param name="breakOnFirstViolation">if set to <c>true</c> the aggregation of rules is 
+            stopped when the first violation occurs, all remaining rules are not evaluated.].</param>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationRuleSetDescriptor.Factory">
+            <summary>
+            Gets the factory used to create needed instances of rule engine related classes.
+            </summary>
+            <value>The factory.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationRuleSetDescriptor.bbv#Common#RuleEngine#IRuleSetDescriptor{bbv#Common#RuleEngine#IValidationRule@bbv#Common#RuleEngine#IValidationResult}#Factory">
+            <summary>
+            Gets the factory used to create needed instances of rule engine related classes.
+            </summary>
+            <value>The factory.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationRuleSetDescriptor.Aggregator">
+            <summary>
+            Gets the aggregator that is used to combine all rules taking part in the evaluation.
+            </summary>
+            <value>The aggregator.</value>
+        </member>
+        <member name="T:bbv.Common.RuleEngine.ValidationViolation">
+            <summary>
+            Describes the reason why a validation failed.
+            A <see cref="T:bbv.Common.RuleEngine.IValidationRule"/> can generate multiple violations.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationViolation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationViolation"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationViolation.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationViolation"/> class.
+            </summary>
+            <param name="reason">The reason why the validation rule failed.</param>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationViolation.#ctor(System.String,System.Guid,System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationViolation"/> class.
+            </summary>
+            <param name="reason">The reason.</param>
+            <param name="messageId">The message GUID.</param>
+            <param name="messageArguments">The message arguments.</param>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationViolation.#ctor(System.Object,System.String,System.Guid,System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.RuleEngine.ValidationViolation"/> class.
+            </summary>
+            <param name="data">Object containing detailed information about the violation.</param>
+            <param name="reason">The reason.</param>
+            <param name="messageId">The message GUID.</param>
+            <param name="messageArguments">The message arguments.</param>
+        </member>
+        <member name="M:bbv.Common.RuleEngine.ValidationViolation.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
+            </returns>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationViolation.Reason">
+            <summary>
+            Gets or sets the reason for the violation.
+            </summary>
+            <value>The reason.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationViolation.MessageId">
+            <summary>
+            Gets or sets the GUID to identify messages used to describe the reason.
+            </summary>
+            <value>The message GUID.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationViolation.MessageArguments">
+            <summary>
+            Gets or sets the arguments used in the message identified by <see cref="P:bbv.Common.RuleEngine.IValidationViolation.MessageId"/>.
+            </summary>
+            <value>The message arguments.</value>
+        </member>
+        <member name="P:bbv.Common.RuleEngine.ValidationViolation.Data">
+            <summary>
+            Gets or sets an object describing the violation in detail.
+            You can use this property to communicate the details about the violation to the caller
+            of the validation.
+            </summary>
+            <value>The data that explains the violation in detail.</value>
+        </member>
+    </members>
+</doc>

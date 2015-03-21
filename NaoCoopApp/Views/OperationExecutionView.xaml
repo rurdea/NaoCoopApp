@@ -1,0 +1,99 @@
+﻿<mui:ModernWindow x:Class="NaoCoopApp.Views.OperationExecutionView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        xmlns:local="clr-namespace:NaoCoopApp.Views" Style="{StaticResource EmptyWindow}"
+        Title="Operation Execution" Height="530" Width="730" WindowStyle="ToolWindow" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Topmost="True">
+    
+    <Control.Resources>
+        <local:RobotStatusVisibilityConverter x:Key="RobotStatusVisibilityConverter" />
+    </Control.Resources>
+    <Grid DataContext="{Binding CurrentExecution, Mode=OneWay}">
+        <StackPanel Margin="10,20,10,10">
+            <GroupBox Header="Operation Execution Info" Style="{StaticResource NaoGroupBox}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource FormFieldName}">Operation:</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Name="txtOperationName" Text="{Binding Operation.Name}" Style="{StaticResource FormFieldValue}"></TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource FormFieldName}">Execution Status:</TextBlock>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Name="txtExecutionStatus" Text="{Binding Status}" Style="{StaticResource FormFieldValue}"></TextBlock>
+                    
+                    <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Name="btnStartExecution" Click="btnStartExecution_Click" Content="Start" Margin="5"></Button>
+                        <Button Name="btnPauseExecution" Click="btnPauseExecution_Click" Content="Pause" Margin="5"></Button>
+                        <Button Name="btnResumeExecution" Click="btnResumeExecution_Click" Content="Resume" Margin="5"></Button>
+                        <Button Name="btnStopExecution" Click="btnStopExecution_Click" Content="Stop" Margin="5"></Button>
+                        <Button Name="btnOpenLogFile" Click="btnOpenLogFile_Click" Content="Open Log File" Margin="5"></Button>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="Operation Robots Execution Info" Style="{StaticResource NaoGroupBox}">
+                <ScrollViewer>
+                    <ItemsControl Height="305" ItemsSource="{Binding ExecutionRobots, Mode=OneWay}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <GroupBox Header="{Binding Robot.Name}" Style="{StaticResource NaoGroupBox}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120"/>
+                                            <ColumnDefinition Width="200"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource FormFieldName}">Name:</TextBlock>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource FormFieldValue}" Name="txtRobotName" Text="{Binding Robot.Name}" ></TextBlock>
+
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource FormFieldName}">IP:</TextBlock>
+                                        <TextBlock Grid.Row="1" Grid.Column="1" Style="{StaticResource FormFieldValue}" Name="txtRobotIP" Text="{Binding Robot.IP}" ></TextBlock>
+
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource FormFieldName}">Port:</TextBlock>
+                                        <TextBlock Grid.Row="2" Grid.Column="1" Style="{StaticResource FormFieldValue}" Name="txtRobotPort" Text="{Binding Robot.Port}" ></TextBlock>
+
+                                        <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource FormFieldName}">Status:</TextBlock>
+                                        <TextBlock Grid.Row="3" Grid.Column="1" Style="{StaticResource FormFieldValue}" Name="txtRobotStatus" Text="{Binding Status}" ></TextBlock>
+
+                                        <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource FormFieldName}">Current State:</TextBlock>
+                                        <TextBlock Grid.Row="4" Grid.Column="1" Style="{StaticResource FormFieldValue}" Name="txtRobotState" Text="{Binding CurrentState}" ></TextBlock>
+
+                                        <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource FormFieldName}">Current Command:</TextBlock>
+                                        <TextBlock Grid.Row="5" Grid.Column="1" Style="{StaticResource FormFieldValue}" Name="txtRobotCommand" Text="{Binding CurrentCommand}" ></TextBlock>
+                                
+                                        <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Name="btnStartRobotExecution" Content="Start" Margin="5" Click="btnStartRobotExecution_Click" CommandParameter="{Binding ID}" IsEnabled="{Binding Status, Converter={StaticResource RobotStatusVisibilityConverter}, ConverterParameter=Idle}"></Button>
+                                            <Button Name="btnPauseRobotExecution" Content="Pause" Margin="5" IsEnabled="{Binding Status, Converter={StaticResource RobotStatusVisibilityConverter}, ConverterParameter=Running}"></Button>
+                                            <Button Name="btnResumeRobotExecution" Content="Resume" Margin="5" IsEnabled="{Binding Status, Converter={StaticResource RobotStatusVisibilityConverter}, ConverterParameter=Paused}"></Button>
+                                            <Button Name="btnStopRobotExecution" Content="Stop" Margin="5" IsEnabled="{Binding Status, Converter={StaticResource RobotStatusVisibilityConverter}, ConverterParameter=Running;Paused}"></Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </GroupBox>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </ScrollViewer>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</mui:ModernWindow>

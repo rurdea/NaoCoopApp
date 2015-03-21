@@ -1,0 +1,617 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.TestUtilities</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.TestUtilities.AbstractEventTester`2">
+            <summary>
+            Abstract event tester to handle vent handlers and event arguments of any type.
+            </summary>
+            <typeparam name="TEventHandler">The type of the event handler.</typeparam>
+            <typeparam name="TEventArgs">The type of the event arguments.</typeparam>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.IEventTester">
+            <summary>
+            The checks that can be performed with an event tester.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.IEventTester.AssertWasFired">
+            <summary>
+            Asserts that the event was fired.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.IEventTester.AssertInvocationCount(System.Int32)">
+            <summary>
+            Asserts that the event was fired exactly as often as specified by <paramref name="expectedInvocationCount"/>.
+            </summary>
+            <param name="expectedInvocationCount">The expected number of invocations.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.IEventTester.AssertComplete">
+            <summary>
+            Asserts that all expectations of the testers are met.
+            Used for ordered event expectations in the <see cref="T:bbv.Common.TestUtilities.EventTestList"/>.
+            </summary>
+        </member>
+        <member name="E:bbv.Common.TestUtilities.IEventTester.Invocation">
+            <summary>
+            Occurs when the monitored event is fired.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.IEventTester.InvocationCount">
+            <summary>
+            Gets the number of invocation of the monitored event.
+            </summary>
+            <value>The number of invocation of the monitored event.</value>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.IEventTester.WasFired">
+            <summary>
+            Gets a value indicating whether the event was fired.
+            </summary>
+            <value><c>true</c> if the event was fired; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.AbstractEventTester`2.eventInfo">
+            <summary>
+            The event that is monitored by this event helper instance.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.AbstractEventTester`2.sender">
+            <summary>
+            The object that is monitored by this event helper instance.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.AbstractEventTester`2.handlerDelegate">
+            <summary>
+            Delegate that is registered with the event.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.AbstractEventTester`2.eventMatcher">
+            <summary>
+            Event matcher that is used to determine whether the event must be fired.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.AbstractEventTester`2.matcherDescriptor">
+            <summary>
+            The matcher descriptor which is used to give the event tester a meaningful name.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.AbstractEventTester`2.expectedInvocationCount">
+            <summary>
+            The expected number of invocations.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.#ctor(System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.AbstractEventTester`2"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.#ctor(System.Object,System.String,`0,System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.AbstractEventTester`2"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value. If null is passed no check is performed.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.#ctor(System.Object,System.String,`0,System.Func{System.Object,`1,System.Boolean},System.String,System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.AbstractEventTester`2"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+            <param name="expectedInvocationCount">The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value. If null is passed no check is performed.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.Finalize">
+            <summary>
+            Finalizes an instance of the <see cref="T:bbv.Common.TestUtilities.AbstractEventTester`2"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.AssertWasFired">
+            <summary>
+            Asserts that the event was fired.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.AssertInvocationCount(System.Int32)">
+            <summary>
+            Asserts that the event was fired exactly as often as specified by <paramref name="expectedInvocationCount"/>.
+            </summary>
+            <param name="expectedInvocationCount">The expected number of invocations.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.AssertComplete">
+            <summary>
+            Asserts that all expectations of the testers are met.
+            Used for ordered event expectations in the <see cref="T:bbv.Common.TestUtilities.EventTestList"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"/> that represents the current <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.IsMatch(System.Object,`1)">
+            <summary>
+            Determines whether the <paramref name="sender"/> and the 
+            <paramref name="eventArgs"/> are matching a given criteria.
+            </summary>
+            <param name="sender">The sender which fired the event.</param>
+            <param name="eventArgs">The event arguments.</param>
+            <returns><c>true</c> when the criteria matches; otherwise <c>false</c>
+            </returns>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources
+            </summary>
+            <param name="disposing">
+            <c>true</c> to release both managed and unmanaged resources; 
+            <c>false</c> to release only unmanaged resources.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.Fire(System.Object,`1)">
+            <summary>
+            Fires the event.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments instance containing the event data.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.Handler(System.Object,`1)">
+            <summary>
+            Handles the event.
+            </summary>
+            <param name="sender">The sender of the event.</param>
+            <param name="e">The event arguments passed with the event.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.OnFire(System.Object,`1)">
+            <summary>
+            Invokes the fire method when an event handler is present.
+            </summary>
+            <param name="sender">The sender of the event.</param>
+            <param name="e">The event arguments used in the event.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.OnInvocation">
+            <summary>
+            Invokes the invocation event.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.AbstractEventTester`2.IncrementInvocationCount">
+            <summary>
+            Increments the invocation counter.
+            </summary>
+        </member>
+        <member name="E:bbv.Common.TestUtilities.AbstractEventTester`2.Invocation">
+            <summary>
+            Occurs when the monitored event is fired.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.AbstractEventTester`2.InvocationCount">
+            <summary>
+            Gets or sets the number of invocation of the monitored event.
+            </summary>
+            <value>The number of invocation of the monitored event.</value>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.AbstractEventTester`2.WasFired">
+            <summary>
+            Gets a value indicating whether the event was fired.
+            </summary>
+            <value><c>true</c> if the event was fired; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.AbstractEventTester`2.EventHandler">
+            <summary>
+            Gets or sets the event handler that is called when the event occurs.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.AbstractEventTester`2.EventMatcher">
+            <summary>
+            Gets the event matcher.
+            </summary>
+            <value>The event matcher.</value>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.EventTesterException">
+            <summary>
+            Represents errors detected by any of the event tester classes.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTesterException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTesterException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.EventTestList">
+            <summary>
+            This list can be used to check several events using <see cref="T:bbv.Common.TestUtilities.EventTester"/> without having to use nested
+            usings. Additionally it can be used to enforce an ordered occurrence of the events.
+            </summary>
+            <example>
+            Usage:
+            <code>
+            using (new EventTestList(true)
+            {
+                new EventTester(this.testInterface, "NoneGenericEvent", 1), 
+                new EventTester&lt;EventArgs&gt;(this.testInterface, "GenericEvent", 1)
+               })
+            {
+                DoSomethingThatTriggersTheEventsInOrderedOccurrence();
+            }
+            </code>
+            </example>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.EventTestList.eventTesterList">
+            <summary>
+            The list of <see cref="T:bbv.Common.TestUtilities.IEventTester"/> in this list.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.EventTestList.failed">
+            <summary>
+            Indicated if an event invocation has failed.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTestList.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTestList"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTestList.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTestList"/> class.
+            </summary>
+            <param name="ordered">if set to <c>true</c> it is checked that the events occur in the order they are added.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTestList.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            Disposes all <see cref="T:bbv.Common.TestUtilities.IEventTester"/> in this list.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTestList.Add(bbv.Common.TestUtilities.IEventTester)">
+            <summary>
+            Adds the specified event tester to the list.
+            </summary>
+            <param name="eventTester">The event tester to the list..</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTestList.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1"/> that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTestList.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTestList.OnEventInvoked(System.Object,System.EventArgs)">
+            <summary>
+            Called when the event monitored by one of the event testers in the list is fired.
+            </summary>
+            <param name="sender">The sender of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.EventTestList.Ordered">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:bbv.Common.TestUtilities.EventTestList"/> is ordered.
+            </summary>
+            <value><c>true</c> if ordered; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.EventTestList.Count">
+            <summary>
+            Gets number of IEventTesters in this list.
+            </summary>
+            <value>The number of IEventTesters in this list.</value>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.EventTestList.Item(System.Int32)">
+            <summary>
+            Gets the <see cref="T:bbv.Common.TestUtilities.IEventTester"/> at the specified index.
+            </summary>
+            <value>The <see cref="T:bbv.Common.TestUtilities.IEventTester"/> at the specified index.</value>
+            <param name="index">index of the element that shall be returned.</param>
+            <returns><see cref="T:bbv.Common.TestUtilities.IEventTester"/> at the specified index.</returns>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.EventTester">
+            <summary>
+            This class can be used for testing if an event occurred and had the correct event arguments.
+            The event is registered in the constructor and released when the instance is disposed.
+            </summary>
+            <example>
+            Usage:
+            <code>
+            using (new EventHelper(testee, myEventName)
+            {
+                Do();
+                Assert.IsTrue(eventHelper.WasFired, "MyEvent was not fired!");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.#ctor(System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.#ctor(System.Object,System.String,System.Func{System.Object,System.EventArgs,System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.#ctor(System.Object,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.#ctor(System.Object,System.String,System.Func{System.Object,System.EventArgs,System.Boolean},System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.#ctor(System.Object,System.String,System.EventHandler)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.#ctor(System.Object,System.String,System.EventHandler,System.Func{System.Object,System.EventArgs,System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.#ctor(System.Object,System.String,System.EventHandler,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.#ctor(System.Object,System.String,System.EventHandler,System.Func{System.Object,System.EventArgs,System.Boolean},System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester.Fire(System.Object,System.EventArgs)">
+            <summary>
+            Fires the event.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.EventTester`1">
+            <summary>
+            This class can be used for testing if an event occurred and had the correct event arguments.
+            The event is registered in the constructor and released when the instance is disposed.
+            </summary>
+            <example>
+            Usage:
+            <code>
+            bool int someValueFromEventArgs;
+            using (new EventHelper&lt;MyEventArgs&gt;(testee, myEventName, (sender, e) => someValueFromEventArgs = e.Value)
+            {
+                Do();
+                Assert.IsTrue(eventHelper.WasFired, "MyEvent was not fired!");
+                Assert.AreEqual(1, someValueFromEventArgs, "The event args did not match expectation.");
+            }
+            </code>
+            </example>
+            <typeparam name="TEventArgs">The type of the event arguments.</typeparam>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.#ctor(System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester`1"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.#ctor(System.Object,System.String,System.Func{System.Object,`0,System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester`1"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.#ctor(System.Object,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester`1"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.#ctor(System.Object,System.String,System.Func{System.Object,`0,System.Boolean},System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester`1"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.#ctor(System.Object,System.String,System.EventHandler{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester`1"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.#ctor(System.Object,System.String,System.EventHandler{`0},System.Func{System.Object,`0,System.Boolean},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester`1"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.#ctor(System.Object,System.String,System.EventHandler{`0},System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester`1"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.#ctor(System.Object,System.String,System.EventHandler{`0},System.Func{System.Object,`0,System.Boolean},System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.EventTester`1"/> class.
+            </summary>
+            <param name="sender">The object that contains the event.</param>
+            <param name="eventName">The name of the event.</param>
+            <param name="eventHandler">The event handler that is executed when the event occurs.</param>
+            <param name="eventMatcher">The event matcher that is used to determine whether the event shall be taken into account.</param>
+            <param name="eventMatcherDescriptor">The event matcher descriptor which is used to annotate the event with matching information.</param>
+            <param name="expectedInvocationCount">
+            The expected number of invocations. An <see cref="T:bbv.Common.TestUtilities.EventTesterException"/> is thrown at disposal if the
+            current invocation count does not match this value.
+            </param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.EventTester`1.Fire(System.Object,`0)">
+            <summary>
+            Fires the event.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The event arguments instance containing the event data.</param>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.RequiredUnitTestException">
+            <summary>
+            Represents an error in a required unit test.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.RequiredUnitTestException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.RequiredUnitTestException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.TemporaryFileHolder">
+            <summary>
+            Helper class to create (and destroy) a temporary file for UnitTests that depend on file system operations
+            </summary>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.TemporaryFileHolder.filepath">
+            <summary>
+            path of the file.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.TemporaryFileHolder.#ctor(System.String,System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.TemporaryFileHolder"/> class.
+            </summary>
+            <param name="filepath">The path were the file should be created.</param>
+            <param name="fileContent">Content of the file.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.TemporaryFileHolder.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.TemporaryFileHolder"/> class.
+            </summary>
+            <param name="filepath">The path were the file should be created.</param>
+            <param name="fileContent">Content of the file.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.TemporaryFileHolder.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:bbv.Common.TestUtilities.TemporaryFileHolder.FileInfo">
+            <summary>
+            Gets the file info.
+            </summary>
+            <value>The file info.</value>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.UnitTestHelper">
+            <summary>
+            Provides helper functionality to write unit tests.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.UnitTestHelper.ExecuteRequiredUnitTest(System.Action)">
+            <summary>
+            Executes the required unit test and if that unit test fails then the error message points to that unit test.
+            Use this method to chain unit tests. Helps to find the root of a problem faster.
+            </summary>
+            <param name="unitTestMethod">The unit test method.</param>
+        </member>
+    </members>
+</doc>

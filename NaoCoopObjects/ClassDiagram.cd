@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NaoCoopObjects.Classes.Execution">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEAAAIAAAAAAAAAAAAAAAAEAAAAAEEAAAAAAA=</HashCode>
+      <FileName>Classes\Execution.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.ExecutionRobot">
+    <Position X="8.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\ExecutionRobot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.NaoCoopObject">
+    <Position X="6.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\NaoCoopObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.Operation">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Operation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.OperationRequirement">
+    <Position X="9.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Classes\OperationRequirement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.OperationRobot">
+    <Position X="10" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Classes\OperationRobot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.OperationRobotState">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Classes\OperationRobotState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.Requirement">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Classes\Requirement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.Robot">
+    <Position X="11.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAACAAAAAQAKAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Robot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.RobotVersion">
+    <Position X="8.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\RobotVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.Setting">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Classes\Setting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.State">
+    <Position X="6.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAIAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Classes\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.StateTask">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Classes\StateTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.Task">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAgQAAAAAAAAA=</HashCode>
+      <FileName>Classes\Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopObjects.Classes.User">
+    <Position X="11.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAQAAAAAACAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NaoCoopObjects.Interfaces.INaoCoopObject">
+    <Position X="4.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\INaoCoopObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="NaoCoopObjects.Classes.ExecutionStatus">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAIAAAAAAAAAAAIAAAAAABAAIAAAAAA=</HashCode>
+      <FileName>Classes\Execution.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NaoCoopObjects.Classes.OperationValueValidator">
+    <Position X="13" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAQAACA=</HashCode>
+      <FileName>Classes\OperationRequirement.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NaoCoopObjects.Classes.RequirementType">
+    <Position X="13" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAIA=</HashCode>
+      <FileName>Classes\Requirement.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

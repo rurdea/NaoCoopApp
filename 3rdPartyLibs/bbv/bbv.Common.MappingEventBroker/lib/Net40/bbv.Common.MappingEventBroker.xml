@@ -1,0 +1,434 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.MappingEventBroker</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.MappingEventBroker.IMissingMappingContext">
+            <summary>
+            The missing mapping context provides detailed information about a missing mapping.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.IMissingMappingContext.EventTopic">
+            <summary>
+            Gets the source event topic information.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.IMissingMappingContext.DestinationTopic">
+            <summary>
+            Gets the destination topic as URI.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.IMissingMappingContext.Publication">
+            <summary>
+            Gets the publication.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.IMissingMappingContext.Sender">
+            <summary>
+            Gets the sender of the event
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.IMissingMappingContext.EventArgs">
+            <summary>
+            Gets the event arguments which are part of the event.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.IMissingMappingContext.Exception">
+            <summary>
+            Gets the exception which contains information why the mapping was not possible.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.Internals.MissingMappingContext">
+            <summary>
+            The missing mapping context provides detailed information about a missing mapping.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.Internals.MissingMappingContext.#ctor(bbv.Common.EventBroker.Internals.IEventTopicInfo,System.String,bbv.Common.EventBroker.Internals.IPublication,System.Object,System.EventArgs,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.MappingEventBroker.Internals.MissingMappingContext"/> class.
+            </summary>
+            <param name="eventTopic">The source event topic.</param>
+            <param name="destinationTopic">The destination topic URI.</param>
+            <param name="publication">The publication which triggered the event.</param>
+            <param name="sender">The sender of the event.</param>
+            <param name="eventArgs">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+            <param name="exception">The exception which contains information why the mapping was not possible.</param>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.Internals.MissingMappingContext.EventTopic">
+            <summary>
+            Gets the source event topic information.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.Internals.MissingMappingContext.DestinationTopic">
+            <summary>
+            Gets the destination topic as URI.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.Internals.MissingMappingContext.Publication">
+            <summary>
+            Gets the publication.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.Internals.MissingMappingContext.Sender">
+            <summary>
+            Gets the sender of the event
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.Internals.MissingMappingContext.EventArgs">
+            <summary>
+            Gets the event arguments which are part of the event.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.Internals.MissingMappingContext.Exception">
+            <summary>
+            Gets the exception which contains information why the mapping was not possible.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.EventBrokerExtensionsForMapping">
+            <summary>
+            Contains extension methods which simplify adding mapping extensions.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.EventBrokerExtensionsForMapping.AddMappingExtension``1(bbv.Common.EventBroker.IEventBroker,``0)">
+            <summary>
+            Adds the mapping extension to the provided event broker.
+            </summary>
+            <typeparam name="TMappingExtension">The type of the mapping extension.</typeparam>
+            <param name="eventBroker">The event broker.</param>
+            <param name="extension">The extension.</param>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.IDestinationEventArgsTypeProvider">
+            <summary>
+            The destination event argument types provider is responsible to return
+            destination event arguments for a given destination topic.
+            </summary>
+            <remarks>When the destination event argument type is not found an null
+            is returned instead the mapping process must be skipped.</remarks>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.IDestinationEventArgsTypeProvider.GetDestinationEventArgsType(System.String,System.Type)">
+            <summary>
+            Gets the destination event argument type for the given destination
+            topic URI or <see langword="null"/> if nothing found.
+            </summary>
+            <param name="destinationTopic">The destination topic.</param>
+            <param name="sourceEventArgsType">Type of the source event argument.</param>
+            <returns>
+            The destination event argument type or <see langword="null"/>.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.IManageEventBroker">
+            <summary>
+            Interface which defines a component which manages a single event broker.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.IManageEventBroker.Manage(bbv.Common.EventBroker.IEventBroker)">
+            <summary>
+            Manages the specified event broker.
+            </summary>
+            <param name="eventBroker">The event broker.</param>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.IMapper">
+            <summary>
+            Mapper interface which must be implemented by mapping algorithms.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.IMapper.Map(System.Type,System.Type,System.EventArgs)">
+            <summary>
+            Maps the provided event argument from the 
+            <paramref name="sourceEventArgsType"/> to the 
+            <paramref name="destinationEventArgsType"/>.
+            </summary>
+            <remarks>If the mapping is not possible an exception must be thrown. 
+            The exception is passed to the missing mapping action.</remarks>
+            <param name="sourceEventArgsType">The source event argument type.</param>
+            <param name="destinationEventArgsType">The destination event argument type.</param>
+            <param name="eventArgs">The source event argument.</param>
+            <returns>The mapped event argument.</returns>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.MappingEventBrokerExtension">
+            <summary>
+            This extension allows to dynamically remap topics based on a convention
+            from one event argument type to another event argument type using 
+            <see cref="T:bbv.Common.MappingEventBroker.IMapper"/>.
+            <code>
+               public class Publisher
+               {
+                   [EventPublication(@"topic://Original")]
+                   public event EventHandler Event;
+                   private void InvokeEvent(EventArgs e)
+                   {
+                       EventHandler handler = Event;
+                       if (handler != null) handler(this, e);
+                   }
+                   public void Publish()
+                   {
+                       this.InvokeEvent(EventArgs.Empty);
+                   }
+               }
+               public class SubscriberOriginal
+               {
+                   [EventSubscription(@"topic://Original", typeof(bbv.Common.EventBroker.Handlers.Publisher))]
+                   public void HandleOriginal(object sender, EventArgs e)
+                   {
+                   }
+               }
+               public class SubscriberMapped
+               {
+                   [EventSubscription(@"mapped://Original", typeof(bbv.Common.EventBroker.Handlers.Publisher))]
+                   public void HandleOriginal(object sender, CancelEventArgs e)
+                   {
+                   }
+               }
+            </code>
+            </summary>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.IMappingEventBrokerExtension">
+            <summary>
+            Interface which defines an auto mapper event broker extension.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.IMappingEventBrokerExtension.SetMissingMappingAction(System.Action{bbv.Common.MappingEventBroker.IMissingMappingContext})">
+            <summary>
+            Sets the missing mapping action which is called when no mapping was previously defined.
+            </summary>
+            <param name="action">The missing mapping action.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.#ctor(bbv.Common.MappingEventBroker.IMapper,bbv.Common.MappingEventBroker.IDestinationEventArgsTypeProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.MappingEventBroker.MappingEventBrokerExtension"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="typeProvider">The destination event argument type provider which overrides the default.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.#ctor(bbv.Common.MappingEventBroker.IMapper,bbv.Common.MappingEventBroker.ITopicConvention,bbv.Common.MappingEventBroker.IDestinationEventArgsTypeProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.MappingEventBroker.MappingEventBrokerExtension"/> class.
+            </summary>
+            <param name="mapper">The mapper.</param>
+            <param name="topicConvention">The topic convention which overrides the default behavior.</param>
+            <param name="typeProvider">The destination event argument type provider which overrides the default.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.CreatedTopic(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Called after an event topic was created.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.SetMissingMappingAction(System.Action{bbv.Common.MappingEventBroker.IMissingMappingContext})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.FiringEvent(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication,System.Object,System.EventArgs)">
+            <summary>
+            Called when an event is fired.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.Disposed(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Called after an event topic was disposed.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.Manage(bbv.Common.EventBroker.IEventBroker)">
+            <summary>
+            Manages the specified event broker.
+            </summary>
+            <param name="eventBroker">The event broker.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.MustProceed(System.String,System.String)">
+            <summary>
+            Determines whether the the topic must be mapped and refired.
+            </summary>
+            <param name="topic">The topic.</param>
+            <param name="mappedTopic">The mapped topic.</param>
+            <returns><see langword="true"/> if the topic must be mapped and
+            refired.</returns>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.AssertEventBrokerManaged">
+            <summary>
+            Asserts that an event broker is managed by this instance.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.Topics">
+            <summary>
+            Gets the topics which are controlled by the event broker and accepted by the <see cref="P:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.TopicConvention"/>.
+            </summary>
+            <value>The topics.</value>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.TopicConvention">
+            <summary>
+            Gets the topic convention.
+            </summary>
+            <value>The topic convention.</value>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.Action">
+            <summary>
+            Gets the missing mapping action.
+            </summary>
+            <value>The missing mapping action.</value>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.Mapper">
+            <summary>
+            Gets the mapper.
+            </summary>
+            <value>The mapper.</value>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.TypeProvider">
+            <summary>
+            Gets the destination event argument type provider.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.MappingEventBroker.MappingEventBrokerExtension.HostedEventBroker">
+            <summary>
+            Gets the hosted event broker.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.Conventions.DefaultTopicConvention">
+            <summary>
+            The default convention does automatically remap all event topics which
+            start with topic:// to topics which start with mapped://. Therefore if using this topic convention the following is possible:
+            <code>
+               public class Publisher
+               {
+                   [EventPublication(@"topic://Original")]
+                   public event EventHandler Event;
+                   private void InvokeEvent(EventArgs e)
+                   {
+                       EventHandler handler = Event;
+                       if (handler != null) handler(this, e);
+                   }
+                   public void Publish()
+                   {
+                       this.InvokeEvent(EventArgs.Empty);
+                   }
+               }
+               public class SubscriberOriginal
+               {
+                   [EventSubscription(@"topic://Original", typeof(bbv.Common.EventBroker.Handlers.Publisher))]
+                   public void HandleOriginal(object sender, EventArgs e)
+                   {
+                   }
+               }
+               public class SubscriberMapped
+               {
+                   [EventSubscription(@"mapped://Original", typeof(bbv.Common.EventBroker.Handlers.Publisher))]
+                   public void HandleOriginal(object sender, CancelEventArgs e)
+                   {
+                   }
+               }
+            </code>
+            </summary>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.ITopicConvention">
+            <summary>
+            Interface for topic conventions.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.ITopicConvention.IsCandidate(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Determines whether the specified event topic is a candidate to process.
+            </summary>
+            <remarks>The mapped side must also be included!</remarks>
+            <param name="eventTopic">The event topic.</param>
+            <returns>
+            <c>true</c> if the specified event topic is candidate; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.ITopicConvention.MapTopic(System.String)">
+            <summary>
+            Maps the topic from the source format to the destination format.
+            </summary>
+            <param name="topic">The source topic.</param>
+            <returns>The mapped topic.</returns>
+        </member>
+        <member name="F:bbv.Common.MappingEventBroker.Conventions.DefaultTopicConvention.EventTopicUriInput">
+            <summary>
+            The default event topic URI for inputs.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.MappingEventBroker.Conventions.DefaultTopicConvention.EventTopicUriOutput">
+            <summary>
+            The default event topic URI for outputs
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.Conventions.DefaultTopicConvention.IsCandidate(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Determines whether the specified event topic is a candidate to process.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <returns>
+            <c>true</c> if the specified event topic is candidate; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.Conventions.DefaultTopicConvention.MapTopic(System.String)">
+            <summary>
+            Maps the topic from the source format to the destination format.
+            </summary>
+            <param name="topic">The source topic URI.</param>
+            <returns>The mapped topic URI.</returns>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.Conventions.DefaultTopicConvention.StartsWith(bbv.Common.EventBroker.Internals.IEventTopicInfo,System.String)">
+            <summary>
+            Determines whether the topics URI starts with start.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="start">The start of the topic.</param>
+            <returns><see langword="true"/> if the topic URI starts with start;
+            otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.Conventions.FuncTopicConvention">
+            <summary>
+            This topic convention implementation allows to use lambda expressions for dynamic topic convention.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.Conventions.FuncTopicConvention.#ctor(System.Func{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.MappingEventBroker.Conventions.FuncTopicConvention"/> class.
+            </summary>
+            <param name="topicMapper">The topic mapper.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.Conventions.FuncTopicConvention.#ctor(System.Func{bbv.Common.EventBroker.Internals.IEventTopicInfo,System.Boolean},System.Func{System.String,System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.MappingEventBroker.Conventions.FuncTopicConvention"/> class.
+            </summary>
+            <param name="candidateSelector">The candidate selector.</param>
+            <param name="topicMapper">The topic mapper.</param>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.Conventions.FuncTopicConvention.IsCandidate(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Determines whether the specified event topic is a candidate to process.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <returns>
+            <c>true</c> if the specified event topic is candidate; otherwise, <c>false</c>.
+            </returns>
+            <remarks>The mapped side must also be included!</remarks>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.Conventions.FuncTopicConvention.MapTopic(System.String)">
+            <summary>
+            Maps the topic from the source format to the destination format.
+            </summary>
+            <param name="topic">The source topic URI.</param>
+            <returns>The mapped topic URI.</returns>
+        </member>
+        <member name="T:bbv.Common.MappingEventBroker.EventTopicCollection">
+            <summary>
+            Specialized keyed collection which used the <see cref="P:bbv.Common.EventBroker.Internals.IEventTopicInfo.Uri"/> as key.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.MappingEventBroker.EventTopicCollection.GetKeyForItem(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            When implemented in a derived class, extracts the key from the specified element.
+            </summary>
+            <returns>
+            The key for the specified element.
+            </returns>
+            <param name="item">The element from which to extract the key.
+            </param>
+        </member>
+    </members>
+</doc>

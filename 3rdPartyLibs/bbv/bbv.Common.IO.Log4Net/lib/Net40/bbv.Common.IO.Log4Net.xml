@@ -1,0 +1,1082 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.IO.Log4Net</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension">
+            <summary>
+            Directory access extension which logs actions with log4net.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginExists(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndExists(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailExists(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginCreateDirectory(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndCreateDirectory(System.IO.DirectoryInfo,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailCreateDirectory(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginCreateDirectory(System.String,System.Security.AccessControl.DirectorySecurity)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndCreateDirectory(System.IO.DirectoryInfo,System.String,System.Security.AccessControl.DirectorySecurity)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginDelete(System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndDelete(System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailDelete(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginDelete(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndDelete(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetFiles(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetFiles(System.String[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetFiles(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetFiles(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetFiles(System.String[],System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetFiles(System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetFiles(System.String[],System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetDirectories(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetDirectories(System.String[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetDirectories(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetDirectories(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetDirectories(System.String[],System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetDirectories(System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetLastAccessTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginSetCreationTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndSetCreationTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailSetCreationTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginSetCreationTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndSetCreationTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailSetCreationTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginSetCurrentDirectory(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndSetCurrentDirectory(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailSetCurrentDirectory(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginSetLastAccessTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndSetLastAccessTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailSetLastAccessTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginSetLastAccessTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndSetLastAccessTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailSetLastAccessTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginSetLastWriteTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndSetLastWriteTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailSetLastWriteTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginSetLastWriteTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndSetLastWriteTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailSetLastWriteTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetLastAccessTimeUtc(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetLastAccessTimeUtc(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetLastAccessTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetLastWriteTime(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetLastWriteTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetLastWriteTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetLastWriteTimeUtc(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetLastWriteTimeUtc(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetLastWriteTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetLogicalDrives">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetLogicalDrives(System.String[])">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetLogicalDrives(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetParent(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetParent(System.IO.DirectoryInfo,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetParent(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginMove(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndMove(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailMove(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginSetAccessControl(System.String,System.Security.AccessControl.DirectorySecurity)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndSetAccessControl(System.String,System.Security.AccessControl.DirectorySecurity)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailSetAccessControl(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetDirectories(System.String[],System.String,System.String,System.IO.SearchOption)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetAccessControl(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetAccessControl(System.Security.AccessControl.DirectorySecurity,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetAccessControl(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetAccessControl(System.String,System.Security.AccessControl.AccessControlSections)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetAccessControl(System.Security.AccessControl.DirectorySecurity,System.String,System.Security.AccessControl.AccessControlSections)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetCreationTime(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetCreationTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetCreationTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetCreationTimeUtc(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetCreationTimeUtc(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetCreationTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetCurrentDirectory">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetCurrentDirectory(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetCurrentDirectory(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetDirectoryRoot(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetDirectoryRoot(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetDirectoryRoot(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetFileSystemEntries(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetFileSystemEntries(System.String[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.FailGetFileSystemEntries(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetFileSystemEntries(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetFileSystemEntries(System.String[],System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.BeginGetLastAccessTime(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetDirectoryAccessExtension.EndGetLastAccessTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.IO.Extensions.Log4NetFileAccessExtension">
+            <summary>
+            File access extension which logs actions with log4net.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetFileAccessExtension"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetFileAccessExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetFileAccessExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetLastWriteTime(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetLastWriteTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailGetLastWriteTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetLastWriteTimeUtc(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetLastWriteTimeUtc(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailGetLastWriteTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginMove(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndMove(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailMove(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginOpenRead(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndOpenRead(System.IO.FileStream,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailOpenRead(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginOpenText(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndOpenText(System.IO.StreamReader,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailOpenText(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginOpenWrite(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndOpenWrite(System.IO.FileStream,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailOpenWrite(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginReplace(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndReplace(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailReplace(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginReplace(System.String,System.String,System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndReplace(System.String,System.String,System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginSetAccessControl(System.String,System.Security.AccessControl.FileSecurity)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndSetAccessControl(System.String,System.Security.AccessControl.FileSecurity)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailSetAccessControl(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginSetCreationTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndSetCreationTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailSetCreationTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginSetCreationTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndSetCreationTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailSetCreationTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginSetLastAccessTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndSetLastAccessTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailSetLastAccessTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginSetLastAccessTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndSetLastAccessTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailSetLastAccessTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginSetLastWriteTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndSetLastWriteTimeUtc(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailSetLastWriteTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginDelete(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndDelete(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailDelete(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginCopy(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndCopy(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginCopy(System.String,System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndCopy(System.String,System.String,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginCreateText(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndCreateText(System.IO.StreamWriter,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailCreateText(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetAttributes(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetAttributes(System.IO.FileAttributes,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailGetAttributes(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginSetLastWriteTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndSetLastWriteTime(System.String,System.DateTime)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailSetLastWriteTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginSetAttributes(System.String,System.IO.FileAttributes)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndSetAttributes(System.String,System.IO.FileAttributes)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailSetAttributes(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginExists(System.String)">
+            <inheritdoc />
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndExists(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailExists(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginReadAllBytes(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndReadAllBytes(System.Byte[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailReadAllBytes(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginReadAllLines(System.String,System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndReadAllLines(System.String[],System.String,System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailReadAllLines(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginReadAllLines(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndReadAllLines(System.String[],System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginReadAllText(System.String,System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndReadAllText(System.String,System.String,System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailReadAllText(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginWriteAllLines(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndWriteAllLines(System.String,System.Collections.Generic.IEnumerable{System.String},System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailWriteAllLines(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginWriteAllLines(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndWriteAllLines(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginWriteAllText(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndWriteAllText(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailWriteAllText(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginWriteAllText(System.String,System.String,System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndWriteAllText(System.String,System.String,System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginWriteAllBytes(System.String,System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndWriteAllBytes(System.String,System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailWriteAllBytes(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginOpen(System.String,System.IO.FileMode)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndOpen(System.IO.FileStream,System.String,System.IO.FileMode)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailOpen(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginOpen(System.String,System.IO.FileMode,System.IO.FileAccess)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndOpen(System.IO.FileStream,System.String,System.IO.FileMode,System.IO.FileAccess)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginOpen(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndOpen(System.IO.FileStream,System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginAppendAllText(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndAppendAllText(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailAppendAllText(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginAppendAllText(System.String,System.String,System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndAppendAllText(System.String,System.String,System.Text.Encoding)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginAppendText(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndAppendText(System.IO.StreamWriter,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailAppendText(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginCreate(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndCreate(System.IO.FileStream,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailCreate(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginCreate(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndCreate(System.IO.FileStream,System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginCreate(System.String,System.Int32,System.IO.FileOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndCreate(System.IO.FileStream,System.String,System.Int32,System.IO.FileOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginCreate(System.String,System.Int32,System.IO.FileOptions,System.Security.AccessControl.FileSecurity)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndCreate(System.IO.FileStream,System.String,System.Int32,System.IO.FileOptions,System.Security.AccessControl.FileSecurity)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginDecrypt(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndDecrypt(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailDecrypt(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginEncrypt(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndEncrypt(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailEncrypt(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetAccessControl(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetAccessControl(System.Security.AccessControl.FileSecurity,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailGetAccessControl(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetAccessControl(System.String,System.Security.AccessControl.AccessControlSections)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetAccessControl(System.Security.AccessControl.FileSecurity,System.String,System.Security.AccessControl.AccessControlSections)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetCreationTime(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetCreationTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailGetCreationTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetCreationTimeUtc(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetCreationTimeUtc(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailGetCreationTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetLastAccessTime(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetLastAccessTime(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailGetLastAccessTime(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginGetLastAccessTimeUtc(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndGetLastAccessTimeUtc(System.DateTime,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailGetLastAccessTimeUtc(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.BeginReadAllText(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.EndReadAllText(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetFileAccessExtension.FailCopy(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.IO.Log4NetFolderWatcherExtension">
+            <summary>
+            <see cref="T:bbv.Common.IO.IFolderWatcherExtension"/> that uses log4net to log messages about the folder watcher.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.Log4NetFolderWatcherExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Log4NetFolderWatcherExtension"/> class
+            with standard logger name (this class's name).
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.Log4NetFolderWatcherExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Log4NetFolderWatcherExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Log4NetFolderWatcherExtension.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Log4NetFolderWatcherExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Log4NetFolderWatcherExtension.ObservationStarted(System.String,System.String)">
+            <summary>
+            Called when observation was started.
+            </summary>
+            <param name="folder">The folder.</param>
+            <param name="filter">The filter.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Log4NetFolderWatcherExtension.ObservationStopped(System.String,System.String)">
+            <summary>
+            Called when observation was stopped.
+            </summary>
+            <param name="folder">The folder.</param>
+            <param name="filter">The filter.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Log4NetFolderWatcherExtension.FileAddedOrChanged(System.String,System.String,System.String)">
+            <summary>
+            Called when a changed or added file is detected.
+            </summary>
+            <param name="folder">The folder.</param>
+            <param name="filter">The filter.</param>
+            <param name="path">The path of the file.</param>
+        </member>
+        <member name="T:bbv.Common.IO.Extensions.Log4NetPathAccessExtension">
+            <summary>
+            Path access extension which logs actions with log4net.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetPathAccessExtension"/> class
+            with standard logger name (this class's name).
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetPathAccessExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.Extensions.Log4NetPathAccessExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetDirectoryName(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetDirectoryName(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetDirectoryName(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetFileName(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetFileName(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetFileName(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetFileNameWithoutExtension(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetFileNameWithoutExtension(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetFileNameWithoutExtension(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginCombine(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndCombine(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailCombine(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetRandomFileName">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetRandomFileName(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetRandomFileName(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginChangeExtension(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndChangeExtension(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailChangeExtension(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetExtension(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetExtension(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetExtension(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetFullPath(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetFullPath(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetFullPath(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetInvalidFileNameChars">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetInvalidFileNameChars(System.Char[])">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetInvalidFileNameChars(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetInvalidPathChars">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetInvalidPathChars(System.Char[])">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetInvalidPathChars(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetPathRoot(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetPathRoot(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetPathRoot(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetTempFileName">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetTempFileName(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetTempFileName(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginGetTempPath">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndGetTempPath(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailGetTempPath(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginHasExtension(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndHasExtension(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailHasExtension(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.BeginIsPathRooted(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.EndIsPathRooted(System.Boolean,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:bbv.Common.IO.Extensions.Log4NetPathAccessExtension.FailIsPathRooted(System.Exception@)">
+            <inheritdoc />
+        </member>
+        <member name="T:bbv.Common.IO.StreamLoggerStream">
+            <summary>
+            Logs the data that is written to and read from a stream.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.IO.StreamLoggerStream.bytesPerLine">
+            <summary>
+            The number of bytes that are written per line in the log.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.IO.StreamLoggerStream.blockLength">
+            <summary>
+            The number of bytes that are written as a block. After a block a space is written.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.IO.StreamLoggerStream.log">
+            <summary>
+            The logger that is used for writing the log output.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.StreamLoggerStream.#ctor(System.IO.Stream,log4net.ILog,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.IO.StreamLoggerStream"/> class.
+            </summary>
+            <param name="stream">The stream that is logged.</param>
+            <param name="logger">The logger that is used for logging.</param>
+            <param name="bytesPerLine">The number of bytes that are written per line in the log.</param>
+            <param name="blockLength">The number of bytes that are written as a block. After a block a
+            space is written.</param>
+            <exception cref="T:System.ArgumentNullException">stream or logger is null.</exception>
+        </member>
+        <member name="M:bbv.Common.IO.StreamLoggerStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            When overridden in a derived class, reads a sequence of bytes from the current stream and advances the
+            position within the stream by the number of bytes read.
+            </summary>
+            <param name="buffer">An array of bytes. When this method returns, the buffer contains the specified byte
+            array with the values between offset and (offset + count - 1) replaced by the bytes read from the current
+            source.</param>
+            <param name="offset">The zero-based byte offset in buffer at which to begin storing the data read from the
+            current stream.</param>
+            <param name="count">The maximum number of bytes to be read from the current stream.</param>
+            <returns>
+            The total number of bytes read into the buffer. This can be less than the number of bytes requested if that
+            many bytes are not currently available, or zero (0) if the end of the stream has been reached.
+            </returns>
+            <exception cref="T:System.ArgumentException">The sum of offset and count is larger than the buffer length.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed.</exception>
+            <exception cref="T:System.NotSupportedException">The stream does not support reading.</exception>
+            <exception cref="T:System.ArgumentNullException">buffer is null. </exception>
+            <exception cref="T:System.IO.IOException">An I/O error occurs.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">offset or count is negative.</exception>
+        </member>
+        <member name="M:bbv.Common.IO.StreamLoggerStream.ReadByte">
+            <summary>
+            Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at 
+            the end of the stream.
+            </summary>
+            <returns>
+            The unsigned byte cast to an Int32, or -1 if at the end of the stream.
+            </returns>
+            <exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
+            <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. 
+            </exception>
+        </member>
+        <member name="M:bbv.Common.IO.StreamLoggerStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            When overridden in a derived class, writes a sequence of bytes to the current stream and advances the 
+            current position within this stream by the number of bytes written.
+            </summary>
+            <param name="buffer">An array of bytes. This method copies count bytes from buffer to the current stream.
+            </param>
+            <param name="offset">The zero-based byte offset in buffer at which to begin copying bytes to the current 
+            stream.</param>
+            <param name="count">The number of bytes to be written to the current stream.</param>
+            <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+            <exception cref="T:System.NotSupportedException">The stream does not support writing. </exception>
+            <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. 
+            </exception>
+            <exception cref="T:System.ArgumentNullException">buffer is null. </exception>
+            <exception cref="T:System.ArgumentException">The sum of offset and count is greater than the buffer length.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">offset or count is negative.</exception>
+        </member>
+        <member name="M:bbv.Common.IO.StreamLoggerStream.WriteByte(System.Byte)">
+            <summary>
+            Writes a byte to the current position in the stream and advances the position within the stream by one byte.
+            </summary>
+            <param name="value">The byte to write to the stream.</param>
+            <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+            <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed.</exception>
+            <exception cref="T:System.NotSupportedException">The stream does not support writing, or the stream is already 
+            closed. </exception>
+        </member>
+        <member name="T:bbv.Common.IO.StreamLoggerStream.LogHelper">
+            <summary>
+            Helper class for logging data with log4net
+            </summary>
+        </member>
+        <member name="M:bbv.Common.IO.StreamLoggerStream.LogHelper.Debug(log4net.ILog,System.String,System.Byte[],System.Int64,System.Int64,System.Int32,System.Int32)">
+            <summary> 
+            Logs a byte array for debugging
+            </summary>
+            <param name="log">The logger to which the data is logged.</param>
+            <param name="msg">A message that is displayed before the data.</param>
+            <param name="buffer">The byte array that is logged</param>
+            <param name="offset">The index of the first byte that is logged.</param>
+            <param name="count">The number of bytes that are logged.</param>
+            <param name="lineLength">Number of bytes that are displayedPerLine</param>
+            <param name="blockLength">Defines how many bytes are in a block. A space is inserted after each block
+            </param>
+        </member>
+        <member name="M:bbv.Common.IO.StreamLoggerStream.LogHelper.LogBuffer(bbv.Common.IO.StreamLoggerStream.LogHelper.LogMethod,System.String,System.Byte[],System.Int64,System.Int64,System.Int32,System.Int32)">
+            <summary>
+            Logs a byte array
+            </summary>
+            <param name="logMethod">The method that is used for logging.</param>
+            <param name="msg">A message that is displayed before the data.</param>
+            <param name="buffer">The byte array that is logged</param>
+            <param name="offset">The index of the first byte that is logged.</param>
+            <param name="count">The number of bytes that are logged.</param>
+            <param name="lineLength">Number of bytes that are displayedPerLine</param>
+            <param name="blockLength">Defines how many bytes are in a block. A space is inserted after each block
+            </param>
+        </member>
+        <member name="T:bbv.Common.IO.StreamLoggerStream.LogHelper.LogMethod">
+            <summary>
+            This delegate is internally used to pass the log method of the <see cref="T:log4net.ILog"/> to the shared
+            <see cref="M:bbv.Common.IO.StreamLoggerStream.LogHelper.LogBuffer(bbv.Common.IO.StreamLoggerStream.LogHelper.LogMethod,System.String,System.Byte[],System.Int64,System.Int64,System.Int32,System.Int32)"/> method 
+            </summary>
+            <param name="message">The message that is logged.</param>
+        </member>
+    </members>
+</doc>

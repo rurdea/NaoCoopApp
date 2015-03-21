@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.AsyncModule.Log4Net</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension">
+            <summary>
+            log4net logging for the <see cref="T:bbv.Common.AsyncModule.ModuleController"/>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension"/> class.
+            </summary>
+            <param name="logger">The logger name.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.AddedExtension(bbv.Common.AsyncModule.Extensions.IModuleExtension,System.Object)">
+            <summary>
+            Called when an extension was added.
+            </summary>
+            <param name="extension">The extension.</param>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.ControllerAlreadyRunning(System.Object)">
+            <summary>
+            Called when the controller Controllers the already running.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.Starting(System.Object)">
+            <summary>
+            Called when the controller is starting.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.Started(System.Object,System.Int32)">
+            <summary>
+            Called when the controller is started.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+            <param name="numberOfThreads">The number of threads.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.StoppingAsync(System.Object)">
+            <summary>
+            Called when controller is stopped asynchronously.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.AlreadyStopped(System.Object)">
+            <summary>
+            Called when controller is stopped but it is already stopped.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.Stopping(System.Object,System.TimeSpan)">
+            <summary>
+            Called when control is stopping.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+            <param name="timeout">The timeout.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.AbortingThread(System.Object,System.String,System.TimeSpan)">
+            <summary>
+            Called when a thread is aborted (did not finish in timeout).
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+            <param name="threadName">Name of the thread.</param>
+            <param name="timeout">The timeout.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.EnqueuedMessage(System.Object,System.Object)">
+            <summary>
+            Called when a message is enqueued.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.UnhandledException(System.Object,System.Object,System.Exception)">
+            <summary>
+            Called when an unhandled exception occurs.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+            <param name="message">The message.</param>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.Stopped(System.Object)">
+            <summary>
+            Called when controller was stopped.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.NumberOfMessagesInQueue(System.Int32,System.Object)">
+            <summary>
+            Called to report number of remaining messages in queue.
+            </summary>
+            <param name="count">The count.</param>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.WorkerThreadExit(System.String)">
+            <summary>
+            Called when a worker thread exits.
+            </summary>
+            <param name="threadName">Name of the thread.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.SkippingNullMessage(System.Object)">
+            <summary>
+            Called when skipping a null message.
+            </summary>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.ConsumingMessage(System.Object,System.Object)">
+            <summary>
+            Called when consuming a message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.RelayingMessage(System.Object,System.Object,System.String)">
+            <summary>
+            Called when a message is relayed to a consumer.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="controlledModule">The controlled module.</param>
+            <param name="methodName">Name of the method.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.ConsumedMessage(System.Object,System.Object)">
+            <summary>
+            Called when a message was consumed.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.SkippedMessage(System.Object,System.Object)">
+            <summary>
+            Called when a message was skipped (due to an extension).
+            </summary>
+            <param name="message">The message.</param>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.SwallowedException(System.Reflection.TargetInvocationException,System.Object,System.Object)">
+            <summary>
+            Called when an exception was swallowed.
+            </summary>
+            <param name="targetInvocationException">The target invocation exception.</param>
+            <param name="message">The message.</param>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+        <member name="M:bbv.Common.AsyncModule.Log4Net.Log4NetAsyncModuleLogExtension.NoHandlerFound(System.Object,System.Object)">
+            <summary>
+            Called when no handler method was found for a message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="controlledModule">The controlled module.</param>
+        </member>
+    </members>
+</doc>

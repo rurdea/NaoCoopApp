@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.TestUtilities.Log4Net</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.TestUtilities.Log4netHelper">
+            <summary>
+            Helper class for unit testing log entries.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.TestUtilities.Log4netHelper.logAppender">
+            <summary>
+            Log4net Appender for testing log.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.Log4netHelper"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.Log4netHelper"/> class.
+            </summary>
+            <param name="loggerName">Name of the logger. Only messages of this logger will be collected.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.#ctor(log4net.Filter.IFilter[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.Log4netHelper"/> class.
+            </summary>
+            <param name="logFilter">The log filter to filter for certain messages only.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.LogContains(System.String)">
+            <summary>
+            Fails if the specified message was not contained in a log entry.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.LogContains(log4net.Core.Level,System.String)">
+            <summary>
+            Fails if the specified message was not contained in a log entry.
+            </summary>
+            <param name="level">The level of the messages to look through.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.LogMatch(System.String)">
+            <summary>
+            Fails if the specified pattern (regex) is not found in a log message.
+            </summary>
+            <param name="pattern">The regex pattern.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.LogMatch(log4net.Core.Level,System.String)">
+            <summary>
+            Fails if the specified pattern (regex) is not found in a log message.
+            </summary>
+            <param name="level">The level.</param>
+            <param name="pattern">The regex pattern.</param>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.DumpAllMessagesToConsole">
+            <summary>
+            Dumps all messages to the console.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4netHelper.DumpMessages(System.Text.StringBuilder)">
+            <summary>
+            Dumps the messages to the string builder.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:bbv.Common.TestUtilities.Log4NetHelperException">
+            <summary>
+            Represents errors found by the <see cref="T:bbv.Common.TestUtilities.Log4netHelper"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.TestUtilities.Log4NetHelperException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.TestUtilities.Log4NetHelperException"/> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NaoCoopDb" Class="NaoCoopDataClassesDataContext" AccessModifier="Internal" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=NaoCoopDb;Integrated Security=True" SettingsObjectName="NaoCoopDataAccess.Properties.Settings" SettingsPropertyName="NaoCoopDbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ExecutionRobots" Member="ExecutionRobots" AccessModifier="Internal">
+    <Type Name="ExecutionRobot" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FK_ExecutionID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FK_RobotID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Execution_ExecutionRobot" Member="Execution" ThisKey="FK_ExecutionID" OtherKey="ID" Type="Execution" IsForeignKey="true" />
+      <Association Name="Robot_ExecutionRobot" Member="Robot" ThisKey="FK_RobotID" OtherKey="ID" Type="Robot" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users" AccessModifier="Internal">
+    <Type Name="User" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IsAdmin" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_Execution" Member="Executions" ThisKey="ID" OtherKey="FK_UserID" Type="Execution" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Executions" Member="Executions" AccessModifier="Internal">
+    <Type Name="Execution" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FK_OperationID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FK_UserID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DateStarted" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateCompleted" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Execution_ExecutionRobot" Member="ExecutionRobots" ThisKey="ID" OtherKey="FK_ExecutionID" Type="ExecutionRobot" />
+      <Association Name="User_Execution" Member="User" ThisKey="FK_UserID" OtherKey="ID" Type="User" IsForeignKey="true" />
+      <Association Name="Operation_Execution" Member="Operation" ThisKey="FK_OperationID" OtherKey="ID" Type="Operation" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OperationRequirements" Member="OperationRequirements" AccessModifier="Internal">
+    <Type Name="OperationRequirement" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FK_OperationID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FK_RequirementID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ValueValidator" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Operation_OperationRequirement" Member="Operation" ThisKey="FK_OperationID" OtherKey="ID" Type="Operation" IsForeignKey="true" />
+      <Association Name="Requirement_OperationRequirement" Member="Requirement" ThisKey="FK_RequirementID" OtherKey="ID" Type="Requirement" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OperationRobots" Member="OperationRobots" AccessModifier="Internal">
+    <Type Name="OperationRobot" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FK_OperationID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FK_RobotVersionID" Storage="_FK_RobotVersion" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="OperationRobot_OperationRobotState" Member="OperationRobotStates" ThisKey="ID" OtherKey="FK_OperationRobotID" Type="OperationRobotState" />
+      <Association Name="Operation_OperationRobot" Member="Operation" ThisKey="FK_OperationID" OtherKey="ID" Type="Operation" IsForeignKey="true" />
+      <Association Name="RobotVersion_OperationRobot" Member="RobotVersion" ThisKey="FK_RobotVersionID" OtherKey="ID" Type="RobotVersion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OperationRobotStates" Member="OperationRobotStates" AccessModifier="Internal">
+    <Type Name="OperationRobotState" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FK_OperationRobotID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FK_StateID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="OperationRobotState_Setting" Member="Settings" Storage="_TaskSettings" ThisKey="ID" OtherKey="FK_OperationRobotStateID" Type="Setting" />
+      <Association Name="OperationRobot_OperationRobotState" Member="OperationRobot" ThisKey="FK_OperationRobotID" OtherKey="ID" Type="OperationRobot" IsForeignKey="true" />
+      <Association Name="State_OperationRobotState" Member="State" ThisKey="FK_StateID" OtherKey="ID" Type="State" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Operations" Member="Operations" AccessModifier="Internal">
+    <Type Name="Operation" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Operation_Execution" Member="Executions" ThisKey="ID" OtherKey="FK_OperationID" Type="Execution" />
+      <Association Name="Operation_OperationRequirement" Member="OperationRequirements" ThisKey="ID" OtherKey="FK_OperationID" Type="OperationRequirement" />
+      <Association Name="Operation_OperationRobot" Member="OperationRobots" ThisKey="ID" OtherKey="FK_OperationID" Type="OperationRobot" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Requirements" Member="Requirements" AccessModifier="Internal">
+    <Type Name="Requirement" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Requirement_OperationRequirement" Member="OperationRequirements" ThisKey="ID" OtherKey="FK_RequirementID" Type="OperationRequirement" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Robots" Member="Robots" AccessModifier="Internal">
+    <Type Name="Robot" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IP" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Port" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Enabled" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FK_RobotVersionID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Robot_ExecutionRobot" Member="ExecutionRobots" ThisKey="ID" OtherKey="FK_RobotID" Type="ExecutionRobot" />
+      <Association Name="RobotVersion_Robot" Member="RobotVersion" ThisKey="FK_RobotVersionID" OtherKey="ID" Type="RobotVersion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RobotVersions" Member="RobotVersions" AccessModifier="Internal">
+    <Type Name="RobotVersion" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="RobotVersion_OperationRobot" Member="OperationRobots" ThisKey="ID" OtherKey="FK_RobotVersionID" Type="OperationRobot" />
+      <Association Name="RobotVersion_Robot" Member="Robots" ThisKey="ID" OtherKey="FK_RobotVersionID" Type="Robot" />
+    </Type>
+  </Table>
+  <Table Name="dbo.States" Member="States" AccessModifier="Internal">
+    <Type Name="State" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="State_OperationRobotState" Member="OperationRobotStates" ThisKey="ID" OtherKey="FK_StateID" Type="OperationRobotState" />
+      <Association Name="State_StateTask" Member="StateTasks" ThisKey="ID" OtherKey="FK_StateID" Type="StateTask" />
+    </Type>
+  </Table>
+  <Table Name="dbo.StateTasks" Member="StateTasks" AccessModifier="Internal">
+    <Type Name="StateTask" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FK_StateID" Storage="_FK_State" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="FK_TaskID" Storage="_FK_Task" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="StateTask_Setting" Member="Settings" Storage="_TaskSettings" ThisKey="ID" OtherKey="FK_StateTaskID" Type="Setting" />
+      <Association Name="State_StateTask" Member="State" ThisKey="FK_StateID" OtherKey="ID" Type="State" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Task_StateTask" Member="Task" ThisKey="FK_TaskID" OtherKey="ID" Type="Task" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Tasks" Member="Tasks" AccessModifier="Internal">
+    <Type Name="Task" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Task_StateTask" Member="StateTasks" ThisKey="ID" OtherKey="FK_TaskID" Type="StateTask" />
+      <Association Name="Task_Setting" Member="Settings" Storage="_TaskSettings" ThisKey="ID" OtherKey="FK_TaskID" Type="Setting" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaskSettings" Member="Settings" AccessModifier="Internal">
+    <Type Name="Setting" AccessModifier="Internal">
+      <Column Name="ID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FK_TaskID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="FK_StateTaskID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="FK_OperationRobotStateID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="OperationRobotState_Setting" Member="OperationRobotState" ThisKey="FK_OperationRobotStateID" OtherKey="ID" Type="OperationRobotState" IsForeignKey="true" />
+      <Association Name="StateTask_Setting" Member="StateTask" ThisKey="FK_StateTaskID" OtherKey="ID" Type="StateTask" IsForeignKey="true" />
+      <Association Name="Task_Setting" Member="Task" ThisKey="FK_TaskID" OtherKey="ID" Type="Task" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+</Database>

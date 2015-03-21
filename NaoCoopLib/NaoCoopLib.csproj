@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58E7C1A1-5705-4D16-B16C-6B771BE964B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NaoCoopLib</RootNamespace>
+    <AssemblyName>NaoCoopLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="bbv.Common">
+      <HintPath>..\3rdPartyLibs\bbv\bbv.Common\lib\Net40\bbv.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="bbv.Common.Async">
+      <HintPath>..\3rdPartyLibs\bbv\bbv.Common.Async\lib\Net40\bbv.Common.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="bbv.Common.AsyncModule">
+      <HintPath>..\3rdPartyLibs\bbv\bbv.Common.AsyncModule\lib\Net40\bbv.Common.AsyncModule.dll</HintPath>
+    </Reference>
+    <Reference Include="bbv.Common.StateMachine">
+      <HintPath>..\3rdPartyLibs\bbv.Common.StateMachine\lib\Net40\bbv.Common.StateMachine.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\3rdPartyLibs\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="naoqi-dotnet4">
+      <HintPath>C:\Program Files (x86)\Aldebaran\NAOqi.Net 1.14.1.16\naoqi-dotnet4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enums\GrabLocation.cs" />
+    <Compile Include="Executers\ExecuterBase.cs" />
+    <Compile Include="Executers\RobotSynchronization.cs" />
+    <Compile Include="NaoCoopCommandExecutionEngine.cs" />
+    <Compile Include="NaoCoopRobotExecutionEngine.cs" />
+    <Compile Include="Deprecated\NaoCoopRobot.cs" />
+    <Compile Include="Enums\NAOBodyParts.cs" />
+    <Compile Include="Enums\NAOPositions.cs" />
+    <Compile Include="Enums\NaoState.cs" />
+    <Compile Include="Executers\FindNaoMark.cs" />
+    <Compile Include="Deprecated\FindNaoMarkBackup.cs" />
+    <Compile Include="Executers\ObjectHandlingExecuter.cs" />
+    <Compile Include="Executers\SitDownExecuter.cs" />
+    <Compile Include="Executers\StandUpExecuter.cs" />
+    <Compile Include="Executers\WalkToNaoMark.cs" />
+    <Compile Include="Helpers\ALMathHelper.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Helpers\LandMarkHelper.cs" />
+    <Compile Include="Helpers\MotionHelper.cs" />
+    <Compile Include="Executers\SpeechRecognition.cs" />
+    <Compile Include="Deprecated\NaoCoopRobotBackup.cs" />
+    <Compile Include="Deprecated\NaoStateTransition.cs" />
+    <Compile Include="NaoCoopRobot.cs" />
+    <Compile Include="Types\GrabLocationInfo.cs" />
+    <Compile Include="Types\IOrderedDictionary.cs" />
+    <Compile Include="Types\LandMarkInfo.cs" />
+    <Compile Include="Types\NaoPosition.cs" />
+    <Compile Include="Helpers\NaoConnectionHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\OrderedDictionary.cs" />
+    <Compile Include="Types\Transform.cs" />
+    <Compile Include="Types\WalkToLandMarkInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NaoCoopObjects\NaoCoopObjects.csproj">
+      <Project>{8c498012-c5ae-42e4-91d6-c2b49ecee3a4}</Project>
+      <Name>NaoCoopObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NaoCoopLibClassDiagram.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

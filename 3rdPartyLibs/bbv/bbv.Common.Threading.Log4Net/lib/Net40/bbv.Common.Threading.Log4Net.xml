@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.Threading.Log4Net</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension">
+            <summary>
+            Log extension for <see cref="T:bbv.Common.Threading.UserInterfaceThreadSynchronizer"/> that uses log4net.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension.LogSynchronous(System.Delegate,System.Int32,System.String)">
+            <summary>
+            Logs a synchronous operation.
+            </summary>
+            <param name="action">The action.</param>
+            <param name="threadId">The source thread id.</param>
+            <param name="threadName">Name of the source thread.</param>
+        </member>
+        <member name="M:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension.LogSynchronous``1(System.Delegate,System.Int32,System.String,``0)">
+            <summary>
+            Logs the synchronous operation with result.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="action">The action.</param>
+            <param name="threadId">The source thread id.</param>
+            <param name="threadName">Name of the source thread.</param>
+            <param name="result">The result.</param>
+        </member>
+        <member name="M:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension.LogAsynchronous(System.Delegate,System.Int32,System.String)">
+            <summary>
+            Logs the asynchronous.
+            </summary>
+            <param name="action">The action.</param>
+            <param name="threadId">The source thread id.</param>
+            <param name="threadName">Name of the source thread.</param>
+        </member>
+        <member name="M:bbv.Common.Threading.Log4Net.Log4NetUserInterfaceThreadSynchronizerLogExtension.Log(System.String,System.Int32,System.String,System.Delegate)">
+            <summary>
+            Logs the specified message.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="threadId">The source thread id.</param>
+            <param name="threadName">Name of the source thread.</param>
+            <param name="action">The action.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="NaoCoopApp.Views.RequirementsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewmodels="clr-namespace:NaoCoopApp.ViewModels"  
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" >
+    <UserControl.Resources>
+        <viewmodels:RequirementsViewModel x:Key="RequirementsViewModel"></viewmodels:RequirementsViewModel>
+    </UserControl.Resources>
+    <Grid x:Name="grid" DataContext="{StaticResource RequirementsViewModel}">
+        <StackPanel Orientation="Vertical"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Width="550">
+            <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                <Button Content="Refresh Data"
+                    Style="{StaticResource ButtonStyle1}"
+                    HorizontalAlignment="Left"
+                    Command="{Binding RefreshDataCommand}" />
+
+                <Button Content="Save Data" Name="btnSave"
+                    Style="{StaticResource ButtonStyle1}"
+                    HorizontalAlignment="Left"
+                    Command="{Binding SaveDataCommand}" />
+            </StackPanel>
+            <Label Content="Requirements:" Margin="0,20,0,0"/>
+            <DataGrid ItemsSource="{Binding RecordsCollection}" Name="grdRobots"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      SelectionMode="Single">
+                <DataGrid.RowValidationErrorTemplate>
+                    <ControlTemplate>
+                        <Grid Margin="0,-2,0,-2"
+                              ToolTip="{Binding RelativeSource={RelativeSource
+                              FindAncestor, AncestorType={x:Type DataGridRow}},
+                              Path=(Validation.Errors)[0].ErrorContent}">
+                            <Ellipse StrokeThickness="0" Fill="Red" 
+                                Width="{TemplateBinding FontSize}" 
+                                Height="{TemplateBinding FontSize}" />
+                            <TextBlock Text="!" FontSize="{TemplateBinding FontSize}" 
+                                FontWeight="Bold" Foreground="White" 
+                                HorizontalAlignment="Center"  />
+                        </Grid>
+                    </ControlTemplate>
+                </DataGrid.RowValidationErrorTemplate>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name">
+                        <DataGridTextColumn.Binding>
+                            <Binding  Path="Name" NotifyOnValidationError="True" UpdateSourceTrigger="LostFocus">
+                                <Binding.ValidationRules>
+                                    <DataErrorValidationRule ValidatesOnTargetUpdated="False">
+                                    </DataErrorValidationRule>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridComboBoxColumn Header="Type" 
+                                            SelectedItemBinding="{Binding Type}">
+                        <DataGridComboBoxColumn.ElementStyle>
+                            <Style TargetType="{x:Type ComboBox}">
+                                <Setter Property="ItemsSource" Value="{Binding DataContext.AvailableTypes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=2, AncestorType={x:Type Grid}}}" />
+                                <Setter Property="SelectedValue" Value="{Binding Type, Mode=OneWay}"/>
+                            </Style>
+                        </DataGridComboBoxColumn.ElementStyle>
+                        <DataGridComboBoxColumn.EditingElementStyle>
+                            <Style TargetType="ComboBox">
+                                <Setter Property="ItemsSource" Value="{Binding DataContext.AvailableTypes, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=2, AncestorType={x:Type Grid}}}" />
+                                <Setter Property="SelectedValue" Value="{Binding Type, Mode=OneWay}"/>
+                            </Style>
+                        </DataGridComboBoxColumn.EditingElementStyle>
+                    </DataGridComboBoxColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

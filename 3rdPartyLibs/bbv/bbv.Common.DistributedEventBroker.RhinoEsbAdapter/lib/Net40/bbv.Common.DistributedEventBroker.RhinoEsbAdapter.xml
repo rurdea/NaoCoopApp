@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.DistributedEventBroker.RhinoEsbAdapter</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.Handlers.RhinoEsbEventFiredHandler">
+            <summary>
+            Handler which consumes <see cref="T:bbv.Common.DistributedEventBroker.Messages.IEventFired"/> messages
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.Handlers.RhinoEsbEventFiredHandler.Consume(bbv.Common.DistributedEventBroker.Messages.IEventFired)">
+            <summary>
+            Consumes the specified message.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbEventBrokerBus">
+            <summary>
+            RhinoEsb specific event broker bus implementation
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbEventBrokerBus.#ctor(Rhino.ServiceBus.IServiceBus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbEventBrokerBus"/> class.
+            </summary>
+            <param name="serviceBus">The service bus.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbEventBrokerBus.Publish(bbv.Common.DistributedEventBroker.Messages.IEventFired)">
+            <summary>
+            Publishes the specified event fired message on the bus.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbDistributedEventBrokerExtension">
+            <summary>
+            Distributed event broker extension for rhino esb.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbDistributedEventBrokerExtension.#ctor(System.String,Rhino.ServiceBus.IServiceBus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbDistributedEventBrokerExtension"/> class.
+            </summary>
+            <param name="distributedEventBrokerIdentification">The distributed event broker identification.</param>
+            <param name="serviceBus">The service bus.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbDistributedEventBrokerExtension.#ctor(System.String,Rhino.ServiceBus.IServiceBus,bbv.Common.DistributedEventBroker.IDistributedFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbDistributedEventBrokerExtension"/> class.
+            </summary>
+            <param name="distributedEventBrokerIdentification">The distributed event broker identification.</param>
+            <param name="serviceBus">The service bus.</param>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbDistributedEventBrokerExtension.#ctor(System.String,bbv.Common.DistributedEventBroker.IEventBrokerBus,bbv.Common.DistributedEventBroker.IDistributedFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.RhinoEsbAdapter.RhinoEsbDistributedEventBrokerExtension"/> class.
+            </summary>
+            <param name="distributedEventBrokerIdentification">The distributed event broker identification.</param>
+            <param name="eventBrokerBus">The event broker bus.</param>
+            <param name="factory">The factory.</param>
+        </member>
+    </members>
+</doc>

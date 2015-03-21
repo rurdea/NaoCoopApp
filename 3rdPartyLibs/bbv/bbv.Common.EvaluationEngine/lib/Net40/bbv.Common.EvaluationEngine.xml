@@ -1,0 +1,1535 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.EvaluationEngine</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.EvaluationEngine.AggregatorExtensionMethods">
+            <summary>
+            Extension methods for simpler aggregator syntax definition.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.AggregatorExtensionMethods.AggregateWithExpressionAggregator``4(bbv.Common.EvaluationEngine.Syntax.IAggregatorSyntax{``0,``1,``2,``3},``1,System.Linq.Expressions.Expression{System.Func{``1,``3,``1}})">
+            <summary>
+            Defines that an expression aggregator is used to aggregate expressions.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <param name="syntax">The syntax.</param>
+            <param name="seed">The seed used in the aggregation.</param>
+            <param name="aggregateFunc">The aggregate func.</param>
+            <returns>Expression syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.AggregatorExtensionMethods.AggregateWithSingleExpressionAggregator``3(bbv.Common.EvaluationEngine.Syntax.IAggregatorSyntax{``0,``1,``2,``1})">
+            <summary>
+            Defines that a single expression aggregator is used. Therefore only one single expression may take part in the answer finding.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <param name="syntax">The syntax.</param>
+            <returns>Expression syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.AggregatorExtensionMethods.AggregateWithValidationAggregator``4(bbv.Common.EvaluationEngine.Syntax.IAggregatorSyntax{``0,``1,``3,``1},bbv.Common.EvaluationEngine.Validation.IValidationResultFactory{``1,``2})">
+            <summary>
+            Defines that a validation aggregator is used.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TValidationResult">The type of the validation result.</typeparam>
+            <typeparam name="TValidationViolation">The type of the validation violation.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <param name="syntax">The syntax.</param>
+            <param name="validationResultFactory">The validation result factory.</param>
+            <returns>Expression syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.AggregatorExtensionMethods.AggregateWithValidationAggregator``2(bbv.Common.EvaluationEngine.Syntax.IAggregatorSyntax{``0,bbv.Common.EvaluationEngine.Validation.IValidationResult,``1,bbv.Common.EvaluationEngine.Validation.IValidationResult})">
+            <summary>
+            Defines that a validation aggregator is used.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <param name="syntax">The syntax.</param>
+            <returns>Expression syntax</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.EvaluationEngine">
+            <summary>
+            The evaluation engine is the central component for answering questions.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IEvaluationEngine">
+            <summary>
+            The evaluation engine allows a decoupled evaluation of a request (= question) by executing a defined strategy.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.ISolutionDefinitionHost">
+            <summary>
+            Used to set the solution definition (how a question can be answered).
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.ISolutionDefinitionHost.Solve``2">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is the same as the type of the answer.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.ISolutionDefinitionHost.Solve``3">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is the same as the type of the answer.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.ISolutionDefinitionHost.SolveWithResultMapping``3">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is different from the type of the answer of the question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.ISolutionDefinitionHost.SolveWithResultMapping``4">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is different from the type of the answer of the question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IEngine">
+            <summary>
+            The engine answering questions.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IEngine.Answer``2(bbv.Common.EvaluationEngine.IQuestion{``0,``1},``1)">
+            <summary>
+            Answers the specified question.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <param name="question">The question.</param>
+            <param name="parameter">The parameter.</param>
+            <returns>The answer</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IEngine.Answer``1(bbv.Common.EvaluationEngine.IQuestion{``0})">
+            <summary>
+            Answers the specified question.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <param name="question">The question.</param>
+            <returns>The answer</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IEngine.SetLogExtension(bbv.Common.EvaluationEngine.ILogExtension)">
+            <summary>
+            Sets the log extension.
+            </summary>
+            <param name="logExtension">The log extension.</param>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IDefinitionHostProvider">
+            <summary>
+            Provides a <see cref="T:bbv.Common.EvaluationEngine.Internals.IDefinitionHost"/>.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.IDefinitionHostProvider.DefinitionHost">
+            <summary>
+            Gets the definition host.
+            </summary>
+            <value>The definition host.</value>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.IEvaluationEngine.Load(bbv.Common.EvaluationEngine.IEvaluationEngineModule)">
+            <summary>
+            Loads the specified evaluation engine module.
+            </summary>
+            <param name="evaluationEngineModule">The evaluation engine module.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.EvaluationEngine"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.#ctor(bbv.Common.EvaluationEngine.Internals.IDefinitionHostProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.EvaluationEngine"/> class.
+            </summary>
+            <param name="parentEngine">The parent engine. Pass the parent engine to build up hierarchical engines.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.Solve``3">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is the same as the type of the answer.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.Solve``2">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when your do not have a parameter passed along with the question and the result returned by expressions is the same as the type of the answer.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.SolveWithResultMapping``4">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is different from the type of the answer of the question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.SolveWithResultMapping``3">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when you do not have a parameter passed along with the question and the result returned by expressions is different from the type of the answer of the question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.Answer``1(bbv.Common.EvaluationEngine.IQuestion{``0})">
+            <summary>
+            Answers the specified question.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <param name="question">The question.</param>
+            <returns>The answer</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.Answer``2(bbv.Common.EvaluationEngine.IQuestion{``0,``1},``1)">
+            <summary>
+            Answers the specified question.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <param name="question">The question.</param>
+            <param name="parameter">The parameter.</param>
+            <returns>The answer</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.Load(bbv.Common.EvaluationEngine.IEvaluationEngineModule)">
+            <summary>
+            Loads the specified evaluation engine module.
+            </summary>
+            <param name="evaluationEngineModule">The evaluation engine module.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngine.SetLogExtension(bbv.Common.EvaluationEngine.ILogExtension)">
+            <summary>
+            Sets the log extension.
+            </summary>
+            <param name="logExtension">The log extension.</param>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.EvaluationEngine.DefinitionHost">
+            <summary>
+            Gets the definition host.
+            </summary>
+            <value>The definition host.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.EvaluationEngineModule">
+            <summary>
+            Base class for <see cref="T:bbv.Common.EvaluationEngine.IEvaluationEngineModule"/>s.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IEvaluationEngineModule">
+            <summary>
+            An evaluation engine module is used to encapsulate parts of the solution definition in an own class.
+            Use these modules for example for plug-ins or simply to structure the solution definition.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.IEvaluationEngineModule.Load(bbv.Common.EvaluationEngine.Internals.ISolutionDefinitionHost)">
+            <summary>
+            Loads this instance.
+            </summary>
+            <param name="solutionDefinitionHost">The solution definition host on which the solution definition is to be added.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngineModule.Load(bbv.Common.EvaluationEngine.Internals.ISolutionDefinitionHost)">
+            <summary>
+            Loads this instance.
+            </summary>
+            <param name="solutionDefinitionHost">The solution definition host on which the solution definition is to be added.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngineModule.Load">
+            <summary>
+            Loads this instance.
+            Derrived classes add their solution definition.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngineModule.Solve``2">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is the same as the type of the answer.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngineModule.Solve``3">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is the same as the type of the answer.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngineModule.SolveWithResultMapping``3">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is different from the type of the answer of the question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationEngineModule.SolveWithResultMapping``4">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is different from the type of the answer of the question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.EvaluationExpression`2">
+            <summary>
+            Base class for expressions. Only use this class if you do not want to provide a description of your own in <see cref="M:bbv.Common.EvaluationEngine.EvaluationExpression`2.Describe"/>.
+            </summary>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IExpression`2">
+            <summary>
+            An expression provides a result.
+            </summary>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IDescriptionProvider">
+            <summary>
+            Provides a description.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDescriptionProvider.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>The description of this instance.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.IExpression`2.Evaluate(`1)">
+            <summary>
+            Evaluates this instance and provides an result.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>The result of the evaluation.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationExpression`2.Evaluate(`1)">
+            <summary>
+            Evaluates this instance.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>The result of the evaluation.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationExpression`2.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>Same as <see cref="M:System.Object.ToString"/></returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.EvaluationExpression`1">
+            <summary>
+            Base class for expressions.
+            </summary>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationExpression`1.Evaluate(System.Reflection.Missing)">
+            <summary>
+            Evaluates this instance.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>The result of the evaluation.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.EvaluationExpression`1.Evaluate">
+            <summary>
+            Evaluates this instance.
+            </summary>
+            <returns>The expression result.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Extensions.EmptyLogExtension">
+            <summary>
+            Log extension that does notlog anything (empty implementation).
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.ILogExtension">
+            <summary>
+            Provides logging.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.ILogExtension.FoundAnswer(bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Logs the found answer together with information how it was found.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Extensions.EmptyLogExtension.FoundAnswer(bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Logs the found answer together with information how it was found.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IAggregator`3">
+            <summary>
+            An aggregator combines the results of individual expressions to a single answer.
+            </summary>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.IAggregator`3.Aggregate(System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{`0,`2}},`2,bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Aggregates the specified expressions to a single answer.
+            </summary>
+            <param name="expressions">The expressions.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="context">The context.</param>
+            <returns>The answer.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IExpression`1">
+            <summary>
+            An expression provides a result.
+            </summary>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.Context">
+            <summary>
+            Contains all information needed for logging.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Context.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.Context"/> class.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Context.Question">
+            <summary>
+            Gets or sets the question.
+            </summary>
+            <value>The question.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Context.Answer">
+            <summary>
+            Gets or sets the answer.
+            </summary>
+            <value>The answer.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Context.Strategy">
+            <summary>
+            Gets or sets the strategy.
+            </summary>
+            <value>The strategy.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Context.Aggregator">
+            <summary>
+            Gets or sets the aggregator.
+            </summary>
+            <value>The aggregator.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Context.Parameter">
+            <summary>
+            Gets or sets the parameter passed along with the question.
+            </summary>
+            <value>The parameter.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Context.Expressions">
+            <summary>
+            Gets or sets the expressions.
+            </summary>
+            <value>The expressions.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.Context.ExpressionInfo">
+            <summary>
+            Combines an expression with the result that it returned.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Context.ExpressionInfo.Expression">
+            <summary>
+            Gets or sets the expression.
+            </summary>
+            <value>The expression.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Context.ExpressionInfo.ExpressionResult">
+            <summary>
+            Gets or sets the expression result.
+            </summary>
+            <value>The expression result.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.ExpressionProviderSet`4">
+            <summary>
+            Provides a list of expression providers for a condition.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IExpressionProviderSet`4">
+            <summary>
+            Provides a list of expression providers for a condition.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.IExpressionProviderSet`4.Condition">
+            <summary>
+            Gets or sets the condition function.
+            </summary>
+            <value>The condition function.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.IExpressionProviderSet`4.ExpressionProviders">
+            <summary>
+            Gets the expression providers.
+            </summary>
+            <value>The expression providers.</value>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.ExpressionProviderSet`4.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.ExpressionProviderSet`4"/> class.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.ExpressionProviderSet`4.Condition">
+            <summary>
+            Gets or sets the condition.
+            </summary>
+            <value>The condition.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.ExpressionProviderSet`4.ExpressionProviders">
+            <summary>
+            Gets the expression providers.
+            </summary>
+            <value>The expression providers.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IDefinitionFactory">
+            <summary>
+            Factory for definitions.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinitionFactory.CreateDefinition``4">
+            <summary>
+            Creates a definition.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>A definition.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IDefinition`4">
+            <summary>
+            Provides information about how a question can be solved.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IDefinition">
+            <summary>
+            A definition defines the strategy used to answer a question.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinition.GetStrategy``2">
+            <summary>
+            Gets the strategy used to answer the question of type <see cref="P:bbv.Common.EvaluationEngine.Internals.IDefinition.QuestionType"/>.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <returns>The strategy.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinition.Clone">
+            <summary>
+            Clones this instance.
+            </summary>
+            <returns>A clone of this instance.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinition.Merge(bbv.Common.EvaluationEngine.Internals.IDefinition)">
+            <summary>
+            Merges the specified definition into this instance.
+            If specified, the strategy/aggregator of this instance is overridden.
+            Expression provider sets are added.
+            </summary>
+            <param name="definition">The definition.</param>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.IDefinition.QuestionType">
+            <summary>
+            Gets the type of the question.
+            </summary>
+            <value>The type of the question.</value>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinition`4.GetExpressionProviders(bbv.Common.EvaluationEngine.IQuestion{`1,`2})">
+            <summary>
+            Gets the expression providers.
+            </summary>
+            <param name="question">The question.</param>
+            <returns>A list of expression providers.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinition`4.AddExpressionProviderSet(bbv.Common.EvaluationEngine.Internals.IExpressionProviderSet{`0,`1,`2,`3})">
+            <summary>
+            Adds the expression provider set to this instance.
+            </summary>
+            <param name="set">The set of expression providers.</param>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.IDefinition`4.Strategy">
+            <summary>
+            Gets or sets the strategy.
+            </summary>
+            <value>The strategy.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.IDefinition`4.Aggregator">
+            <summary>
+            Gets or sets the aggregator.
+            </summary>
+            <value>The aggregator.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IExpressionProviderFactory">
+            <summary>
+            Factory creating expression providers.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IExpressionProviderFactory.CreateSingleExpressionProvider``4(System.Func{``0,bbv.Common.EvaluationEngine.IExpression{``3,``2}})">
+            <summary>
+            Creates a single expression provider.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Expression provider</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IExpressionProviderFactory.CreateMultipleExpressionsProvider``4(System.Func{``0,System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{``3,``2}}})">
+            <summary>
+            Creates a multiple expressions provider.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Expression provider</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IExpressionProvider`4">
+            <summary>
+            Provides expressions for a question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IExpressionProvider`4.GetExpressions(`0)">
+            <summary>
+            Gets the expressions.
+            </summary>
+            <param name="question">The question.</param>
+            <returns>Expressions for the question.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.InlineExpression`3">
+            <summary>
+            Encapsulates an inline expression (a lamba expression) as an <see cref="T:bbv.Common.EvaluationEngine.IExpression`2"/>.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.InlineExpression`3.#ctor(`0,System.Linq.Expressions.Expression{System.Func{`0,`1,`2}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.InlineExpression`3"/> class.
+            </summary>
+            <param name="question">The question.</param>
+            <param name="inlineExpression">The inline expression.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.InlineExpression`3.Evaluate(`1)">
+            <summary>
+            Evaluates the specified parameter.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>Expression result</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.InlineExpression`3.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>The description of this instance.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.InlineExpressionProvider`4">
+            <summary>
+            Expression provider for inline expressions.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.InlineExpressionProvider`4.#ctor(System.Linq.Expressions.Expression{System.Func{`0,`2,`3}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.InlineExpressionProvider`4"/> class.
+            </summary>
+            <param name="expression">The expression.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.InlineExpressionProvider`4.GetExpressions(`0)">
+            <summary>
+            Gets the expressions.
+            </summary>
+            <param name="question">The question.</param>
+            <returns>List of expressions.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.MultipleExpressionsProvider`4">
+            <summary>
+            Expression provider that provides multiple expressions at once.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.MultipleExpressionsProvider`4.#ctor(System.Func{`0,System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{`3,`2}}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.MultipleExpressionsProvider`4"/> class.
+            </summary>
+            <param name="expressionFunc">The expression func.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.MultipleExpressionsProvider`4.GetExpressions(`0)">
+            <summary>
+            Gets the expressions.
+            </summary>
+            <param name="question">The question.</param>
+            <returns>Expressions for answering the question.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.SingleExpressionProvider`4">
+            <summary>
+            Expression provider that provides only a single expression.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.SingleExpressionProvider`4.#ctor(System.Func{`0,bbv.Common.EvaluationEngine.IExpression{`3,`2}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.SingleExpressionProvider`4"/> class.
+            </summary>
+            <param name="expressionFunc">The expression func.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.SingleExpressionProvider`4.GetExpressions(`0)">
+            <summary>
+            Gets the expressions.
+            </summary>
+            <param name="question">The question.</param>
+            <returns>Expressions for the question.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.NoParameterExpression`1">
+            <summary>
+            Base class for expressions that do not have a parameter.
+            </summary>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.NoParameterExpression`1.Evaluate(System.Reflection.Missing)">
+            <summary>
+            Evaluates the specified parameter.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <returns>The expression result.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.NoParameterExpression`1.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>The description of this instance.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.NoParameterExpression`1.Evaluate">
+            <summary>
+            Evaluates this instance.
+            </summary>
+            <returns>The expression result.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Question`2">
+            <summary>
+            Base class for questions. Only use this class (instead of implementing <see cref="T:bbv.Common.EvaluationEngine.IQuestion`2"/>) if you do not want to provide a description of your own in <see cref="M:bbv.Common.EvaluationEngine.Question`2.Describe"/>.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IQuestion`2">
+            <summary>
+            A question that can be asked.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Question`2.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>Description of this instance.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Strategies.AggregatorStrategy`4">
+            <summary>
+            Strategy using an aggregator to combine the results of expressions into a single result.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IStrategy`2">
+            <summary>
+            The strategy defines how a question can be answered.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.IStrategy`2.Execute(bbv.Common.EvaluationEngine.IQuestion{`0,`1},`1,bbv.Common.EvaluationEngine.Internals.IDefinition,bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Executes the strategy and answers the specified question.
+            </summary>
+            <param name="question">The question.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="definition">The definition.</param>
+            <param name="context">The context.</param>
+            <returns>The answer.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Strategies.AggregatorStrategy`4.Execute(bbv.Common.EvaluationEngine.IQuestion{`1,`2},`2,bbv.Common.EvaluationEngine.Internals.IDefinition,bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Executes the aggregator with all expressions found in the definition.
+            </summary>
+            <param name="question">The question.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="definition">The definition.</param>
+            <param name="context">The context.</param>
+            <returns>The answer.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Strategies.AggregatorStrategy`4.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>Description of this instance.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Strategies.AggregatorStrategy`3">
+            <summary>
+            Strategy using an aggregator to combine the results of expressions into a single result.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.DefaultFactory">
+            <summary>
+            Default implementation of the factory used to create internally used instances.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IDefinitionSyntaxFactory">
+            <summary>
+            Factory that creates the definition syntax.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinitionSyntaxFactory.CreateDefinitionSyntax``4(bbv.Common.EvaluationEngine.Internals.IDefinition{``0,``1,``2,``3})">
+            <summary>
+            Creates a definition syntax.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <param name="definition">The definition.</param>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefaultFactory.CreateDefinitionSyntax``4(bbv.Common.EvaluationEngine.Internals.IDefinition{``0,``1,``2,``3})">
+            <summary>
+            Creates a definition syntax.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <param name="definition">The definition.</param>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefaultFactory.CreateSingleExpressionProvider``4(System.Func{``0,bbv.Common.EvaluationEngine.IExpression{``3,``2}})">
+            <summary>
+            Creates a single expression provider.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Expression provider</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefaultFactory.CreateMultipleExpressionsProvider``4(System.Func{``0,System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{``3,``2}}})">
+            <summary>
+            Creates a multiple expressions provider.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type fo the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Expression provider</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefaultFactory.CreateDefinition``4">
+            <summary>
+            Creates a definition.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>A definition.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.DefinitionHost">
+            <summary>
+            Host for definitions.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.IDefinitionHost">
+            <summary>
+            Host for definitions.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinitionHost.AddDefinition(bbv.Common.EvaluationEngine.Internals.IDefinition)">
+            <summary>
+            Adds a definition.
+            </summary>
+            <param name="definition">The definition.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinitionHost.FindDefinition``1(System.Type)">
+            <summary>
+            Finds the definition for the specified question type.
+            Only definitions of this instance are considered.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <param name="questionType">Type of the question.</param>
+            <returns>The matching definition or null.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.IDefinitionHost.FindInHierarchyAndCloneDefinition``2(bbv.Common.EvaluationEngine.IQuestion{``0,``1})">
+            <summary>
+            Finds the definition for the specified question. All matching definitions in the upward-hierarchy are considered, too.
+            Returns a merged and cloned definition.
+            Cannot be used to modify definitions because a clone is returned.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <param name="question">The question.</param>
+            <returns>A cloned definition containing the merged data of the whole upward-hierarchy of definition hosts.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefinitionHost.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.DefinitionHost"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefinitionHost.#ctor(bbv.Common.EvaluationEngine.Internals.IDefinitionHost)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.DefinitionHost"/> class.
+            </summary>
+            <param name="parent">The parent definition host. Used for hierarchical evaluation engines.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefinitionHost.AddDefinition(bbv.Common.EvaluationEngine.Internals.IDefinition)">
+            <summary>
+            Adds a definition.
+            </summary>
+            <param name="definition">The definition.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefinitionHost.FindInHierarchyAndCloneDefinition``2(bbv.Common.EvaluationEngine.IQuestion{``0,``1})">
+            <summary>
+            Finds the definition for the specified question. All matching definitions in the upward-hierarchy are considered, too.
+            Returns a merged and cloned definition.
+            Cannot be used to modify definitions because a clone is returned.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <param name="question">The question.</param>
+            <returns>
+            A cloned definition containing the merged data of the whole upward-hierarchy of definition hosts.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.DefinitionHost.FindDefinition``1(System.Type)">
+            <summary>
+            Finds the definition for the specified question type.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <param name="questionType">Type of the question.</param>
+            <returns>The matching definition or null.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.Definition`4">
+            <summary>
+            Holds the strategy, aggregator and expressions to answer a question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Definition`4.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.Definition`4"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Definition`4.GetExpressionProviders(bbv.Common.EvaluationEngine.IQuestion{`1,`2})">
+            <summary>
+            Gets the expression providers.
+            </summary>
+            <param name="question">The question.</param>
+            <returns>A list of expression providers.</returns>
+            <value>The expressions.</value>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Definition`4.AddExpressionProviderSet(bbv.Common.EvaluationEngine.Internals.IExpressionProviderSet{`0,`1,`2,`3})">
+            <summary>
+            Adds the expression provider set.
+            </summary>
+            <param name="set">The set of expression providers.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Definition`4.GetStrategy``2">
+            <summary>
+            Gets the strategy.
+            </summary>
+            <typeparam name="T">The type of the answer. Has to match the type provided by this class."/&gt;</typeparam>
+            <typeparam name="TP">The type of the parameter.</typeparam>
+            <returns>The strategy.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Definition`4.Clone">
+            <summary>
+            Clones this instance.
+            </summary>
+            <returns>A clone of this instance.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Definition`4.Merge(bbv.Common.EvaluationEngine.Internals.IDefinition)">
+            <summary>
+            Merges the specified definition into this instance.
+            If specified, the strategy/aggregator of this instance is overridden.
+            Expression provider sets are added.
+            </summary>
+            <param name="definition">The definition.</param>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Definition`4.QuestionType">
+            <summary>
+            Gets the type of the question.
+            </summary>
+            <value>The type of the question.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Definition`4.Strategy">
+            <summary>
+            Gets or sets the strategy.
+            </summary>
+            <value>The strategy.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Definition`4.Aggregator">
+            <summary>
+            Gets or sets the aggregator.
+            </summary>
+            <value>The aggregator.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Internals.Engine">
+            <summary>
+            The engine is used to answer questions and defining solution strategies for them.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Engine.#ctor(bbv.Common.EvaluationEngine.Internals.IDefinitionHost,bbv.Common.EvaluationEngine.Internals.IDefinitionSyntaxFactory,bbv.Common.EvaluationEngine.Internals.IDefinitionFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Internals.Engine"/> class.
+            </summary>
+            <param name="definitionHost">The definition host.</param>
+            <param name="definitionSyntaxFactory">The definition syntax factory.</param>
+            <param name="definitionFactory">The definition factory.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Engine.Solve``3">
+            <summary>
+            Adds a solution definition for the specified question type.
+            Use this overload in cases when the result returned by expressions is the same as the type of the answer.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Engine.Solve``4">
+            <summary>
+            Adds a solution definition for the specified question type.
+            use this overload in cases when the result returned by expressions is different from the type of the answer of the question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question for which to add a solution definition.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <returns>Definition syntax</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Engine.Answer``1(bbv.Common.EvaluationEngine.IQuestion{``0})">
+            <summary>
+            Answers the specified question.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <param name="question">The question.</param>
+            <returns>The answer</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Engine.Answer``2(bbv.Common.EvaluationEngine.IQuestion{``0,``1},``1)">
+            <summary>
+            Answers the specified question by searching for matching modules and executing the strategy provided by the question.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <param name="question">The question.</param>
+            <param name="parameter">The parameter.</param>
+            <returns>The answer</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Internals.Engine.SetLogExtension(bbv.Common.EvaluationEngine.ILogExtension)">
+            <summary>
+            Sets the log extension.
+            </summary>
+            <param name="logExtension">The log extension.</param>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Internals.Engine.DefinitionHost">
+            <summary>
+            Gets the definition host.
+            </summary>
+            <value>The definition host.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Aggregators.ExpressionAggregator`2">
+            <summary>
+            Aggregates the result of all passed expressions into a single result using an aggregate lamda expression.
+            Use this class if the result type returned by the expressions is the same as the type of the overall result.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Aggregators.ExpressionAggregator`3">
+            <summary>
+            Aggregates the result of all passed expressions into a single result using an aggregate lamda expression.
+            Use this class if the result type returned by the expressions is different from the type of the overall result.
+            </summary>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Aggregators.ExpressionAggregator`3.#ctor(`1,System.Linq.Expressions.Expression{System.Func{`1,`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Aggregators.ExpressionAggregator`3"/> class.
+            </summary>
+            <param name="seed">The seed used in the aggregation.</param>
+            <param name="aggregateFunc">The aggregate function.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Aggregators.ExpressionAggregator`3.Aggregate(System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{`0,`2}},`2,bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Aggregates the specified expressions.
+            </summary>
+            <param name="expressions">The expressions.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="context">The context.</param>
+            <returns>Aggregated result</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Aggregators.ExpressionAggregator`3.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>Description of this instance.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Aggregators.ExpressionAggregator`2.#ctor(`0,System.Linq.Expressions.Expression{System.Func{`0,`0,`0}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Aggregators.ExpressionAggregator`2"/> class.
+            </summary>
+            <param name="seed">The seed used in the aggregation.</param>
+            <param name="aggregateFunc">The aggregate function.</param>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IQuestion`1">
+            <summary>
+            A question that can be asked.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.IStrategy`1">
+            <summary>
+            The strategy defines how a question can be answered.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Question`1">
+            <summary>
+            Base class for questions that do not have a parameter passed along. Only use this class (instead of implementing <see cref="T:bbv.Common.EvaluationEngine.IQuestion`2"/>) if you do not want to provide a description of your own.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Aggregators.SingleExpressionAggregator`2">
+            <summary>
+            Aggregator that checks that exactly one expression is defined for the question.
+            </summary>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Aggregators.SingleExpressionAggregator`2.Aggregate(System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{`0,`1}},`1,bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Aggregates the specified expressions.
+            </summary>
+            <param name="expressions">The expressions.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="context">The context.</param>
+            <returns>The answer.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Aggregators.SingleExpressionAggregator`2.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>Description of this instance.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.StrategyExtensionMethods">
+            <summary>
+            Extension methods for simpler strategy syntax definition.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.StrategyExtensionMethods.WithAggregatorStrategy``4(bbv.Common.EvaluationEngine.Syntax.IDefinitionSyntax{``0,``1,``2,``3})">
+            <summary>
+            Defines that the aggregator strategy is used.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+            <param name="syntax">The syntax.</param>
+            <returns>Aggregator syntax</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4">
+            <summary>
+            Builds definitions.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Syntax.IDefinitionSyntax`4">
+            <summary>
+            The syntax to define how a question can be answered.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Syntax.IStrategySyntax`4">
+            <summary>
+            Syntax used to define a strategy.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.IStrategySyntax`4.With(bbv.Common.EvaluationEngine.IStrategy{`1,`2})">
+            <summary>
+            Defines the strategy that is used to answer the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="strategy">The strategy.</param>
+            <returns>Aggregator syntax.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Syntax.IAggregatorSyntax`4">
+            <summary>
+            Syntax used to define an aggregator.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.IAggregatorSyntax`4.AggregateWith(bbv.Common.EvaluationEngine.IAggregator{`3,`1,`2})">
+            <summary>
+            Defines the aggregator that is used to aggregate expressions defined for the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="aggregator">The aggregator.</param>
+            <returns>Expression syntax.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Syntax.IExpressionSyntax`4">
+            <summary>
+            Syntax to define expressions used to answer a question.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.IExpressionSyntax`4.ByEvaluating(System.Func{`0,bbv.Common.EvaluationEngine.IExpression{`3,`2}})">
+            <summary>
+            Defines an expression that has to be evaluated to answer the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Expression syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.IExpressionSyntax`4.ByEvaluating(System.Func{`0,System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{`3,`2}}})">
+            <summary>
+            Defines expressions that have to be evaluated to answer the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Constraint syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.IExpressionSyntax`4.ByEvaluating(System.Linq.Expressions.Expression{System.Func{`0,`2,`3}})">
+            <summary>
+            Defines an inline expression that has to be evaluated to answer the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Constraint syntax</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Syntax.IConstraintSyntax`4">
+            <summary>
+            Syntax used to define a contraint.
+            </summary>
+            <typeparam name="TQuestion">The type of the question.</typeparam>
+            <typeparam name="TAnswer">The type of the answer.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+            <typeparam name="TExpressionResult">The type of the expression result.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.IConstraintSyntax`4.When(System.Func{`0,System.Boolean})">
+            <summary>
+            Defines a condition.
+            </summary>
+            <param name="condition">The condition.</param>
+            <returns>Expression syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4.#ctor(bbv.Common.EvaluationEngine.Internals.IDefinition{`0,`1,`2,`3},bbv.Common.EvaluationEngine.Internals.IExpressionProviderFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4"/> class.
+            </summary>
+            <param name="definition">The definition to build.</param>
+            <param name="factory">The factory for creating expression providers.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4.With(bbv.Common.EvaluationEngine.IStrategy{`1,`2})">
+            <summary>
+            Defines the strategy that is used to answer the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="strategy">The strategy.</param>
+            <returns>Aggregator syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4.AggregateWith(bbv.Common.EvaluationEngine.IAggregator{`3,`1,`2})">
+            <summary>
+            Defines the aggregator that is used to aggregate expressions defined for the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="aggregator">The aggregator.</param>
+            <returns>Expression syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4.When(System.Func{`0,System.Boolean})">
+            <summary>
+            Whens the specified condition.
+            </summary>
+            <param name="condition">The condition.</param>
+            <returns>Expression syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4.ByEvaluating(System.Func{`0,bbv.Common.EvaluationEngine.IExpression{`3,`2}})">
+            <summary>
+            Defines an expression that has to be evaluated to answer the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Expression syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4.ByEvaluating(System.Func{`0,System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{`3,`2}}})">
+            <summary>
+            Defines expressions that have to be evaluated to answer the question <typeparamref name="TQuestion"/>.
+            </summary>
+            <param name="expressionProvider">The expression provider.</param>
+            <returns>Constraint syntax.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4.ByEvaluating(System.Linq.Expressions.Expression{System.Func{`0,`2,`3}})">
+            <summary>
+            Bies the evaluating.
+            </summary>
+            <param name="expression">The expression.</param>
+            <returns>Constraint syntax</returns>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Syntax.DefinitionBuilder`4.Definition">
+            <summary>
+            Gets the definition that is built.
+            </summary>
+            <value>The definition.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.Aggregators.ValidationAggregator`1">
+            <summary>
+            Aggregator for <see cref="T:bbv.Common.EvaluationEngine.Validation.IValidationResult"/>s.
+            </summary>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.Aggregators.ValidationAggregator`3">
+            <summary>
+            Aggregator for validation results.
+            </summary>
+            <typeparam name="TValidationResult">The type of the validation result.</typeparam>
+            <typeparam name="TValidationViolation">The type of the validation violation.</typeparam>
+            <typeparam name="TParameter">The type of the parameter.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.Aggregators.ValidationAggregator`3.#ctor(bbv.Common.EvaluationEngine.Validation.IValidationResultFactory{`0,`1})">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Validation.Aggregators.ValidationAggregator`3"/> class.
+            </summary>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.Aggregators.ValidationAggregator`3.Aggregate(System.Collections.Generic.IEnumerable{bbv.Common.EvaluationEngine.IExpression{`0,`2}},`2,bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Aggregates the specified expressions.
+            </summary>
+            <param name="expressions">The expressions.</param>
+            <param name="parameter">The parameter.</param>
+            <param name="context">The context.</param>
+            <returns>Aggregated validation result.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.Aggregators.ValidationAggregator`3.Describe">
+            <summary>
+            Describes this instance.
+            </summary>
+            <returns>Description of this instance.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.Aggregators.ValidationAggregator`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Validation.Aggregators.ValidationAggregator`1"/> class.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.IValidationResult">
+            <summary>
+            The result of a validation.
+            Use this interface if the standerd <see cref="T:bbv.Common.EvaluationEngine.Validation.IValidationViolation"/> is sufficient; otherwise use <see cref="T:bbv.Common.EvaluationEngine.Validation.IValidationResult`1"/>.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.IValidationResult`1">
+            <summary>
+            The result of a validation.
+            Use this interface to extend the type of the violations. If you do not need to extend the violations then use <see cref="T:bbv.Common.EvaluationEngine.Validation.IValidationResult"/>.
+            </summary>
+            <typeparam name="TValidationViolation">The type of the validation violation.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.IValidationResult`1.AddViolation(`0)">
+            <summary>
+            Adds a violation.
+            </summary>
+            <param name="violation">The violation.</param>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Validation.IValidationResult`1.Valid">
+            <summary>
+            Gets or sets a value indicating whether the validation ended valid.
+            </summary>
+            <value><c>true</c> if valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Validation.IValidationResult`1.Violations">
+            <summary>
+            Gets the violations of the validation.
+            </summary>
+            <value>The violations.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.IValidationResultFactory`2">
+            <summary>
+            Factory creating validation results and violations.
+            </summary>
+            <typeparam name="TValidationResult">The type of the validation result.</typeparam>
+            <typeparam name="TValidationViolation">The type of the validation violation.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.IValidationResultFactory`2.CreateValidationResult">
+            <summary>
+            Creates a validation result.
+            </summary>
+            <returns>Validation result.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.IValidationResultFactory`2.CreateValidationViolation">
+            <summary>
+            Creates a validation violation.
+            </summary>
+            <returns>Validation violation.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.IValidationViolation">
+            <summary>
+            Describes a violation of a validation.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Validation.IValidationViolation.Reason">
+            <summary>
+            Gets or sets the reason for the violation.
+            </summary>
+            <value>The reason.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.ValidationFactory">
+            <summary>
+            Factory for basic validation results and violations.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.ValidationFactory.CreateValidationResult">
+            <summary>
+            Creates a validation result.
+            </summary>
+            <returns>Validation result.</returns>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.ValidationFactory.CreateValidationViolation">
+            <summary>
+            Creates a validation violation.
+            </summary>
+            <returns>Validation violation.</returns>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.ValidationResult">
+            <summary>
+            Simple validation result.
+            If you want to extend the violation then use <see cref="T:bbv.Common.EvaluationEngine.Validation.ValidationResult`1"/>.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.ValidationResult`1">
+            <summary>
+            Extensible validation result.
+            </summary>
+            <typeparam name="TValidationViolation">The type of the validation violation.</typeparam>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.ValidationResult`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Validation.ValidationResult`1"/> class.
+            <see cref="P:bbv.Common.EvaluationEngine.Validation.ValidationResult`1.Valid"/> is initially set to <c>true</c>.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Validation.ValidationResult`1.AddViolation(`0)">
+            <summary>
+            Adds a violation.
+            </summary>
+            <param name="violation">The violation.</param>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Validation.ValidationResult`1.Valid">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:bbv.Common.EvaluationEngine.Validation.ValidationResult`1"/> is valid.
+            </summary>
+            <value><c>true</c> if valid; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Validation.ValidationResult`1.Violations">
+            <summary>
+            Gets the violations of the validation.
+            </summary>
+            <value>The violations.</value>
+        </member>
+        <member name="T:bbv.Common.EvaluationEngine.Validation.ValidationViolation">
+            <summary>
+            Describes a violation of a validation.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.EvaluationEngine.Validation.ValidationViolation.Reason">
+            <summary>
+            Gets or sets the reason for the violation.
+            </summary>
+            <value>The reason.</value>
+        </member>
+    </members>
+</doc>

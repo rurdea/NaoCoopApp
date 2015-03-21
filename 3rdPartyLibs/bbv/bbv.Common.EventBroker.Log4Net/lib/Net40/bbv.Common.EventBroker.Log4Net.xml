@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.EventBroker.Log4Net</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.EventBroker.Extensions.LogExtension">
+            <summary>
+            Event broker extension that logs event broker activity.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.EventBroker.Extensions.LogExtension.log">
+            <summary>
+            Logger of this instance.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EventBroker.Extensions.LogExtension"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EventBroker.Extensions.LogExtension"/> class.
+            </summary>
+            <param name="logger">The logger to be used for log messages.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.FiredEvent(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication,System.Object,System.EventArgs)">
+            <summary>
+            Called when the event was fired (processing completed).
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.RegisteredItem(System.Object)">
+            <summary>
+            Called when an item was registered.
+            </summary>
+            <param name="item">The item that was registered.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.UnregisteredItem(System.Object)">
+            <summary>
+            Called when an item was unregistered.
+            </summary>
+            <param name="item">The item that was unregistered.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.CreatedTopic(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Called after an event topic was created.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.CreatedPublication(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication)">
+            <summary>
+            Called after a publication was created.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.CreatedSubscription(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.ISubscription)">
+            <summary>
+            Called after a subscription was created.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="subscription">The subscription.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.FiringEvent(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication,System.Object,System.EventArgs)">
+            <summary>
+            Called when an event is fired.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.AddedPublication(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication)">
+            <summary>
+            Called after a publication was added to an event topic.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.RemovedPublication(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication)">
+            <summary>
+            Called after a publication was removed from an event topic.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.AddedSubscription(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.ISubscription)">
+            <summary>
+            Called after a subscription was added to an event topic.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="subscription">The subscription.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.RemovedSubscription(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.ISubscription)">
+            <summary>
+            Called after a subscription was removed from an event topic.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="subscription">The subscription.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.RelayingEvent(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication,bbv.Common.EventBroker.Internals.ISubscription,bbv.Common.EventBroker.IHandler,System.Object,System.EventArgs)">
+            <summary>
+            Called before an event is relayed from the publication to the subscribers.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+            <param name="subscription">The subscription.</param>
+            <param name="handler">The handler.</param>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.RelayedEvent(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication,bbv.Common.EventBroker.Internals.ISubscription,bbv.Common.EventBroker.IHandler,System.Object,System.EventArgs)">
+            <summary>
+            Called after the event was relayed from the publication to the subscribers.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+            <param name="subscription">The subscription.</param>
+            <param name="handler">The handler.</param>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.SkippedEvent(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication,bbv.Common.EventBroker.Internals.ISubscription,System.Object,System.EventArgs)">
+            <summary>
+            Called when a publication or subscription matcher did not match and the event was not relayed to a subscription.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+            <param name="subscription">The subscription.</param>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:bbv.Common.EventBroker.Extensions.LogExtension.SubscriberExceptionOccurred(bbv.Common.EventBroker.Internals.IEventTopicInfo,System.Exception,bbv.Common.EventBroker.ExceptionHandlingContext)">
+            <summary>
+            Called when an exception occurred during event handling by a subscriber.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="exception">The exception.</param>
+            <param name="context">The context providing information whether the exception is handled by an extension or is re-thrown.</param>
+        </member>
+    </members>
+</doc>

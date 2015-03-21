@@ -1,0 +1,589 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.DistributedEventBroker</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.DistributedEventBroker.Constants">
+            <summary>
+            Defines constants.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.DistributedEventBroker.Constants.InternalTopicFormat">
+            <summary>
+            The internal topic format.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.EventBrokerExtensionsForDistribution">
+            <summary>
+            Contains extension methods which simplify adding distributed extensions.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.EventBrokerExtensionsForDistribution.AddDistributedExtension``1(bbv.Common.EventBroker.IEventBroker,``0)">
+            <summary>
+            Adds the distributed extension to the provided event broker.
+            </summary>
+            <typeparam name="TDistributedExtension">The type of the distributed extension.</typeparam>
+            <param name="eventBroker">The event broker.</param>
+            <param name="extension">The extension.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.EventBrokerExtensionsForDistribution.AddDistributedExtension``1(bbv.Common.EventBroker.IEventBroker,``0,System.String)">
+            <summary>
+            Adds the distributed extension to the provided event broker.
+            </summary>
+            <typeparam name="TDistributedExtension">The type of the distributed extension.</typeparam>
+            <param name="eventBroker">The event broker.</param>
+            <param name="extension">The extension.</param>
+            <param name="eventBrokerIdentification">The event broker identification.</param>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Factories.DefaultDistributedFactory">
+            <summary>
+            Default factory which creates the default types for the distributed event broker extension.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.IDistributedFactory">
+            <summary>
+            Factory which creates the dependencies needed for the distributed event broker
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IDistributedFactory.CreateMessageFactory">
+            <summary>
+            Creates the message factory.
+            </summary>
+            <returns>A new instance of an <see cref="T:bbv.Common.DistributedEventBroker.IEventMessageFactory"/>.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IDistributedFactory.CreateEventArgsSerializer">
+            <summary>
+            Creates the event arguments serializer.
+            </summary>
+            <returns>A new instance of an <see cref="T:bbv.Common.DistributedEventBroker.IEventArgsSerializer"/></returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IDistributedFactory.CreateTopicSelectionStrategy">
+            <summary>
+            Create the topic selection strategy.
+            </summary>
+            <returns>A new instance of an <see cref="T:bbv.Common.DistributedEventBroker.ITopicSelectionStrategy"/>.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Factories.DefaultDistributedFactory.CreateMessageFactory">
+            <summary>
+            Creates the message factory.
+            </summary>
+            <returns>
+            A new instance of an <see cref="T:bbv.Common.DistributedEventBroker.IEventMessageFactory"/>.
+            </returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Factories.DefaultDistributedFactory.CreateEventArgsSerializer">
+            <summary>
+            Creates the event arguments serializer.
+            </summary>
+            <returns>
+            A new instance of an <see cref="T:bbv.Common.DistributedEventBroker.IEventArgsSerializer"/>
+            </returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Factories.DefaultDistributedFactory.CreateTopicSelectionStrategy">
+            <summary>
+            Create the topic selection strategy.
+            </summary>
+            <returns>
+            A new instance of an <see cref="T:bbv.Common.DistributedEventBroker.ITopicSelectionStrategy"/>.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Factories.DefaultEventMessageFactory">
+            <summary>
+            Default event message factory implementation which creates the basic message type.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Factories.AbstractEventMessageFactory">
+            <summary>
+            Abstract event message factory which uses a callback delegate to create
+            messages and initialize the message properties.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.IEventMessageFactory">
+            <summary>
+            Event message factory definition which uses a callback to initialize messages.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IEventMessageFactory.CreateEventFiredMessage(System.Action{bbv.Common.DistributedEventBroker.Messages.IEventFired})">
+            <summary>
+            Creates the event fired message.
+            </summary>
+            <param name="initializer">The initializer which can be used to initialize messages.</param>
+            <returns>An initialized message.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Factories.AbstractEventMessageFactory.CreateEventFiredMessage(System.Action{bbv.Common.DistributedEventBroker.Messages.IEventFired})">
+            <summary>
+            Creates the event fired message.
+            </summary>
+            <param name="initializer">The initializer which can be used to initialize messages.</param>
+            <returns>An initialized message.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Factories.AbstractEventMessageFactory.CreateEventFiredMessage``2(System.Action{``1})">
+            <summary>
+            Creates the event fired message by instantiating the provided generic types.
+            </summary>
+            <typeparam name="TEventFired">The type of the event fired message.</typeparam>
+            <typeparam name="TIEventFired">The interface type of the event fired message.</typeparam>
+            <param name="initializer">The initializer which can be used to initialize the message.</param>
+            <returns>An initialized message.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Factories.DefaultEventMessageFactory.CreateEventFiredMessage(System.Action{bbv.Common.DistributedEventBroker.Messages.IEventFired})">
+            <summary>
+            Creates the event fired message.
+            </summary>
+            <param name="initializer">The initializer which can be used to initialize messages.</param>
+            <returns>An initialized message.</returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase">
+            <summary>
+            The base class for all distributed event broker extensions.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.IDistributedEventBrokerExtension">
+            <summary>
+            Marker interface for distributed event broker extensions to simplify testing.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.IManageEventBroker">
+            <summary>
+            Interface which defines a component which manages a single event broker.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IManageEventBroker.Manage(bbv.Common.EventBroker.IEventBroker)">
+            <summary>
+            Manages the specified event broker.
+            </summary>
+            <param name="eventBroker">The event broker.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IManageEventBroker.Manage(bbv.Common.EventBroker.IEventBroker,System.String)">
+            <summary>
+            Manages the specified event broker.
+            </summary>
+            <param name="eventBroker">The event broker.</param>
+            <param name="eventBrokerIdentification">The event broker identification.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.#ctor(System.String,bbv.Common.DistributedEventBroker.IEventBrokerBus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase"/> class.
+            </summary>
+            <param name="distributedEventBrokerIdentification">The distributed event broker identification.</param>
+            <param name="eventBrokerBus">The event broker bus.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.#ctor(System.String,bbv.Common.DistributedEventBroker.IEventBrokerBus,bbv.Common.DistributedEventBroker.IDistributedFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase"/> class.
+            </summary>
+            <param name="distributedEventBrokerIdentification">The distributed event broker identification.</param>
+            <param name="eventBrokerBus">The event broker bus.</param>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.FiringEvent(bbv.Common.EventBroker.Internals.IEventTopicInfo,bbv.Common.EventBroker.Internals.IPublication,System.Object,System.EventArgs)">
+            <summary>
+            Called when an event is fired.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+            <param name="publication">The publication.</param>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.CreatedTopic(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Called after an event topic was created.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.Disposed(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Called after an event topic was disposed.
+            </summary>
+            <param name="eventTopic">The event topic.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.Manage(bbv.Common.EventBroker.IEventBroker)">
+            <summary>
+            Manages the specified event broker.
+            </summary>
+            <param name="eventBroker">The event broker.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.Manage(bbv.Common.EventBroker.IEventBroker,System.String)">
+            <summary>
+            Manages the specified event broker.
+            </summary>
+            <param name="eventBroker">The event broker.</param>
+            <param name="eventBrokerIdentification">The event broker identification.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.DoManage(bbv.Common.EventBroker.IEventBroker,System.String)">
+            <summary>
+            Concrete implementation for managing a single event broker.
+            </summary>
+            <param name="eventBroker">The event broker.</param>
+            <param name="eventBrokerIdentification">The event broker identification.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.HandleMessage(System.Object,bbv.Common.DistributedEventBroker.Messages.IEventFired)">
+            <summary>
+            Message handler which can be called by extensions or internal event brokers.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="eventFired">The event fired.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.CreateHostedEventBrokerIdentification(System.String)">
+            <summary>
+            Creates the hosted event broker identification.
+            </summary>
+            <param name="eventBrokerIdentification">The event broker identification.</param>
+            <returns>An identification for the hosted event broker.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.CreateDynamicSubscriptionTopic">
+            <summary>
+            Creates the dynamic subscription topic.
+            </summary>
+            <returns>A dynamic subscription topic.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.CreateHandler">
+            <summary>
+            Creates the handler which is the default handler type for internal topics.
+            </summary>
+            <returns>The default handler type for internal topics</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.BuildPublicationsWithNotAllowedHandlerRestrictionsMessage(System.Collections.Generic.IEnumerable{bbv.Common.EventBroker.Internals.IPublication})">
+            <summary>
+            Builds up a message text describing the publications which do not have correct handler restrictions.
+            </summary>
+            <param name="publicationsWithNotAllowedRestriction">The publications which do not have correct handler restrictions.</param>
+            <returns>The message.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.HandleEvent(System.Object,bbv.Common.Events.EventArgs{bbv.Common.DistributedEventBroker.Messages.IEventFired})">
+            <summary>
+            Called from the internal event broker when an event is raised.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:bbv.Common.Events.EventArgs`1"/> instance containing the event data.</param>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.InternalEventBroker">
+            <summary>
+            Gets or sets the internal event broker which is used to control internal event publication.
+            </summary>
+            <value>The internal event broker.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.InternalEventRegisterer">
+            <summary>
+            Gets the internal event registerer which is the <see cref="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.InternalEventBroker"/> casted to <see cref="T:bbv.Common.EventBroker.IEventRegisterer"/>.
+            </summary>
+            <value>The internal event registerer.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.HostedEventBroker">
+            <summary>
+            Gets the hosted event broker.
+            </summary>
+            <value>The hosted event broker.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.Topics">
+            <summary>
+            Gets the topics which are controlled by the <see cref="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.HostedEventBroker"/> and accepted by the <see cref="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.SelectionStrategy"/>.
+            </summary>
+            <value>The topics.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.EventBrokerBus">
+            <summary>
+            Gets the event broker bus.
+            </summary>
+            <value>The event broker bus.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.Factory">
+            <summary>
+            Gets the factory which is responsible for creating the types
+            necessary to operate the extension.
+            </summary>
+            <value>The factory.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.MessageFactory">
+            <summary>
+            Gets the message factory.
+            </summary>
+            <value>The message factory.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.Serializer">
+            <summary>
+            Gets the serializer which is responsible for event argument serialization.
+            </summary>
+            <value>The serializer.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.SelectionStrategy">
+            <summary>
+            Gets the topic selection strategy.
+            </summary>
+            <value>The topic selection strategy.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.DistributedEventBrokerIdentification">
+            <summary>
+            Gets the distributed event broker identification.
+            </summary>
+            <value>The distributed event broker identification.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.DistributedEventBrokerExtensionBase.HostedEventBrokerIdentification">
+            <summary>
+            Gets the hosted event broker identification.
+            </summary>
+            <value>The hosted event broker identification.</value>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Handlers.EventFiredHandlerBase">
+            <summary>
+            Base implementation for all handlers.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Handlers.EventFiredHandlerBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.Handlers.EventFiredHandlerBase"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Handlers.EventFiredHandlerBase.#ctor(bbv.Common.EventBroker.IEventBroker)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.Handlers.EventFiredHandlerBase"/> class.
+            </summary>
+            <param name="eventBroker">The event broker.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Handlers.EventFiredHandlerBase.DoHandle(bbv.Common.DistributedEventBroker.Messages.IEventFired)">
+            <summary>
+            Fires the message event on the internal event broker.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Handlers.EventFiredHandlerBase.CreateTopic(bbv.Common.DistributedEventBroker.Messages.IEventFired)">
+            <summary>
+            Creates the dynamic topic according to the message.
+            </summary>
+            <param name="message">The message.</param>
+            <returns>The topic uri.</returns>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Handlers.EventFiredHandlerBase.EventBroker">
+            <summary>
+            Gets the event broker.
+            </summary>
+            <value>The event broker.</value>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.IEventArgsSerializer">
+            <summary>
+            Defines an serializer which can serialize/deserialize event arguments into a meaningful string representation.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IEventArgsSerializer.Serialize(System.EventArgs)">
+            <summary>
+            Serializes the specified event argument into a string representation.
+            </summary>
+            <param name="eventArgs">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+            <returns>The string representation of the specified event argument.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IEventArgsSerializer.Deserialize(System.Type,System.String)">
+            <summary>
+            Deserializes the specified event args type from its string representation.
+            </summary>
+            <param name="eventArgsType">Type of the event args.</param>
+            <param name="eventArgs">The event args as string.</param>
+            <returns>The deserialized event argument.</returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.IEventBrokerBus">
+            <summary>
+            Bus interface which is used by the event broker to inform subscribers about events.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.IEventBrokerBus.Publish(bbv.Common.DistributedEventBroker.Messages.IEventFired)">
+            <summary>
+            Publishes the specified event fired message on the bus.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.ITopicSelectionStrategy">
+            <summary>
+            A topic selection strategy allows to control the event topic collection process.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.ITopicSelectionStrategy.SelectTopic(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Determines whether the current topic shall be tracked by the distributed event broker.
+            </summary>
+            <param name="topic">The event topic.</param>
+            <returns><see langword="true"/> if the topic shall be selected; otherwise <see langword="false"/>.</returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Messages.EventFired">
+            <summary>
+            The standard message.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Messages.IEventFired">
+            <summary>
+            Defines the interface for the standard message.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.IEventFired.DistributedEventBrokerIdentification">
+            <summary>
+            Gets or sets the distributed event broker identification. 
+            The distributed event broker identification is the only
+            identification which must be known to bound logically 
+            together several event broker instances. 
+            </summary>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.IEventFired.EventBrokerIdentification">
+            <summary>
+            Gets or sets the identification of the event broker which fired the event.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.IEventFired.Topic">
+            <summary>
+            Gets or sets the topic of the event which was fired.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.IEventFired.HandlerRestriction">
+            <summary>
+            Gets or sets the subscriber handler restriction.
+            </summary>
+            <value>The subscriber handler restriction.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.IEventFired.EventArgsType">
+            <summary>
+            Gets or sets the type of the event args.
+            </summary>
+            <value>The type of the event args.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.IEventFired.EventArgs">
+            <summary>
+            Gets or sets the event arguments of the event which was fired.
+            </summary>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.EventFired.DistributedEventBrokerIdentification">
+            <summary>
+            Gets or sets the distributed event broker identification.
+            The distributed event broker identification is the only
+            identification which must be known to bound logically
+            together several event broker instances.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.EventFired.EventBrokerIdentification">
+            <summary>
+            Gets or sets the identification of the event broker which fired the event.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.EventFired.Topic">
+            <summary>
+            Gets or sets the topic of the event which was fired.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.EventFired.HandlerRestriction">
+            <summary>
+            Gets or sets the subscriber handler restriction.
+            </summary>
+            <value>The subscriber handler restriction.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.EventFired.EventArgsType">
+            <summary>
+            Gets or sets the type of the event args.
+            </summary>
+            <value>The type of the event args.</value>
+        </member>
+        <member name="P:bbv.Common.DistributedEventBroker.Messages.EventFired.EventArgs">
+            <summary>
+            Gets or sets the event arguments of the event which was fired.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Serializer.BinaryEventArgsSerializer">
+            <summary>
+            Serializer which serializes the event arguments into a binary string
+            representation. The string is base64 encoded.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Serializer.BinaryEventArgsSerializer.Serialize(System.EventArgs)">
+            <summary>
+            Serializes the specified event argument into a string representation.
+            </summary>
+            <param name="eventArgs">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+            <returns>The string representation of the specified event argument.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Serializer.BinaryEventArgsSerializer.Deserialize(System.Type,System.String)">
+            <summary>
+            Deserializes the specified event args type from its string representation.
+            </summary>
+            <param name="eventArgsType">Type of the event args.</param>
+            <param name="eventArgs">The event args as string.</param>
+            <returns>The deserialized event argument.</returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Serializer.DataContractEventArgsSerializer">
+            <summary>
+            Serializer which uses the <see cref="T:System.Runtime.Serialization.DataContractSerializer"/> to
+            serialize event arguments
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Serializer.DataContractEventArgsSerializer.Serialize(System.EventArgs)">
+            <summary>
+            Serializes the specified event argument into a string representation.
+            </summary>
+            <param name="eventArgs">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+            <returns>The string representation of the specified event argument.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Serializer.DataContractEventArgsSerializer.Deserialize(System.Type,System.String)">
+            <summary>
+            Deserializes the specified event args type from its string representation.
+            </summary>
+            <param name="eventArgsType">Type of the event args.</param>
+            <param name="eventArgs">The event args as string.</param>
+            <returns>The deserialized event argument.</returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Serializer.XmlEventArgsSerializer">
+            <summary>
+            Serializer which serializes event arguments into an xml string. The standard xml serialization restrictions do apply.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Serializer.XmlEventArgsSerializer.Serialize(System.EventArgs)">
+            <summary>
+            Serializes the specified event argument into a string representation.
+            </summary>
+            <param name="eventArgs">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+            <returns>The string representation of the specified event argument.</returns>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Serializer.XmlEventArgsSerializer.Deserialize(System.Type,System.String)">
+            <summary>
+            Deserializes the specified event args type from its string representation.
+            </summary>
+            <param name="eventArgsType">Type of the event args.</param>
+            <param name="eventArgs">The event args as string.</param>
+            <returns>The deserialized event argument.</returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Strategies.DefaultTopicSelectionStrategy">
+            <summary>
+            The default topic selection strategy passes all event topics to the distributed event broker.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Strategies.DefaultTopicSelectionStrategy.SelectTopic(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Determines whether the current topic shall be tracked by the distributed event broker.
+            </summary>
+            <param name="topic">The event topic.</param>
+            <returns>
+            <see langword="true"/> if the topic shall be selected; otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.Strategies.FuncTopicSelectionStrategy">
+            <summary>
+            Provides callback mechanism for topic selection strategies.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Strategies.FuncTopicSelectionStrategy.#ctor(System.Func{bbv.Common.EventBroker.Internals.IEventTopicInfo,System.Boolean})">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:bbv.Common.DistributedEventBroker.Strategies.FuncTopicSelectionStrategy"/> class.
+            </summary>
+            <param name="strategy">The strategy delegate which is called when 
+            <see cref="M:bbv.Common.DistributedEventBroker.Strategies.FuncTopicSelectionStrategy.SelectTopic(bbv.Common.EventBroker.Internals.IEventTopicInfo)"/> is called.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.Strategies.FuncTopicSelectionStrategy.SelectTopic(bbv.Common.EventBroker.Internals.IEventTopicInfo)">
+            <summary>
+            Determines whether the current topic shall be tracked by the distributed event broker.
+            </summary>
+            <param name="topic">The event topic.</param>
+            <returns>
+            <see langword="true"/> if the topic shall be selected; otherwise <see langword="false"/>.
+            </returns>
+        </member>
+    </members>
+</doc>

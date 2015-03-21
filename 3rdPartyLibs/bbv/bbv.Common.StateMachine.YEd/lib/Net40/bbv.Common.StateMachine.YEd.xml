@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.StateMachine.YEd</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.StateMachine.Reports.YEdStateMachineReportGenerator`2">
+            <summary>
+            generates a graphml file that can be read by yEd.
+            </summary>
+            <typeparam name="TState">The type of the state.</typeparam>
+            <typeparam name="TEvent">The type of the event.</typeparam>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Reports.YEdStateMachineReportGenerator`2.#ctor(System.IO.TextWriter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.StateMachine.Reports.YEdStateMachineReportGenerator`2"/> class.
+            </summary>
+            <param name="textWriter">The output writer.</param>
+        </member>
+        <member name="M:bbv.Common.StateMachine.Reports.YEdStateMachineReportGenerator`2.Report(System.String,System.Collections.Generic.IEnumerable{bbv.Common.StateMachine.Internals.IState{`0,`1}},bbv.Common.StateMachine.Internals.Initializable{`0})">
+            <summary>
+            Generates a report of the state machine.
+            </summary>
+            <param name="name">The name of the state machine.</param>
+            <param name="states">The states.</param>
+            <param name="initialStateId">The initial state id.</param>
+        </member>
+    </members>
+</doc>

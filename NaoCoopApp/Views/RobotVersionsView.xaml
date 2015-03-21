@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="NaoCoopApp.Views.RobotVersionsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewmodels="clr-namespace:NaoCoopApp.ViewModels"  
+        MinHeight="300" MinWidth="350">
+    <UserControl.Resources>
+        <viewmodels:RobotVersionsViewModel x:Key="RobotVersionsViewModel"></viewmodels:RobotVersionsViewModel>
+    </UserControl.Resources>
+    <Grid x:Name="grid" DataContext="{StaticResource RobotVersionsViewModel}">
+        <StackPanel Orientation="Vertical"
+                    Margin="20,20,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" Width="300">
+            <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                <Button Content="Refresh Data"
+                    Style="{StaticResource ButtonStyle1}"
+                    HorizontalAlignment="Left"
+                    Command="{Binding RefreshDataCommand}" />
+
+                <Button Content="Save Data" Name="btnSave"
+                    Style="{StaticResource ButtonStyle1}"
+                    HorizontalAlignment="Left"
+                    Command="{Binding SaveDataCommand}" />
+            </StackPanel>
+            <Label Content="Robots:" Margin="0,20,0,0"/>
+            <DataGrid ItemsSource="{Binding RecordsCollection}" Name="grdRobots"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      SelectionMode="Single">
+                <DataGrid.RowValidationErrorTemplate>
+                    <ControlTemplate>
+                        <Grid Margin="0,-2,0,-2"
+                              ToolTip="{Binding RelativeSource={RelativeSource
+                              FindAncestor, AncestorType={x:Type DataGridRow}},
+                              Path=(Validation.Errors)[0].ErrorContent}">
+                            <Ellipse StrokeThickness="0" Fill="Red" 
+                                Width="{TemplateBinding FontSize}" 
+                                Height="{TemplateBinding FontSize}" />
+                            <TextBlock Text="!" FontSize="{TemplateBinding FontSize}" 
+                                FontWeight="Bold" Foreground="White" 
+                                HorizontalAlignment="Center"  />
+                        </Grid>
+                    </ControlTemplate>
+                </DataGrid.RowValidationErrorTemplate>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name">
+                        <DataGridTextColumn.Binding>
+                            <Binding  Path="Name" NotifyOnValidationError="True" UpdateSourceTrigger="LostFocus">
+                                <Binding.ValidationRules>
+                                    <DataErrorValidationRule ValidatesOnTargetUpdated="False">
+                                    </DataErrorValidationRule>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>

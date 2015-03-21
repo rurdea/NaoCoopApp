@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B21E7D8F-D523-4E22-B321-4594EFE9DE03}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NaoCoopApp</RootNamespace>
+    <AssemblyName>NaoCoopApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FirstFloor.ModernUI">
+      <HintPath>..\packages\ModernUI.WPF.1.0.5\lib\net45\FirstFloor.ModernUI.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\NinettFormsApp\3rdPartyLibs\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Content\SettingsAppearance.xaml.cs">
+      <DependentUpon>SettingsAppearance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BackgroundToForegroundConverter.cs" />
+    <Compile Include="Converters\CurrentPageToBoolConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
+    <Compile Include="Converters\ToLowerConverter.cs" />
+    <Compile Include="Converters\ToUpperConverter.cs" />
+    <Compile Include="Helpers\DataAccessHelper.cs" />
+    <Compile Include="Helpers\IModel.cs" />
+    <Compile Include="Helpers\ModelBase.cs" />
+    <Compile Include="Helpers\Singleton.cs" />
+    <Compile Include="Helpers\ValidationContext.cs" />
+    <Compile Include="Models\Execution.cs" />
+    <Compile Include="Models\ExecutionRobot.cs" />
+    <Compile Include="Models\Operation.cs" />
+    <Compile Include="Models\OperationRequirement.cs" />
+    <Compile Include="Models\Page.cs" />
+    <Compile Include="Models\Requirement.cs" />
+    <Compile Include="Models\RequirementInput.cs" />
+    <Compile Include="Models\Robot.cs" />
+    <Compile Include="Models\RobotSelection.cs" />
+    <Compile Include="Models\RobotVersion.cs" />
+    <Compile Include="Models\Setting.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\OperationRobot.cs" />
+    <Compile Include="Models\OperationRobotState.cs" />
+    <Compile Include="Models\State.cs" />
+    <Compile Include="Models\StateTask.cs" />
+    <Compile Include="Resources\ViewModelStringResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewModelStringResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Validators\ModelValidatorBase.cs" />
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="ViewModels\ExecutionsViewModel.cs" />
+    <Compile Include="ViewModels\OperationExecutionViewModel.cs" />
+    <Compile Include="ViewModels\OperationsViewModel.cs" />
+    <Compile Include="ViewModels\RequirementsViewModel.cs" />
+    <Compile Include="ViewModels\RobotSelectionViewModel.cs" />
+    <Compile Include="ViewModels\RobotVersionsViewModel.cs" />
+    <Compile Include="ViewModels\SettingsAppearanceViewModel.cs" />
+    <Compile Include="ViewModels\TasksViewModel.cs" />
+    <Compile Include="ViewModels\StatesViewModel.cs" />
+    <Compile Include="ViewModels\RecordsViewModel.cs" />
+    <Compile Include="ViewModels\RobotsViewModel.cs" />
+    <Compile Include="ApplicationWindow.xaml.cs">
+      <DependentUpon>ApplicationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExecutionsView.xaml.cs">
+      <DependentUpon>ExecutionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogOn.xaml.cs">
+      <DependentUpon>LogOn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogOut.xaml.cs">
+      <DependentUpon>LogOut.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OperationExecutionView.xaml.cs">
+      <DependentUpon>OperationExecutionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OperationsView.xaml.cs">
+      <DependentUpon>OperationsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequirementsView.xaml.cs">
+      <DependentUpon>RequirementsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RobotSelectionView.xaml.cs">
+      <DependentUpon>RobotSelectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RobotsView.xaml.cs">
+      <DependentUpon>RobotsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RobotVersionsView.xaml.cs">
+      <DependentUpon>RobotVersionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatesView.xaml.cs">
+      <DependentUpon>StatesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TasksView.xaml.cs">
+      <DependentUpon>TasksView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Content\SettingsAppearance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\NaoModernWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\IconsResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ImplicitStylesResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\StylesResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ApplicationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Converters\IsBiggerThanConverter.cs" />
+    <Compile Include="Helpers\DelegateCommand.cs" />
+    <Compile Include="Helpers\NotificationObject.cs" />
+    <Compile Include="Helpers\RandomHelper.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Page Include="Views\ExecutionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogOn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogOut.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OperationExecutionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OperationsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RequirementsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RobotSelectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RobotsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RobotVersionsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TasksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ViewModelStringResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewModelStringResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="NaoCoopAppModels.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NaoCoopDataAccess\NaoCoopDataAccess.csproj">
+      <Project>{8f4f9072-5f99-4b66-a243-1f340f0b4a1d}</Project>
+      <Name>NaoCoopDataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NaoCoopLib\NaoCoopLib.csproj">
+      <Project>{58e7c1a1-5705-4d16-b16c-6b771be964b2}</Project>
+      <Name>NaoCoopLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NaoCoopObjects\NaoCoopObjects.csproj">
+      <Project>{8c498012-c5ae-42e4-91d6-c2b49ecee3a4}</Project>
+      <Name>NaoCoopObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Images\7_Nao copy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\robot.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\aldebaran nao humanoid robot-1331595858375.png" />
+    <Resource Include="Resources\Images\aldebaran-nao-robotics-pavillion-shang-hai-france.jpg" />
+    <Resource Include="Resources\Images\nao-robot %281%29.jpg" />
+    <Resource Include="Resources\Images\nao-robot-evolution.jpg" />
+    <Resource Include="Resources\Images\NAO-Robot.jpg" />
+    <Resource Include="Resources\Images\Nao.png" />
+    <Resource Include="Resources\Images\NAO_Walking_8001.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\nao %281%29.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8F4F9072-5F99-4B66-A243-1F340F0B4A1D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NaoCoopDataAccess</RootNamespace>
+    <AssemblyName>NaoCoopDataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Interfaces\IRecordManager.cs" />
+    <Compile Include="Managers\ExecutionRobotsManager.cs" />
+    <Compile Include="Managers\ExecutionsManager.cs" />
+    <Compile Include="Managers\OperationRequirementsManager.cs" />
+    <Compile Include="Managers\OperationsManager.cs" />
+    <Compile Include="Managers\RequirementsManager.cs" />
+    <Compile Include="Managers\RobotsManager.cs" />
+    <Compile Include="Managers\RobotVersionsManager.cs" />
+    <Compile Include="Managers\SettingsManager.cs" />
+    <Compile Include="Managers\TasksManager.cs" />
+    <Compile Include="Managers\StateTasksManager.cs" />
+    <Compile Include="Managers\StatesManager.cs" />
+    <Compile Include="Managers\OperationRobotStatesManager.cs" />
+    <Compile Include="Managers\ManagerBase.cs" />
+    <Compile Include="Managers\RecordsManagerBase.cs" />
+    <Compile Include="Managers\OperationRobotsManager.cs" />
+    <Compile Include="Managers\UsersManager.cs" />
+    <Compile Include="NaoCoopDataClasses.cs">
+      <DependentUpon>NaoCoopDataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="NaoCoopDataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NaoCoopDataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Records\Execution.cs" />
+    <Compile Include="Records\ExecutionRobot.cs" />
+    <Compile Include="Records\Operation.cs" />
+    <Compile Include="Records\OperationRequirement.cs" />
+    <Compile Include="Records\Requirement.cs" />
+    <Compile Include="Records\Robot.cs" />
+    <Compile Include="Records\RobotVersion.cs" />
+    <Compile Include="Records\Setting.cs" />
+    <Compile Include="Records\StateTask.cs" />
+    <Compile Include="Records\Task.cs" />
+    <Compile Include="Records\OperationRobot.cs" />
+    <Compile Include="Records\OperationRobotState.cs" />
+    <Compile Include="Records\State.cs" />
+    <Compile Include="Records\User.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="NaoCoopDataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>NaoCoopDataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="NaoCoopDataClasses.dbml.layout">
+      <DependentUpon>NaoCoopDataClasses.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NaoCoopObjects\NaoCoopObjects.csproj">
+      <Project>{8c498012-c5ae-42e4-91d6-c2b49ecee3a4}</Project>
+      <Name>NaoCoopObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

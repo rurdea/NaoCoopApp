@@ -1,0 +1,92 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Converters="clr-namespace:NaoCoopApp.Converters">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--<Color x:Key="AccentColor">#76608A</Color>-->
+    <SolidColorBrush x:Key="GroupBoxHeaderBackground" Color="{DynamicResource AccentColor}"/>
+
+    <!--<Rectangle x:Key="WindowBackgroundContent" x:Shared="false" Margin="0">
+        <Rectangle.Fill>
+            <ImageBrush Opacity=".1" ImageSource="Images/NAO_Walking_8001.jpg"  Stretch="None"  AlignmentX="Right" AlignmentY="Bottom" />
+        </Rectangle.Fill>
+    </Rectangle>-->
+
+    <Style x:Key="TextBlockValidationStyle" TargetType="{x:Type TextBlock}">
+        <Style.Triggers>
+            <Trigger Property="Validation.HasError" Value="true">
+                <Setter Property="ToolTip"
+                   Value="{Binding RelativeSource={RelativeSource Self},
+                    Path=(Validation.Errors)[0].ErrorContent}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="FormFieldName" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style x:Key="FormFieldValue" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="Margin" Value="5"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}"></Style>
+
+    
+    <Style x:Key="NaoGroupBox"
+           TargetType="{x:Type GroupBox}" BasedOn="{StaticResource {x:Type GroupBox}}">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Foreground" Value="{DynamicResource BlackBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource GroupBoxHeaderBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GroupBox}">
+                    <Grid x:Name="GroupBoxRoot">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1">
+                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              ContentSource="Header"
+                                              RecognizesAccessKey="True">
+                                <ContentPresenter.Resources>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type GroupBox}}, Path=Background, Converter={x:Static Converters:BackgroundToForegroundConverter.Instance}}" />
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                    </Style>
+                                </ContentPresenter.Resources>
+                                <ContentPresenter.Content>
+                                    <Binding Converter="{StaticResource ToUpperConverter}"
+                                             Path="Header"
+                                             RelativeSource="{RelativeSource TemplatedParent}" />
+                                </ContentPresenter.Content>
+                            </ContentPresenter>
+                        </Border>
+                        <Border Grid.Row="1"
+                                Background="Transparent"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1,0,1,1">
+                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Cursor="{TemplateBinding Cursor}" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

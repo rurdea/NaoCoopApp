@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NaoCoopApp.Models.Execution" Collapsed="true">
+    <Position X="9.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAEAAAIAAAAAAAoBAAAAAAAEAAAAAEEAgAAAAA=</HashCode>
+      <FileName>Models\Execution.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.ExecutionRobot" Collapsed="true">
+    <Position X="11.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAEAAAAAAAAAAABACAABEAAAAAAAACAAAAAABA=</HashCode>
+      <FileName>Models\ExecutionRobot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.Operation" Collapsed="true">
+    <Position X="13" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAASAAQAIAQAAIgAAAAAAQAA=</HashCode>
+      <FileName>Models\Operation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.OperationRequirement" Collapsed="true">
+    <Position X="14.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAgAAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\OperationRequirement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.OperationRobot" Collapsed="true">
+    <Position X="9.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAEIAAgIACAAAAAQAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Models\OperationRobot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.OperationRobotState" Collapsed="true">
+    <Position X="11.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Models\OperationRobotState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.Page" Collapsed="true">
+    <Position X="13" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Page.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.Person" Collapsed="true">
+    <Position X="14.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAACBACIACAABUAAAAQAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.Requirement">
+    <Position X="6.25" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Requirement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.RequirementInput">
+    <Position X="6.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAACAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Models\RequirementInput.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.Robot">
+    <Position X="4" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAoAACAAAAAQAKAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Robot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.RobotSelection">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Models\RobotSelection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.RobotVersion">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\RobotVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.Setting" Collapsed="true">
+    <Position X="11.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Models\Setting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.State" Collapsed="true">
+    <Position X="13" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAQAAAAAIJAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.StateTask" Collapsed="true">
+    <Position X="14.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Models\StateTask.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopApp.Models.Task">
+    <Position X="9.5" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAgQAAAAAASAA=</HashCode>
+      <FileName>Models\Task.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

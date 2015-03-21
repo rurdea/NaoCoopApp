@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NaoCoopDataAccess.Managers.ExecutionRobotsManager">
+    <Position X="8.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\ExecutionRobotsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.ExecutionsManager">
+    <Position X="0.5" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\ExecutionsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.ManagerBase">
+    <Position X="3.75" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAACAAAAQAAAAAQAAAAgAAQAAAACAAAAAAAAA=</HashCode>
+      <FileName>Managers\ManagerBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.OperationRequirementsManager">
+    <Position X="10.5" Y="9.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\OperationRequirementsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.OperationRobotsManager">
+    <Position X="0.5" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAAAAAAAABAAAACAAAAAA=</HashCode>
+      <FileName>Managers\OperationRobotsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.OperationRobotStatesManager">
+    <Position X="7.75" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\OperationRobotStatesManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.OperationsManager">
+    <Position X="3" Y="9.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAIAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\OperationsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.RecordsManagerBase&lt;T&gt;">
+    <Position X="6.25" Y="5.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAoAACAAAAABAAAIAAAAAAAABAAAAABAAgAA=</HashCode>
+      <FileName>Managers\RecordsManagerBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.22" />
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.RequirementsManager">
+    <Position X="3.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\RequirementsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.RobotsManager">
+    <Position X="3.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\RobotsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.RobotVersionsManager">
+    <Position X="10.75" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\RobotVersionsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.SettingsManager">
+    <Position X="6" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\SettingsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.StatesManager">
+    <Position X="8.25" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAACAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\StatesManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.StateTasksManager">
+    <Position X="5.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>KAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\StateTasksManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.TasksManager">
+    <Position X="5.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Managers\TasksManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopDataAccess.Managers.UsersManager">
+    <Position X="0.75" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Managers\UsersManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NaoCoopDataAccess.Interfaces.IRecordManager&lt;T&gt;">
+    <Position X="10.5" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAoAAAAAAAAAAAAIAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRecordManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

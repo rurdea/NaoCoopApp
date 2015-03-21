@@ -1,0 +1,20 @@
+﻿<mui:ModernWindow x:Class="NaoCoopApp.ApplicationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:NaoCoopApp.ViewModels"
+        xmlns:converters="clr-namespace:NaoCoopApp.Converters"
+        xmlns:views="clr-namespace:NaoCoopApp.Views"
+        xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+        Style="{StaticResource NaoWindow}"
+        Title="NaoCoop Application" Height="720" Width="900" Icon="Resources/Images/robot.jpg" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" IsTitleVisible="True">
+    <mui:ModernWindow.TitleLinks>
+        <mui:Link DisplayName="Settings" Source="/Views/Settings.xaml" />
+        <mui:Link DisplayName="Logout" Source="Views/LogOut.xaml" />
+    </mui:ModernWindow.TitleLinks>
+
+    <mui:ModernWindow.MenuLinkGroups>
+        <mui:LinkGroup DisplayName="Welcome" >
+            
+        </mui:LinkGroup>
+    </mui:ModernWindow.MenuLinkGroups>
+</mui:ModernWindow>

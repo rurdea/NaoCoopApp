@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="NaoCoopLib.NaoCoopRobot">
+    <Position X="8.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AMAgAAAMACAAgAgBAQAAACAAIBAAAAAAqAAAIChABAA=</HashCode>
+      <FileName>NaoCoopRobot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.154" />
+  </Class>
+  <Class Name="NaoCoopLib.ExecutionRobotStateChangedEventArgs">
+    <Position X="2" Y="2.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAIAAAAABAAgAAAAAAAA=</HashCode>
+      <FileName>NaoCoopRobotExecutionEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NaoCoopLib.NaoCoopRobotExecutionEngine">
+    <Position X="5.25" Y="2.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAACIAAAAAAAAAAAAAQAAAAAQAIAACACgAAgA=</HashCode>
+      <FileName>NaoCoopRobotExecutionEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="NaoCoopLib.RobotStatus">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAABAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>NaoCoopRobot.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NaoCoopLib.Enums.NaoState">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAEEIAA=</HashCode>
+      <FileName>Enums\NaoState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="NaoCoopLib.Enums.NaoCommand">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAQAAAQAEAAAgAAAAAAQAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Enums\NaoState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

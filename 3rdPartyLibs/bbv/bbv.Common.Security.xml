@@ -1,0 +1,344 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.Security</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.Security.FileHasher">
+            <summary>
+            Implements <see cref="T:bbv.Common.Security.IFileHasher"/>to provide functionality to read and write hash codes for files
+            </summary>
+        </member>
+        <member name="T:bbv.Common.Security.IFileHasher">
+            <summary>
+            Provides functionality to read and write hash codes for files
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.IFileHasher.WriteSha1HashFile(System.String)">
+            <summary>
+            Writes a file containing the sha1 hash value of the file given. The file is named <paramref name="filePath"/>.sha1
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="M:bbv.Common.Security.IFileHasher.ReadSha1HashFile(System.String)">
+            <summary>
+            Reads the sha1 hash value from the file named <paramref name="filePath"/>.sha1
+            </summary>
+            <param name="filePath">The file path of the origin file, not the hash file.</param>
+            <returns>The sha1 hash value from the file given</returns>
+        </member>
+        <member name="M:bbv.Common.Security.IFileHasher.CalculateSha1HashValue(System.String)">
+            <summary>
+            Calculates the sha1 hash value for the file path given
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns>The sha1 hash value for the file path given</returns>
+        </member>
+        <member name="F:bbv.Common.Security.FileHasher.Sha1Extension">
+            <summary>
+            The file extension for sha1 hash files
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Security.FileHasher.hashService">
+            <summary>
+            The hash algorithm to calculate hash values
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.FileHasher.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Security.FileHasher"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.FileHasher.WriteSha1HashFile(System.String)">
+            <summary>
+            Writes a file containing the sha1 hash code of the file given. The file is named <paramref name="filePath"/>.sha1
+            </summary>
+            <param name="filePath">The file path.</param>
+        </member>
+        <member name="M:bbv.Common.Security.FileHasher.ReadSha1HashFile(System.String)">
+            <summary>
+            Reads the sha1 hash value from the file named <paramref name="filePath"/>.sha1
+            </summary>
+            <param name="filePath">The file path of the origin file, not the hash file.</param>
+            <returns>The sha1 hash value from the file given</returns>
+        </member>
+        <member name="M:bbv.Common.Security.FileHasher.CalculateSha1HashValue(System.String)">
+            <summary>
+            Calculates the sha1 hash value for the file path given
+            </summary>
+            <param name="filePath">The file path.</param>
+            <returns>The sha1 hash value for the file path given</returns>
+        </member>
+        <member name="M:bbv.Common.Security.FileHasher.GetSha1FilePath(System.String)">
+            <summary>
+            Gets the file path of the sha1 hash file for a given origin file path
+            </summary>
+            <param name="filePath">The origin file path.</param>
+            <returns>The file path of the sha1 hash file</returns>
+        </member>
+        <member name="T:bbv.Common.Security.IHashService">
+            <summary>
+            Contains methods for hash generating from strings or from the specified input data.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.IHashService.GetHashFromString(System.String)">
+            <summary>
+            Computes the hash value from a text.
+            </summary>
+            <param name="text">The text, null is equal to an empty string.</param>
+            <returns>Hash as a hex-string.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.IHashService.GetHashFromReader(bbv.Common.IO.ITextReader)">
+            <summary>
+            Computes the hash value from the input data.
+            </summary>
+            <param name="reader">The reader for the input data.</param>
+            <returns>Hash as a hex-string.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.IHashService.WriteHashFromString(System.String,bbv.Common.IO.ITextWriter)">
+            <summary>
+            Writes the computed hash value to the sepcified output.
+            </summary>
+            <param name="text">The text, null is equal to an empty string.</param>
+            <param name="writer">The textwriter for the output.</param>
+        </member>
+        <member name="M:bbv.Common.Security.IHashService.WriteHash(bbv.Common.IO.ITextReader,bbv.Common.IO.ITextWriter)">
+            <summary>
+            Writes the computed hash value to the specified output.
+            </summary>
+            <param name="reader">The reader for the input data.</param>
+            <param name="writer">The textwriter for the output.</param>
+        </member>
+        <member name="M:bbv.Common.Security.IHashService.CompareWithHash(System.String,System.String)">
+            <summary>
+            Compares the computed hash value with the hash value.
+            </summary>
+            <param name="text">The text for computing the hash value.</param>
+            <param name="hash">The hash value.</param>
+            <returns>true if the computed hash is equal to the other.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.IHashService.CompareWithHash(System.String,bbv.Common.IO.ITextReader)">
+            <summary>
+            Compares the computed hash value with the hash value from the input data.
+            </summary>
+            <param name="text">The text for computing the hash.</param>
+            <param name="reader">The textreader for the hash value.</param>
+            <returns>true if the hash from the textreader is equal to the computed hash.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.IHashService.CompareWithHash(bbv.Common.IO.ITextReader,bbv.Common.IO.ITextReader)">
+            <summary>
+            Compares the computed hash value with the hash value from the input data.
+            </summary>
+            <param name="reader">The textreader for computing the hash.</param>
+            <param name="hashReader">The textreader for the hash value.</param>
+            <returns>true if the hash from the textreader is equal to the computed hash.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.IHashService.CompareWithHash(bbv.Common.IO.ITextReader,System.String)">
+            <summary>
+            Compares the computed hash value with the hash value from the input data.
+            </summary>
+            <param name="reader">The textreader for computing the hash.</param>
+            <param name="hash">The hash value.</param>
+            <returns>true if the computed hash from the textreader is equal to the other hash.</returns>
+        </member>
+        <member name="T:bbv.Common.Security.IHashAlgorithm">
+            <summary>
+            Contains methods to compute a hash value from the specified input data.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.IHashAlgorithm.ComputeHash(System.String)">
+            <summary>
+            Computes the hash value for the specified string.
+            </summary>
+            <param name="text">The text for the input data.</param>
+            <returns>Hash value as a string.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.IHashAlgorithm.ComputeHashFromStream(System.IO.Stream)">
+            <summary>
+            Computes the hash for the specified Stream.
+            </summary>
+            <param name="stream">The stream for the input data.</param>
+            <returns>Hash value as a string.</returns>
+        </member>
+        <member name="P:bbv.Common.Security.IHashAlgorithm.Format">
+            <summary>
+            Gets or sets the format of the hash value.
+            </summary>
+            <value>The format, {0:x2}.</value>
+        </member>
+        <member name="T:bbv.Common.Security.HashService">
+            <summary>
+            Contains methods for hash generating from strings or from the specified input data.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.#ctor(bbv.Common.Security.IHashAlgorithm)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Security.HashService"/> class with an Hashalgorithm.
+            </summary>
+            <param name="algorithm">The hashalgorithm.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="algorithm"/>is null</exception>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.GetHashFromString(System.String)">
+            <summary>
+            Computes the hash value from a text.
+            </summary>
+            <param name="text">The text, null is equal as an empty string.</param>
+            <returns>Hash as a hex-string.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.GetHashFromReader(bbv.Common.IO.ITextReader)">
+            <summary>
+            Computes the hash value from the content of a file.
+            </summary>
+            <param name="reader">The reader for the input data.</param>
+            <returns>Hash as a hex-string.</returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="reader"/>is null</exception>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.WriteHashFromString(System.String,bbv.Common.IO.ITextWriter)">
+            <summary>
+            Writes the hash file (hash.extension) from a text.
+            </summary>
+            <param name="text">The text, null is equal as an empty string.</param>
+            <param name="writer">The textwriter for the output.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/>is null</exception>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.WriteHash(bbv.Common.IO.ITextReader,bbv.Common.IO.ITextWriter)">
+            <summary>
+            Writes the hash value file (filename.extension) from the content of a File.
+            </summary>
+            <param name="reader">The reader for the input data.</param>
+            <param name="writer">The textwriter for the output.</param>
+            <exception cref="T:System.ArgumentNullException"><paramref name="reader"/>is null</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="writer"/>is null</exception>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.CompareWithHash(System.String,System.String)">
+            <summary>
+            Computes a hash value of the text and compares it with the other hash value.
+            </summary>
+            <param name="text">The text to compare the hash against.</param>
+            <param name="hash">The hash to be compared against the text.</param>
+            <returns>
+            true if the computed hash is equal to the other, otherwise false.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="hash"/>is null</exception>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.CompareWithHash(System.String,bbv.Common.IO.ITextReader)">
+            <summary>
+            Compares the generated hash value from the text with the hash value from the file.
+            </summary>
+            <param name="text">The text for generating the hash.</param>
+            <param name="reader">The textreader for the hash value.</param>
+            <returns>
+            true if the hash from the file is equal to the computed hash.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="reader"/>is null</exception>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.CompareWithHash(bbv.Common.IO.ITextReader,bbv.Common.IO.ITextReader)">
+            <summary>
+            Compares the computed hash value with the hash value from the input data.
+            </summary>
+            <param name="reader">The textreader for computing the hash.</param>
+            <param name="hashReader">The textreader for the hash value.</param>
+            <returns>
+            true if the hash from the textreader is equal to the computed hash.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="reader"/>is null</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="hashReader"/>is null</exception>
+        </member>
+        <member name="M:bbv.Common.Security.HashService.CompareWithHash(bbv.Common.IO.ITextReader,System.String)">
+            <summary>
+            Compares the computed hash value with the hash value from the input data.
+            </summary>
+            <param name="reader">The textreader for computing the hash.</param>
+            <param name="hash">The hash value.</param>
+            <returns>
+            true if the computed hash from the textreader is equal to the other hash.
+            </returns>
+            <exception cref="T:System.ArgumentNullException"><paramref name="reader"/>is null</exception>
+            <exception cref="T:System.ArgumentNullException"><paramref name="hash"/>is null</exception>
+        </member>
+        <member name="T:bbv.Common.Security.MD5Algorithm">
+            <summary>
+            Contains methods to compute a MD5 hash value from the specified input data.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Security.MD5Algorithm.HexStringFormat">
+            <summary>
+            The hex format which is used for string formatting.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.MD5Algorithm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Security.MD5Algorithm"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.MD5Algorithm.ComputeHash(System.String)">
+            <summary>
+            Computes the hash value for the specified string.
+            </summary>
+            <param name="text">The text for the input data.</param>
+            <returns>Hash value as a string.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.MD5Algorithm.ComputeHashFromStream(System.IO.Stream)">
+            <summary>
+            Computes the hash for the specified stream.
+            </summary>
+            <param name="stream">The stream for the input data.</param>
+            <returns>Hash value as a string.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.MD5Algorithm.BytesToString(System.Collections.IEnumerable)">
+            <summary>
+            Convert an array of bytes to a string in the specified format.
+            </summary>
+            <param name="bytes">The array of bytes.</param>
+            <returns>String value of the byte array.</returns>
+        </member>
+        <member name="P:bbv.Common.Security.MD5Algorithm.Format">
+            <summary>
+            Gets or sets the format of the hash value.
+            </summary>
+            <value>The format, {0:x2}.</value>
+        </member>
+        <member name="T:bbv.Common.Security.SHA1Algorithm">
+            <summary>
+            Contains methods to compute sha 1 algorithm from input data
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Security.SHA1Algorithm.HexStringFormat">
+            <summary>
+            The format string for hex representation 
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.SHA1Algorithm.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.Security.SHA1Algorithm"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Security.SHA1Algorithm.ComputeHash(System.String)">
+            <summary>
+            Computes the hash value for the specified string.
+            </summary>
+            <param name="text">The text for the input data.</param>
+            <returns>Hash value as a string.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.SHA1Algorithm.ComputeHashFromStream(System.IO.Stream)">
+            <summary>
+            Computes the hash for the specified Stream.
+            </summary>
+            <param name="stream">The stream for the input data.</param>
+            <returns>Hash value as a string.</returns>
+        </member>
+        <member name="M:bbv.Common.Security.SHA1Algorithm.BytesToString(System.Collections.IEnumerable)">
+            <summary>
+            Convert an array of bytes to a string in the specified format.
+            </summary>
+            <param name="bytes">The array of bytes.</param>
+            <returns>String value of the byte array.</returns>
+        </member>
+        <member name="P:bbv.Common.Security.SHA1Algorithm.Format">
+            <summary>
+            Gets or sets the format of the hash value.
+            </summary>
+            <value>The format, {0:x2}.</value>
+        </member>
+    </members>
+</doc>

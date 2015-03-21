@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.EvaluationEngine.Log4Net</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.EvaluationEngine.Extensions.Log4NetExtension">
+            <summary>
+            Logger using log4net.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Extensions.Log4NetExtension.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Extensions.Log4NetExtension"/> class.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Extensions.Log4NetExtension.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Extensions.Log4NetExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Extensions.Log4NetExtension.#ctor(log4net.ILog)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.EvaluationEngine.Extensions.Log4NetExtension"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:bbv.Common.EvaluationEngine.Extensions.Log4NetExtension.FoundAnswer(bbv.Common.EvaluationEngine.Internals.Context)">
+            <summary>
+            Logs the found answer together with information how it was found.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+    </members>
+</doc>

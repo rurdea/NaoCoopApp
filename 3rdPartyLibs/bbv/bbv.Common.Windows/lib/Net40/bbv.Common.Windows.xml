@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.Windows</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.Windows.ApplicationHelper">
+            <summary>
+            Provides functionality in the scope of applications.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Windows.ApplicationHelper.CheckApplicationAlreadyRunning(System.Boolean)">
+            <summary>
+            Checks whether another instance of the same application is already running.
+            </summary>
+            <param name="switchToAlreadyRunningProcess">Whether the already running process is flashed and brought to front.</param>
+            <returns>Whether another instance of the application is already running.</returns>
+        </member>
+        <member name="M:bbv.Common.Windows.ApplicationHelper.SwitchToThisWindow(System.IntPtr,System.Boolean)">
+            <summary>
+            EXTERN
+            The SwitchToThisWindow function is called to switch focus to a specified window and bring it to the foreground.
+            </summary>
+            <param name="windowHandle">Handle to the window being switched to.</param>
+            <param name="altTab">A TRUE for this parameter indicates that the window is being switched to using the Alt/Ctl+Tab key sequence. This parameter should be FALSE otherwise.</param>
+        </member>
+        <member name="M:bbv.Common.Windows.ApplicationHelper.ShowWindowAsync(System.IntPtr,System.Int32)">
+            <summary>
+            The ShowWindowAsync function sets the show state of a window created by a different thread.
+            </summary>
+            <param name="windowHandle">Handle to the window.</param>
+            <param name="showWindowCommand">Specifies how the window is to be shown. For a list of possible values, see the description of the ShowWindow function.</param>
+            <returns>The async handle</returns>
+        </member>
+        <member name="M:bbv.Common.Windows.ApplicationHelper.IsWindowVisible(System.IntPtr)">
+            <summary>
+            The IsWindowVisible function retrieves the visibility state of the specified window.
+            </summary>
+            <param name="windowHandle">Handle to the window to test.</param>
+            <returns>
+            If the specified window, its parent window, its parent's parent window, and so forth, have the WS_VISIBLE style, the return value is nonzero. 
+            Otherwise, the return value is zero. Because the return value specifies whether the window has the WS_VISIBLE style, it may be nonzero even if 
+            the window is totally obscured by other windows.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.Windows.GraphicHelper">
+            <summary>
+            Provides functionality for access graphical information.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Windows.GraphicHelper.GetDpi">
+            <summary>
+            Calculates the DPI of the windows desktop.
+            </summary>
+            <returns>The number of DPIs of the windows desktop</returns>
+        </member>
+        <member name="T:bbv.Common.Windows.WindowsHelper">
+            <summary>
+            Provides functionality to interact with Windows (OS).
+            </summary>
+        </member>
+        <member name="M:bbv.Common.Windows.WindowsHelper.ExitSystem(bbv.Common.Windows.WindowsHelper.EWX_ENUM)">
+            <summary>
+            Shuts down the machine according the given value.
+            </summary>
+            <param name="ewx_value">Set of flags defined in EWX_ENUM</param>
+        </member>
+        <member name="T:bbv.Common.Windows.WindowsHelper.EWX_ENUM">
+            <summary>
+            Flags to tell <see cref="M:bbv.Common.Windows.WindowsHelper.ExitSystem(bbv.Common.Windows.WindowsHelper.EWX_ENUM)"/> how to Exit the system.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_LOGOFF">
+            <summary>
+            Shuts down all processes running in the logon session of the process that called the ExitWindowsEx function. 
+            Then it logs the user off. This flag can be used only by processes running in an interactive user's logon session.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_SHUTDOWN">
+            <summary>
+            Shuts down the system to a point at which it is safe to turn off the power. All file buffers have been flushed to disk, and all running processes have stopped. 
+            The calling process must have the SE_SHUTDOWN_NAME privilege. For more information, see the following Remarks section.
+            Specifying this flag will not turn off the power even if the system supports the power-off feature. You must specify EWX_POWEROFF to do this.
+               Windows XP SP1:  If the system supports the power-off feature, specifying this flag turns off the power.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_REBOOT">
+            <summary>
+            Shuts down the system and then restarts the system. 
+            The calling process must have the SE_SHUTDOWN_NAME privilege. For more information, see the following Remarks section.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_POWEROFF">
+            <summary>
+            Shuts down the system and turns off the power. The system must support the power-off feature. 
+            The calling process must have the SE_SHUTDOWN_NAME privilege. For more information, see the following Remarks section.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCE">
+            <summary>
+            Forces processes to terminate. When this flag is set, the system does not send the WM_QUERYENDSESSION and WM_ENDSESSION messages. This can cause the applications to lose data. Therefore, you should only use this flag in an emergency.
+               Windows XP:  If the computer is locked and this flag is not specified, the shutdown process will fail.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCEIFHUNG">
+            <summary>
+            Forces processes to terminate if they do not respond to the WM_QUERYENDSESSION or WM_ENDSESSION message within the 
+            timeout interval. For more information, see the Remarks. This flag is ignored if EWX_FORCE is used.
+               Windows NT and Windows Me/98/95:  This value is not supported.
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCEREBOOT">
+            <summary>
+            EWX_REBOOT | EWX_FORCE
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCEIFHUNGREBOOT">
+            <summary>
+            EWX_REBOOT | EWX_FORCEIFHUNG
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCESHUTDOWN">
+            <summary>
+            EWX_SHUTDOWN | EWX_FORCE
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCEIFHUNGSHUTDOWN">
+            <summary>
+            EWX_SHUTDOWN | EWX_FORCEIFHUNG
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCEPOWEROFF">
+            <summary>
+            EWX_POWEROFF | EWX_FORCE
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCEIFHUNGPOWEROFF">
+            <summary>
+            EWX_POWEROFF | EWX_FORCEIFHUNG
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCELOGOFF">
+            <summary>
+            EWX_LOGOFF | EWX_FORCE
+            </summary>
+        </member>
+        <member name="F:bbv.Common.Windows.WindowsHelper.EWX_ENUM.EWX_FORCEIFHUNGLOGOFF">
+            <summary>
+            EWX_LOGOFF | EWX_FORCEIFHUNG
+            </summary>
+        </member>
+    </members>
+</doc>

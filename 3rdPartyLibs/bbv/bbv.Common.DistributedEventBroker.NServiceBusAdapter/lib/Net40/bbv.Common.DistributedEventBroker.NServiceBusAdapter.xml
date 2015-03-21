@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>bbv.Common.DistributedEventBroker.NServiceBusAdapter</name>
+    </assembly>
+    <members>
+        <member name="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Factories.NServiceBusDistributedFactory">
+            <summary>
+            Distributed factory which creates NServiceBus specific helper types.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Factories.NServiceBusDistributedFactory.CreateMessageFactory">
+            <summary>
+            Creates the message factory.
+            </summary>
+            <returns>
+            A new instance of an <see cref="T:bbv.Common.DistributedEventBroker.IEventMessageFactory"/>.
+            </returns>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Handlers.NServiceBusEventFiredHandler">
+            <summary>
+            Handler which subscribes to <see cref="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Messages.INServiceBusEventFired"/>
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Handlers.NServiceBusEventFiredHandler.Handle(bbv.Common.DistributedEventBroker.NServiceBusAdapter.Messages.INServiceBusEventFired)">
+            <summary>
+            Handles a message.
+            </summary>
+            <param name="message">The message to handle.</param>
+            <remarks>
+            This method will be called when a message arrives on the bus and should contain
+                        the custom logic to execute when the message is received.
+            </remarks>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Messages.NServiceBusEventFired">
+            <summary>
+            NServiceBus specific message type.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Messages.INServiceBusEventFired">
+            <summary>
+            Marker interface for nservicebus specific messages.
+            </summary>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusEventBrokerBus">
+            <summary>
+            NServiceBus specific event broker bus implementation.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusEventBrokerBus.#ctor(NServiceBus.IBus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusEventBrokerBus"/> class.
+            </summary>
+            <param name="serviceBus">The service bus.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusEventBrokerBus.Publish(bbv.Common.DistributedEventBroker.Messages.IEventFired)">
+            <summary>
+            Publishes the specified event fired message on the bus.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusDistributedEventBrokerExtension">
+            <summary>
+            The distributed event broker extension for nservice bus.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusDistributedEventBrokerExtension.#ctor(System.String,NServiceBus.IBus)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusDistributedEventBrokerExtension"/> class.
+            </summary>
+            <param name="distributedEventBrokerIdentification">The distributed event broker identification.</param>
+            <param name="serviceBus">The service bus.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusDistributedEventBrokerExtension.#ctor(System.String,NServiceBus.IBus,bbv.Common.DistributedEventBroker.IDistributedFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusDistributedEventBrokerExtension"/> class.
+            </summary>
+            <param name="distributedEventBrokerIdentification">The distributed event broker identification.</param>
+            <param name="serviceBus">The service bus.</param>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusDistributedEventBrokerExtension.#ctor(System.String,bbv.Common.DistributedEventBroker.IEventBrokerBus,bbv.Common.DistributedEventBroker.IDistributedFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.NServiceBusDistributedEventBrokerExtension"/> class.
+            </summary>
+            <param name="distributedEventBrokerIdentification">The distributed event broker identification.</param>
+            <param name="eventBrokerBus">The event broker bus.</param>
+            <param name="factory">The factory.</param>
+        </member>
+        <member name="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Factories.NServiceBusEventMessageFactory">
+            <summary>
+            Event message factory which creates NServiceBus specific message types.
+            </summary>
+        </member>
+        <member name="M:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Factories.NServiceBusEventMessageFactory.CreateEventFiredMessage(System.Action{bbv.Common.DistributedEventBroker.Messages.IEventFired})">
+            <summary>
+            Creates the event fired message of type <see cref="T:bbv.Common.DistributedEventBroker.NServiceBusAdapter.Messages.NServiceBusEventFired"/>.
+            </summary>
+            <param name="initializer">The initializer which can be used to initialize messages.</param>
+            <returns>An initialized message.</returns>
+        </member>
+    </members>
+</doc>
