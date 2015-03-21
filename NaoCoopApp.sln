@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{8FC01246-9800-4B68-82E6-89862FCBBF5B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{3A3E412A-1E0E-4C8C-A82E-1DE549BD3F71}"
@@ -16,6 +18,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{ABDBC105-2D5E-4F2B-99C8-F3853C1E5D7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NaoCoopLibTests", "NaoCoopLibTests\NaoCoopLibTests.csproj", "{93E0552A-AF5E-4D81-ABBC-8ED35DE3A2FB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db", "Db", "{7A0A99E2-DB18-4FA1-ADA2-C6CFC98B12C4}"
+	ProjectSection(SolutionItems) = preProject
+		NaoCoopDb\diagram.png = NaoCoopDb\diagram.png
+		NaoCoopDb\NaoDbBackup.zip = NaoCoopDb\NaoDbBackup.zip
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,10 +90,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B21E7D8F-D523-4E22-B321-4594EFE9DE03} = {8FC01246-9800-4B68-82E6-89862FCBBF5B}
 		{8F4F9072-5F99-4B66-A243-1F340F0B4A1D} = {3A3E412A-1E0E-4C8C-A82E-1DE549BD3F71}
 		{58E7C1A1-5705-4D16-B16C-6B771BE964B2} = {3A3E412A-1E0E-4C8C-A82E-1DE549BD3F71}
 		{8C498012-C5AE-42E4-91D6-C2B49ECEE3A4} = {3A3E412A-1E0E-4C8C-A82E-1DE549BD3F71}
+		{B21E7D8F-D523-4E22-B321-4594EFE9DE03} = {8FC01246-9800-4B68-82E6-89862FCBBF5B}
 		{93E0552A-AF5E-4D81-ABBC-8ED35DE3A2FB} = {ABDBC105-2D5E-4F2B-99C8-F3853C1E5D7E}
 	EndGlobalSection
 EndGlobal
